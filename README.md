@@ -1,14 +1,14 @@
 # SEM Group 6 Project
 
-Master ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/KelvinPompey-40718390/sem-project-group6.svg/main.yml?branch=master)
+Master ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/workflow/status/KelvinPompey-40718390/sem-project-group6/main.yml?branch=master)
 
-Develop ![Github Workflow Status(develop)](https://img.shields.io/github/actions/workflow/status/KelvinPompey-40718390/sem-project-group6.svg/main.yml?branch=develop)
+Develop ![Github Workflow Status(develop)](https://img.shields.io/github/actions/workflow/status/KelvinPompey-40718390/sem-project-group6/main.yml?branch=develop)
 
-Code Coverage ![Gitlab Code Coverage](https://img.shields.io/gitlab/pipeline-coverage/https://github.com/KelvinPompey-40718390/sem-project-group6.svg)
+Code Coverage ![Gitlab Code Coverage](https://img.shields.io/gitlab/pipeline-coverage/https://github.com/KelvinPompey-40718390/sem-project-group6)
 
-Release ![Releases](https://img.shields.io/github/release/KelvinPompey-40718390/sem-project-group6.svg/all.svg?style=flat-square)
+Release ![Releases](https://img.shields.io/github/release/KelvinPompey-40718390/sem-project-group6/all?style=flat-square)
 
-License [![LICENSE](https://img.shields.io/github/license/KelvinPompey-40718390/sem-project-group6.svg?style=flat-square)](https://github.com/KelvinPompey-40718390/sem-project-group6/blob/master/LICENSE)
+License [![LICENSE](https://img.shields.io/github/license/KelvinPompey-40718390/sem-project-group6?style=flat-square)](https://github.com/KelvinPompey-40718390/sem-project-group6/blob/master/LICENSE)
 
 #### A total of 32 tasks are required to achieve completion status. Currently, (x) requirements have been implemented, resulting in (x pct) completion.
 
