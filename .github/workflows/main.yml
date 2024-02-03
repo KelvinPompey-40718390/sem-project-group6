@@ -16,8 +16,8 @@ jobs:
       - name: Compile with Maven
         run: mvn package
       - name: Build
-        run: docker build -t seProjectGroup6-0.1.0.1-jar-with-dependencies.jar .
+        run: docker build -t seprojectgroup6-0.1.0.1-jar-with-dependencies.jar .
       - name: Run image
-        run: docker run --name group6container -d seProjectGroup6-0.1.0.1-jar-with-dependencies.jar
+        run: docker run --name group6container -d seprojectgroup6-0.1.0.1-jar-with-dependencies.jar
       - name: view logs
         run: docker logs group6container
