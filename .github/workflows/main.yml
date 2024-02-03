@@ -13,11 +13,11 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Compile with Maven
+      - name: Build with Maven
         run: mvn package
       - name: Build
-        run: docker build -t seprojectgroup6-0.1.0.1-jar-with-dependencies.jar .
+        run: docker build -t segroup6 .
       - name: Run image
-        run: docker run --name group6container -d seprojectgroup6-0.1.0.1-jar-with-dependencies.jar
+        run: docker run --name group6container -d segroup6
       - name: view logs
         run: docker logs group6container
