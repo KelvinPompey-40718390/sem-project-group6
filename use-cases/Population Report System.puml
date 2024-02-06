@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor E as "Employee"
+
+rectangle "Population Report System" {
+    usecase UC11 as "Get cities in a district
+    by largest to smallest population"
+
+    usecase UCa as "Print cities"
+
+
+}
+rectangle Database
+
+E --> UC11
+UC11 ..> UCa : include
+UC11 --> Database
+
+
+
+
+@enduml
