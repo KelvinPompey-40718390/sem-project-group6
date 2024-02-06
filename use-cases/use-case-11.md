@@ -36,10 +36,9 @@ A request for population information is sent to the employee.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests population information for a given criteria.
-2. Employee captures the variables to filter the population data.
-3. Employee extracts the population information.
-4. Employee provides the data to the organization.
+1. Employee requests report of all the cities in a district organised by largest to smallest population.
+2. Employee extracts the result.
+3. Employee provides the data to the organization.
 
 ## EXTENSIONS
 
