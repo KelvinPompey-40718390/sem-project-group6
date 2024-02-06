@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor E as "Employee"
+actor U as "User"
+
+rectangle "Population Report System" {
+    usecase UC12 as "Get top N populated cities"
+
+    usecase UC12b as "Input N"
+    usecase UCa as "Print top N cities"
+}
+rectangle Database
+
+U --> UC12b
+UC12b ..> UC12 : include
+E --> UC12
+UC12 ..> UCa : include
+UC12 --> Database
+
+@enduml
