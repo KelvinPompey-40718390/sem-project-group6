@@ -7,14 +7,14 @@ rectangle "Population Report System" {
     usecase UC13 as "Get top N populated cities per continent"
 
     usecase UC13b as "Input N"
-    usecase UCa as "Print top N populated cities per continent"
+    usecase UC13a as "Print top N populated cities per continent"
 }
 rectangle Database
 
 U --> UC13b
 UC13b ..> UC13 : include
 E --> UC13
-UC13 ..> UCa : include
+UC13 ..> UC13a : include
 UC13 --> Database
 
 @enduml
