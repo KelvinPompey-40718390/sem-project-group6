@@ -1,0 +1,17 @@
+@startuml
+
+actor E as "Employee"
+
+rectangle Database
+
+rectangle "Population Report" {
+    usecase UC10 as "Get All the cities in a country organised by largest population to smallest"
+
+    usecase UCa as "Print Cities"
+
+    E - UC10
+    UC10 ..> UCa : include
+    UC10 - Database
+}
+
+@enduml
