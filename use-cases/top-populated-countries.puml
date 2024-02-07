@@ -1,0 +1,17 @@
+@startuml
+
+actor E as "Employee"
+
+rectangle Database
+
+rectangle "Population Report" {
+    usecase UC6 as "Get Top "N" Populated Countries In A Region"
+
+    usecase UCa as "Print Cities"
+
+    E - UC6
+    UC6 ..> UCa : include
+    UC6 - Database
+}
+
+@enduml
