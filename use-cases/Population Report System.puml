@@ -4,6 +4,11 @@ actor E as "Employee"
 actor U as "User"
 
 rectangle "Population Report System" {
+    usecase UC11 as "Get cities in a district
+    by largest to smallest population"
+
+    usecase UC11a as "Print cities in district"
+
     usecase UC12 as "Get top N populated cities"
 
     usecase UC12b as "Input N"
@@ -11,10 +16,18 @@ rectangle "Population Report System" {
 }
 rectangle Database
 
+E --> UC11
+UC11 ..> UC11a : include
+UC11 --> Database
+
 U --> UC12b
 UC12b ..> UC12 : include
 E --> UC12
 UC12 ..> UC12a : include
 UC12 --> Database
+
+
+
+
 
 @enduml
