@@ -1,4 +1,4 @@
-USE CASE: 6 Produce a Report of All the cities in a region organised by largest population to smallest.
+USE CASE: 9 Produce a Report of All the cities in a region organised by largest population to smallest.
 CHARACTERISTIC INFORMATION
 Goal in Context
 As an employee I want a report of All the cities in a region organised by largest population to smallest.
