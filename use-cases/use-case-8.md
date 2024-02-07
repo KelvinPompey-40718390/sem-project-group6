@@ -1,4 +1,4 @@
-USE CASE: 6 Produce a Report of All the cities in a continent organised by largest population to smallest.
+USE CASE: 8 Produce a Report of All the cities in a continent organised by largest population to smallest.
 CHARACTERISTIC INFORMATION
 Goal in Context
 As an employee I want a report of All the cities in a continent organised by largest population to smallest.
