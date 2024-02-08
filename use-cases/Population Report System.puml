@@ -8,7 +8,7 @@ rectangle "Population Report System" {
     usecase UC11 as "Get cities in a district
     by largest to smallest population"
 
-    usecase UC11a as "Print cities"
+    usecase UC11a as "Print cities in district"
 
     usecase UC13 as "Get top N populated cities per continent"
 
