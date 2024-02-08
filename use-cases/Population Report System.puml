@@ -1,9 +1,13 @@
 @startuml
 left to right direction
 actor E as "Employee"
-actor U as "User"
 
 rectangle "Population Report System" {
+    usecase UC11 as "Get cities in a district
+    by largest to smallest population"
+
+    usecase UC11a as "Print cities in district"
+
     usecase UC15 as "Get top N populated cities per country"
 
     usecase UC15b as "Input N"
@@ -11,10 +15,15 @@ rectangle "Population Report System" {
 }
 rectangle Database
 
-U --> UC15b
+E --> UC11
+UC11 ..> UC11a : include
+UC11 --> Database
+
+E --> UC15b
 UC15b ..> UC15 : include
 E --> UC15
 UC15 ..> UC15a : include
 UC15 --> Database
+
 
 @enduml
