@@ -1,4 +1,4 @@
-# USE CASE: 7 Produce a Report of All the cities in the world organised by largest population to smallest.
+# USE CASE: 7 Report of All the cities in the world organised by largest population to smallest.
 ## CHARACTERISTIC INFORMATION
 ### Goal in Context
 As an employee I want a report of  All the cities in the world organised by largest population to smallest.
@@ -25,9 +25,10 @@ Employee.
 A request for population information is sent to the employee.
 
 ## MAIN SUCCESS SCENARIO
-1. Employee requests report of All the cities in the world organised by largest population to smallest.
-2. Employee extracts the result.
-3. Employee provides the data to the organization.
+1. Employee selects report type.
+2. Employee requests report of All the cities in the world organised by largest population to smallest.
+3. Employee extracts the result.
+4. Employee provides the data to the organization.
 ## EXTENSIONS
 Data is not available:
 Employee informs organization that no data available.
