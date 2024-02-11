@@ -40,7 +40,7 @@ A request for population information is sent to the employee.
 2. Employee inputs N
 3. Employee requests top N populated cities in continent.
 4. Employee extracts the result.
-5 .Employee provides the data to the organization.
+5. Employee provides the data to the organization.
 
 ## EXTENSIONS
 
