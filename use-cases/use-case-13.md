@@ -36,11 +36,11 @@ A request for population information is sent to the employee.
 
 ## MAIN SUCCESS SCENARIO
 
-0. User inputs N
-1. User inputs continent 
-1. Employee requests top N populated cities in continent.
-3. Employee extracts the result.
-4. Employee provides the data to the organization.
+1. Employee inputs continent
+2. Employee inputs N
+3. Employee requests top N populated cities in continent.
+4. Employee extracts the result.
+5 .Employee provides the data to the organization.
 
 ## EXTENSIONS
 
