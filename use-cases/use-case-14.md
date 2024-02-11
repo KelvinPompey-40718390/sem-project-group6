@@ -36,14 +36,15 @@ A request for population information is sent to the employee.
 
 ## MAIN SUCCESS SCENARIO
 
-0. User inputs N
-1. Employee requests top N populated cities per region.
-3. Employee extracts the result.
-4. Employee provides the data to the organization.
+1. Employee inputs region 
+2. Employee inputs N  
+3. Employee requests top N populated cities in region.
+4. Employee extracts the result.
+5. Employee provides the data to the organization.
 
 ## EXTENSIONS
 
-3. **Data is not available**:
+**Data is not available**:
     1. Employee informs organization that no data available.
 
 ## SUB-VARIATIONS
