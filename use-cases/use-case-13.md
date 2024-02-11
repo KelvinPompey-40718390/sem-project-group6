@@ -44,7 +44,7 @@ A request for population information is sent to the employee.
 
 ## EXTENSIONS
 
-3. **Data is not available**:
+**Data is not available**:
     1. Employee informs organization that no data available.
 
 ## SUB-VARIATIONS
