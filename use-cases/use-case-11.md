@@ -1,10 +1,10 @@
-# USE CASE: 15 Produce a report of the top N populated cities in a country where N is provided by the user
+# USE CASE: 11 Produce a Report of all the cities in a district organised by largest to smallest population
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *employee* I want *a report of the top N populated cities in a country where N is provided by the user* to *allow easy access to population information*
+As an *employee* I want *a report of all the cities in a district organised by largest population to smallest* to *allow easy access to population information*
 
 ### Scope
 
@@ -36,15 +36,13 @@ A request for population information is sent to the employee.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee inputs country
-2. Employee inputs N
-3. Employee requests top N populated cities in country.
-4. Employee extracts the result.
-5. Employee provides the data to the organization.
+1. Employee requests report of all the cities in a district organised by largest to smallest population.
+2. Employee extracts the result.
+3. Employee provides the data to the organization.
 
 ## EXTENSIONS
 
-**Data is not available**:
+3. **Data is not available**:
     1. Employee informs organization that no data available.
 
 ## SUB-VARIATIONS
