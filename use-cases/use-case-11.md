@@ -36,13 +36,14 @@ A request for population information is sent to the employee.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee requests report of all the cities in a district organised by largest to smallest population.
-2. Employee extracts the result.
-3. Employee provides the data to the organization.
+1. Employee inputs district 
+2. Employee requests report of all the cities in a district organised by largest to smallest population.
+3. Employee extracts the result.
+4. Employee provides the data to the organization.
 
 ## EXTENSIONS
 
-3. **Data is not available**:
+**Data is not available**:
     1. Employee informs organization that no data available.
 
 ## SUB-VARIATIONS
