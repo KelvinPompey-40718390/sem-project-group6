@@ -6,7 +6,15 @@
 
     <groupId>com.napier.seProjectG6</groupId>
     <artifactId>seProjectGroup6</artifactId>
-    <version>0.1-alpha-1</version>
+    <version>0.2-alpha-2</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.28</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
