@@ -1,0 +1,48 @@
+@startuml
+  left to right direction
+  actor User As U
+
+    usecase "Select Area Type (UC01 - 22)" AS RT
+    usecase "Select Sub Report Type" AS SRT
+    usecase "Parameters" AS P
+    usecase "Display Report" AS R
+    usecase "Population Reports (UC26-31)" AS PR
+    usecase "Population Sub Reports" AS PopSR
+    usecase "Language Report (UC32)" AS L
+   usecase "Filter" AS F
+    database "World Database" AS DB
+
+
+note top of RT
+ Country, Capital City
+ City
+end note
+
+note top of (SRT)
+  World, Continent, Region,
+  (Country, District: City Report Additional)
+end note
+
+note right of F
+  Continent, Region, Country
+end note
+note top of P : 0 for All, Value for Top N
+
+note bottom of PopSR : Pop of: World, Continent, Region, Country, District, City
+U --> RT
+RT --> SRT
+SRT --> P
+P .> DB : include
+
+U --> PR
+PR --> PopSR
+PopSR --> F
+F .> DB : include
+DB --> R
+
+U --> L
+L .> DB : include
+note bottom of L : Chinese, English, Hindi, Spanish, Arabic % of Languages to World Pop.
+
+
+@enduml
