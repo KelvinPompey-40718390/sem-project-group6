@@ -17,7 +17,7 @@ Primary task.
 
 ### Preconditions
 
-We are aware of the list of countries and their populations
+We are aware of the list of countries and their populations.
 
 ### Success End Condition
 
