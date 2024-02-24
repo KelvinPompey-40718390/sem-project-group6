@@ -1,11 +1,9 @@
-# USE CASE: #17
+# USE CASE: 26 Generate a report to show the population of the world.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
-A user queries the system to generate a report providing a list of all the capital cities in the world sorted by largest population to smallest.
-
-
+As a user I want to view the population of the world.
 ### Scope
 
 Organization.
@@ -16,7 +14,7 @@ Primary task.
 
 ### Preconditions
 
-We have a list of the capital cities and their respective populations
+We have data containing the population of the world
 
 ### Success End Condition
 
@@ -28,7 +26,7 @@ No Report is generated.
 
 ### Primary Actor
 
-A user within the organisation
+User
 
 ### Trigger
 
@@ -36,13 +34,13 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects report option.
-2. User selects capital cities criteria.
-3. A report is generated.
+1. Employee selects report type.
+2. A Report is produced.
+3. User presents report to company.
 
 ## EXTENSIONS
 
-3. **No data error**:
+2. **No data error**:
     1. User informs the organization that no data is available.
 
 ## SUB-VARIATIONS

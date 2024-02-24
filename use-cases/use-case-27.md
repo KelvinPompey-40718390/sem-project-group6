@@ -1,10 +1,9 @@
-# USE CASE: #19
+# USE CASE: 27 Generate a report to show the population of a continent.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
-A user queries the system to generate a report providing a list of all the capital cities in a region sorted by largest population to smallest
-
+As a user I want to view the population of a continent.
 ### Scope
 
 Organization.
@@ -15,7 +14,7 @@ Primary task.
 
 ### Preconditions
 
-We have a list of the regions and the capital cities’ populations
+We have data containing the list of continents and their populations
 
 ### Success End Condition
 
@@ -27,7 +26,7 @@ No Report is generated.
 
 ### Primary Actor
 
-A user within the organisation
+User
 
 ### Trigger
 
@@ -35,10 +34,11 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects the desired report
-2. User selects the region.
-   3.User selects the number of capital cities to list.
-   4.User generates the report.
+1. User selects the report type.
+2. User selects the continent.
+3. User generates the report
+4. User presents report to company.
+
 
 ## EXTENSIONS
 

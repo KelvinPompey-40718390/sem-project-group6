@@ -1,4 +1,4 @@
-# # 2 View Countries in Continent by Population
+# USE CASE: 2 Generate a report to show all the countries in a continent organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We are aware of the list of countries and their populations.
+We are aware of the list of countries, the continents they belong to and their populations.
 
 ### Success End Condition
 
@@ -36,15 +36,15 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects report option.
+1. User selects report option.
 2. User selects the number of Countries in Continent.
 3. A report is generated based on the countries in a continent organized by the largest population to the smallest.
 
 
 ## EXTENSIONS
 
-2. **The userView Countries in Continent by Population **:
-1. The user views a list of all countries in a continent organized by the largest population to the smallest.
+3. **Data is not available**:
+    1. User informs organisation that no data available.
 
 ## SUB-VARIATIONS
 

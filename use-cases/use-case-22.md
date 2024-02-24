@@ -4,11 +4,11 @@
 
 ### Goal in Context
 
-As an Employee I want to view the Top 'N' populated **capital cities** in a **region** where I provide N to have easy access to this information.
+As a User I want to view the Top 'N' populated **capital cities** in a **region** where I provide N to have easy access to this information.
 
 ### Scope
 
-Company.
+Organisation.
 
 ### Level
 
@@ -28,7 +28,7 @@ No Report is produced.
 
 ### Primary Actor
 
-Employee
+User
 
 ### Trigger
 
@@ -36,16 +36,18 @@ A request for the top `N` populated capital cities in a region is sent to the em
 
 ## MAIN SUCCESS SCENARIO
 
-1. Employee selects report type.
-2. Employee selects a region.
-3. Employee enters a value for `N`.
+1. User selects report type.
+2. User selects a region.
+3. User enters a value for `N`.
 4. A Report is produced for the selected region; sorted Largest to Smallest population.
-5. Employee provides the data to the organisation.
+5. User provides the data to the organisation.
 
 ## EXTENSIONS
 
-3. **Employee Enters 0 or Leaves `N` Blank**:
-    1. User asked to enter a value for `N`
+3. **User Enters invalid value for `N`**:
+   1. User asked to enter a value for `N`
+4. **No data error**:
+   1. User informs the organization that no data is available.
 
 ## SUB-VARIATIONS
 

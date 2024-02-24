@@ -1,11 +1,11 @@
-# # 3 Organize Countries in a Region by Population Size
+# USE CASE: 3 Generate a report to show all the countries in a region organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
 
-As a user, I want to access a list of all countries in a Region organized by the largest population to the smallest### Scope
+As a user, I want to access a list of all countries in a Region organized by the largest population to the smallest
 
 ### Scope
 Organisation.
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We are aware of the list of countries and their populations.
+We are aware of the list of countries, the regions they belong to and their populations.
 
 ### Success End Condition
 
@@ -36,16 +36,16 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects report option.
+1. User selects report option.
 2. User organizes Countries in a Region by Population Size.
 3. A report is generated based on a list of all countries in a Region organized by the largest population to the smallest.
 
 
 ## EXTENSIONS
+3. **Data is not available**:
+    1. User informs organisation that no data available.
 
-2. **The userView Countries in Continent by Region **:
-1. The user views a list of all countries in a Region organized by the largest population to the smallest.
-
+ 
 ## SUB-VARIATIONS
 
 None.
