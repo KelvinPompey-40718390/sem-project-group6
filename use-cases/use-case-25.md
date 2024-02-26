@@ -1,14 +1,14 @@
-# USE CASE: 25 The population of people, people living in cities, and people not living in cities in each country.
+# USE CASE: 25 Generate a report to show the population of people, people living in cities, and people not living in cities in each country.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an employee I want to view the population of people, **people living in cities**, and **people not living in cities** in each **country** so that I can have easy access to this information.
+As a user I want to view the population of **people**, **people living in cities**, and **people not living in cities** in each country.
 
 ### Scope
 
-Company.
+Organisation.
 
 ### Level
 
@@ -28,7 +28,7 @@ No Report is produced.
 
 ### Primary Actor
 
-Employee
+User
 
 ### Trigger
 
@@ -42,7 +42,9 @@ A request for the total population of people living in and out of cities in each
 
 ## EXTENSIONS
 
-None
+2. **No data error**:
+    1. User informs the organization that no data is available.
+
 
 ## SUB-VARIATIONS
 

@@ -1,9 +1,9 @@
-# USE CASE: #20
+# USE CASE: 18 Generate a report to show all the capital cities in a continent organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
-A user queries the system to generate a report providing a list of the top populated capital cities in the world where the user can specify the number of capital cities to show.
+As a user I want to view all the capital cities in a continent organised by largest population to smallest.
 
 ### Scope
 
@@ -15,7 +15,7 @@ Primary task.
 
 ### Preconditions
 
-We have a list of the capital cities and their respective populations
+We have a list of the continents and the capital cities’ populations
 
 ### Success End Condition
 
@@ -35,9 +35,10 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects the desired report
-2. User selects the number of capital cities to list.
-   3.User generates the report.
+1. User selects report type.
+2. User selects a continent.
+3. A Report is produced based on the query.
+4. User provides the data to the organisation.
 
 ## EXTENSIONS
 
