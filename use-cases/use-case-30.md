@@ -1,10 +1,9 @@
-# USE CASE: #18
+# USE CASE: 30 Generate a report to show the population of a district.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
-A user queries the system to generate a report providing a list of all the capital cities in a continent sorted by the largest population to the smallest.
-
+As a user I want to view the population of a district.
 
 ### Scope
 
@@ -13,10 +12,9 @@ Organization.
 ### Level
 
 Primary task.
-
 ### Preconditions
 
-We have a list of the continents and the capital cities’ populations
+We have data containing the list of districts and their populations
 
 ### Success End Condition
 
@@ -28,7 +26,7 @@ No Report is generated.
 
 ### Primary Actor
 
-A user within the organisation
+User
 
 ### Trigger
 
@@ -36,10 +34,11 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects the desired report
-2. User selects the continent.
-   3.User selects the number of capital cities to list.
-   4.User generates the report.
+1. User selects the desired report
+2. User selects the district.
+3. User generates the report
+4. User presents report to company.
+
 
 ## EXTENSIONS
 
