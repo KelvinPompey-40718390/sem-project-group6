@@ -1,9 +1,10 @@
-# USE CASE: #26
+# USE CASE: 17 Generate a report to show all the capital cities in the world organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
-A user queries the system to generate a report to show the population of the world.
+As a user I want to view all the capital cities in the world organised by largest population to smallest.
+
 
 ### Scope
 
@@ -15,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We have data containing the population of the world
+We have a list of the capital cities and their respective populations
 
 ### Success End Condition
 
@@ -35,8 +36,10 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1. User selects the desired report
-2. User generates the report
+1. User selects report type.
+2. User selects a criteria (World).
+3. A Report is produced based on the query.
+4. User provides the data to the organisation.
 
 
 ## EXTENSIONS

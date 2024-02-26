@@ -1,9 +1,10 @@
-# USE CASE: #28
+# USE CASE: 29 Generate a report to show the population of a country.
+
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
-A user queries the system to generate a report to show the population of a region.
+As a user I want to view the population of a country.
 
 ### Scope
 
@@ -12,10 +13,9 @@ Organization.
 ### Level
 
 Primary task.
-
 ### Preconditions
 
-We have data containing the list of regions and their respective populations
+We have data containing the list of countries and their populations
 
 ### Success End Condition
 
@@ -27,7 +27,7 @@ No Report is generated.
 
 ### Primary Actor
 
-A user within the organisation
+User
 
 ### Trigger
 
@@ -35,10 +35,10 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1. User selects the desired report.
-2. User selects the region.
-3. User generates the report.
-
+1. User selects the desired report
+2. User selects the country
+3. User generates the report
+4. User presents report to company.
 
 ## EXTENSIONS
 

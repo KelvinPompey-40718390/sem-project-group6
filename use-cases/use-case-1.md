@@ -1,4 +1,4 @@
-# # 1 Organize Countries by Population Size
+# USE CASE: 1 Generate a report to show all the countries in the world organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
@@ -37,15 +37,15 @@ A user is required to produce a report
 
 ## MAIN SUCCESS SCENARIO
 
-1.User selects report option.
+1. User selects report option.
 2. User selects the number of Countries by Population.
 3. A report is generated based on the number of Countries by Population.
 
 
 ## EXTENSIONS
 
-2. **The user view a list of all countries in the world arranged in descending order based on their population size**:
-1. User must view a list of all countries in the world arranged in descending order based on their population size.
+3. **Data is not available**:
+    1. User informs organisation that no data available.
 
 ## SUB-VARIATIONS
 
