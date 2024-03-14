@@ -1,87 +1,36 @@
 package com.napier.seprojectgroup6;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
+import com.napier.seprojectgroup6.db.ConnectionManager;
+import com.napier.seprojectgroup6.navigation.Navigator;
+import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
 public class App {
-
     /**
-     * Connection to MySQL database.
+     *
+     * @param args
      */
-    private Connection con = null;
+    public static void main(String[] args) {
 
-    /**
-     * Connect to the MySQL database.
-     */
-    public void connect()
-    {
-        try
-        {
-            // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
-        }
+        // Connect to database and instantiate Navigator
+        // if running locally i.e not on Github actions.
 
-        int retries = 10;
-        for (int i = 0; i < retries; ++i)
-        {
-            System.out.println("Connecting to database...");
-            try
-            {
-                // Wait a bit for db to start
-                Thread.sleep(30000);
-                // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "semgroup6");
-                System.out.println("Successfully connected");
-                break;
-            }
-            catch (SQLException sqle)
-            {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
-                System.out.println(sqle.getMessage());
-            }
-            catch (InterruptedException ie)
-            {
-                System.out.println("Thread interrupted? Should not happen.");
-            }
-        }
-    }
-
-    /**
-     * Disconnect from the MySQL database.
-     */
-    public void disconnect()
-    {
-        if (con != null)
-        {
-            try
-            {
-                // Close connection
-                con.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println("Error closing connection to database");
-            }
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        // Test Output to indicate Project is working
         System.out.println("Project Works!");
-        // Create new Application
-        App a = new App();
+        ConnectionManager.getInstance().connect(() -> {
+            System.out.println("GITHUB_ACTIONS " + System.getenv("GITHUB_ACTIONS"));
+            boolean isRunningOnGithub = System.getenv("GITHUB_ACTIONS") != null;
+            if(!isRunningOnGithub) {
+                Navigator navigator = new Navigator();
+            }
+            else {
 
-        // Connect to database
-        a.connect();
+                CitiesByDistrictReport report = new CitiesByDistrictReport();
+                report.runWithDistrict("Aichi");
+
+                ConnectionManager.getInstance().disconnect();
+            }
+        });
 
         // Disconnect from database
-        a.disconnect();
+        //a.disconnect();
     }
 }
