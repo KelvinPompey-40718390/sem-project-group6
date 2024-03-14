@@ -17,7 +17,7 @@ public class App {
         System.out.println("Project Works!");
         ConnectionManager.getInstance().connect(() -> {
             System.out.println("GITHUB_ACTIONS " + System.getenv("GITHUB_ACTIONS"));
-            boolean isRunningOnGithub = System.getenv("GITHUB_ACTIONS") != null;
+            boolean isRunningOnGithub = true;
             if(!isRunningOnGithub) {
                 Navigator navigator = new Navigator();
             }
