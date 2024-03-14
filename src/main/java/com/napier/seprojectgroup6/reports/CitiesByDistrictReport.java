@@ -49,7 +49,7 @@ public class CitiesByDistrictReport implements Report {
             // Return new employee if valid.
             // Check one is returned
 
-            System.out.println("Cities by District: " + district + "\n\n");
+            System.out.println("Cities by District: " + district + "\n");
             while (rset.next())
             {
 
@@ -62,7 +62,7 @@ public class CitiesByDistrictReport implements Report {
 
                 this.displayCity(city);
             }
-            System.out.println("\n");
+
 
         }
         catch (Exception e)
