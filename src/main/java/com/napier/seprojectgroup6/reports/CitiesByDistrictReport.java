@@ -48,6 +48,8 @@ public class CitiesByDistrictReport implements Report {
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new employee if valid.
             // Check one is returned
+
+            System.out.println("Cities by District: " + district + "\n\n");
             while (rset.next())
             {
 
@@ -59,8 +61,8 @@ public class CitiesByDistrictReport implements Report {
                 city.district = rset.getString("District");
 
                 this.displayCity(city);
-
             }
+            System.out.println("\n");
 
         }
         catch (Exception e)
