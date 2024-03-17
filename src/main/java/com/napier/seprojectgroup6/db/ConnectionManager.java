@@ -24,7 +24,7 @@ public class ConnectionManager {
      * Returns the database connection
      * @return Connection
      */
-    public Connection getconnection() {
+    public Connection getConnection() {
         return this.con;
     }
     public void connect(ConnectionComplete connectionResult)

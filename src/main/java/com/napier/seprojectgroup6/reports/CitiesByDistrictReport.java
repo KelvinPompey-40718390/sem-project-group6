@@ -14,7 +14,7 @@ public class CitiesByDistrictReport implements Report {
 
 
     public CitiesByDistrictReport() {
-        this.con = ConnectionManager.getInstance().getconnection();
+        this.con = ConnectionManager.getInstance().getConnection();
     }
 
     /**
@@ -74,8 +74,8 @@ public class CitiesByDistrictReport implements Report {
 
     public void displayCity(City city) {
         if(city != null) {
-            System.out.println("City: " + city.name + " " + city.ID +
-                    " " + city.population + " " + city.countryCode);
+            System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
+            System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.ID, city.population, city.countryCode);
         }
     }
 
