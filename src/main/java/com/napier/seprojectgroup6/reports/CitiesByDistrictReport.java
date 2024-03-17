@@ -50,6 +50,7 @@ public class CitiesByDistrictReport implements Report {
             // Check one is returned
 
             System.out.println("Cities by District: " + district + "\n");
+            System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
             while (rset.next())
             {
 
@@ -74,7 +75,6 @@ public class CitiesByDistrictReport implements Report {
 
     public void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
             System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.ID, city.population, city.countryCode);
         }
     }
