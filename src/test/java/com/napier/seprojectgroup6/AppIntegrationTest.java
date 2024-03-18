@@ -16,9 +16,4 @@ public class AppIntegrationTest
         //app.connect("localhost:33060", 30000);
 
     }
-
-    @Test
-    void testDemo() {
-        assertEquals(4, 4);
-    }
 }

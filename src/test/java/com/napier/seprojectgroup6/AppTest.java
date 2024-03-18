@@ -18,16 +18,4 @@ public class AppTest
         app = new App();
     }
 
-    @Test
-    void demoTest()
-    {
-        assertEquals(5, 5);
-    }
-
-    @Test
-    void demoTest2()
-    {
-        assertEquals(5, 5);
-    }
-
 }
