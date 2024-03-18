@@ -1,12 +1,13 @@
 package com.napier.seprojectgroup6;
 
+import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CitiesByDistrictReportTest
+public class CitiesByDistrictReportIntegrationTest
 {
     static CitiesByDistrictReport report;
 
@@ -17,9 +18,10 @@ public class CitiesByDistrictReportTest
     }
 
     @Test
-    void testDisplayNullCity()
-    {
-        report.displayCity(null);
+    void testRunWithDistrct() {
+        City city = new City();
+
+        report.runWithDistrict("");
     }
 
     @Test

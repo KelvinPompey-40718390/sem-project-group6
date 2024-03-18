@@ -1,15 +1,13 @@
 package com.napier.seprojectgroup6.navigation;
 
 import com.napier.seprojectgroup6.Utils;
-import com.napier.seprojectgroup6.reports.CountriesByContinentReport;
 import com.napier.seprojectgroup6.reports.Report;
 import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
 
 public class Navigator {
 
     private final ReportMenu[] reports = {
-            new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName()),
-            new ReportMenu("Countries by Continent", CountriesByContinentReport.class.getName()),
+            new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName())
     };
 
     public Navigator() {

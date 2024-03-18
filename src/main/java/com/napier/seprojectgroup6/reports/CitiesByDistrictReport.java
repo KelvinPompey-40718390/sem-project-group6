@@ -7,10 +7,13 @@ import com.napier.seprojectgroup6.db.ConnectionManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class CitiesByDistrictReport implements Report {
 
     private Connection con = null;
+    private ArrayList<City> cities;
+    private String district;
 
 
     public CitiesByDistrictReport() {
@@ -22,19 +25,21 @@ public class CitiesByDistrictReport implements Report {
      * execute the query
      */
     public void run() {
-        String district = this.getInput();
-        this.executeQuery(district);
+        district = this.getInput();
+        this.executeQuery();
+        this.displayCities();
     }
 
-    public void runWithDistrict(String distict) {
-        this.executeQuery(distict);
+    public void runWithDistrict(String district) {
+        this.district = district;
+        this.executeQuery();
     }
 
     private String getInput() {
         return Utils.readInput("Enter district");
     }
 
-    private void executeQuery(String district)
+    private void executeQuery()
     {
         try
         {
@@ -46,14 +51,10 @@ public class CitiesByDistrictReport implements Report {
                             "where District = '"+ district +"' order by Population desc;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new employee if valid.
-            // Check one is returned
 
-            System.out.println("Cities by District: " + district + "\n");
-            System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
+            cities = new ArrayList<>();
             while (rset.next())
             {
-
                 City city = new City();
                 city.name = rset.getString("Name");
                 city.ID = rset.getInt("ID");
@@ -61,7 +62,7 @@ public class CitiesByDistrictReport implements Report {
                 city.countryCode = rset.getString("CountryCode");
                 city.district = rset.getString("District");
 
-                this.displayCity(city);
+                this.cities.add(city);
             }
 
 
@@ -69,11 +70,19 @@ public class CitiesByDistrictReport implements Report {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get employee details");
+            System.out.println("Failed to get population details");
         }
     }
 
-    public void displayCity(City city) {
+    public void displayCities() {
+        System.out.println("Cities by District: " + district + "\n");
+        System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
+        for(City city: cities) {
+            this.displayCity(city);
+        }
+    }
+
+    private void displayCity(City city) {
         if(city != null) {
             System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.ID, city.population, city.countryCode);
         }
