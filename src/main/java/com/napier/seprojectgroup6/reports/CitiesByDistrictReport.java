@@ -34,7 +34,7 @@ public class CitiesByDistrictReport implements Report {
         return Utils.readInput("Enter district");
     }
 
-    public void executeQuery(String district)
+    private void executeQuery(String district)
     {
         try
         {
