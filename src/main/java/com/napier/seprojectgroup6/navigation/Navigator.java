@@ -17,6 +17,9 @@ public class Navigator {
         this.showMenu();
     }
 
+    /**
+     * Display the reports available
+     */
     private void showMenu() {
 
         for(int i = 0; i < this.reports.length; i++) {
@@ -25,6 +28,9 @@ public class Navigator {
         this.processInput();
     }
 
+    /**
+     * Handle user input
+     */
     private void processInput() {
         String input = Utils.readInput("\nSelect your report number or q to quit!");
 
@@ -42,6 +48,11 @@ public class Navigator {
         this.showMenu();
     }
 
+    /**
+     * Display the report selected by
+     * the user
+     * @param index
+     */
     private void runRport(int index) {
         try {
             Report report = (Report) Class.forName(this.reports[index].className).getDeclaredConstructor().newInstance();

@@ -15,22 +15,23 @@ public class App {
         // if running locally i.e not on Github actions.
 
         System.out.println("Project Works!");
-        ConnectionManager.getInstance().connect(() -> {
 
-            boolean isRunningOnGithub = true;
-            if(!isRunningOnGithub) {
-                Navigator navigator = new Navigator();
-            }
-            else {
+        if(args.length < 1){
+            ConnectionManager.getInstance().connect("localhost:33060", 30000);
+        }else{
+            ConnectionManager.getInstance().connect(args[0], Integer.parseInt(args[1]));
+        }
 
-                CitiesByDistrictReport report = new CitiesByDistrictReport();
-                report.runWithDistrict("Aichi");
+        boolean isRunningOnDocker = args.length > 1;
+        if(!isRunningOnDocker) {
+            Navigator navigator = new Navigator();
+        }
+        else {
 
-                ConnectionManager.getInstance().disconnect();
-            }
-        });
+            CitiesByDistrictReport report = new CitiesByDistrictReport();
+            report.runWithDistrict("Aichi");
 
-        // Disconnect from database
-        //a.disconnect();
+            ConnectionManager.getInstance().disconnect();
+        }
     }
 }

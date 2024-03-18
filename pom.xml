@@ -29,6 +29,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
+                    <finalName>semProjectGroup6</finalName>
                     <archive>
                         <manifest>
                             <mainClass>com.napier.seprojectgroup6.App</mainClass>
@@ -37,6 +38,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>

@@ -3,13 +3,11 @@ services:
   # Application Dockerfile is in same folder which is .
   app:
     build: .
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
 
   # db is is db folder
   db:
     build: db/.
     ports:
-      - "3306:3306"
+      - "33060:3306"
     command: --default-authentication-plugin=mysql_native_password
     restart: always
