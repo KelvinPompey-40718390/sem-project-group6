@@ -18,16 +18,17 @@ public class CitiesByDistrictReportIntegrationTest
     }
 
     @Test
-    void testRunWithDistrct() {
+    void testRunWithEmptyDistrct() {
         City city = new City();
 
         report.runWithDistrict("");
     }
 
     @Test
-    void demoTest2()
-    {
-        assertEquals(5, 5);
+    void testRunWithDistrct() {
+        City city = new City();
+
+        report.runWithDistrict("Aichi");
     }
 
 }
