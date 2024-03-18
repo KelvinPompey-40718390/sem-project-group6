@@ -6,7 +6,7 @@
 
     <groupId>com.napier.seProjectG6</groupId>
     <artifactId>seProjectGroup6</artifactId>
-    <version>0.3-alpha-3</version>
+    <version>0.4-alpha-4</version>
 
     <dependencies>
         <dependency>
