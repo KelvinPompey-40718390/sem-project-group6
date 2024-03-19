@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class CitiesByDistrictReport implements Report {
 
     private Connection con = null;
-    private ArrayList<City> cities;
+    public ArrayList<City> cities;
     private String district;
 
 
@@ -33,6 +33,7 @@ public class CitiesByDistrictReport implements Report {
     public void runWithDistrict(String district) {
         this.district = district;
         this.executeQuery();
+        this.displayCities();
     }
 
     private String getInput() {
@@ -41,6 +42,11 @@ public class CitiesByDistrictReport implements Report {
 
     private void executeQuery()
     {
+        cities = new ArrayList<>();
+
+        if(this.district.isEmpty()) {
+            return;
+        }
         try
         {
             // Create an SQL statement
@@ -52,7 +58,6 @@ public class CitiesByDistrictReport implements Report {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            cities = new ArrayList<>();
             while (rset.next())
             {
                 City city = new City();
@@ -75,6 +80,10 @@ public class CitiesByDistrictReport implements Report {
     }
 
     public void displayCities() {
+        if(this.cities == null) {
+            return;
+        }
+
         System.out.println("Cities by District: " + district + "\n");
         System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
         for(City city: cities) {
