@@ -1,5 +1,5 @@
 # Run our jar archive
 FROM openjdk:latest
-COPY ./target/semProjectGroup6.jar /tmp
+COPY ./target/seProjectGroup6-0.4-alpha-4-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "semProjectGroup6.jar", "db:3306", "30000"]
+ENTRYPOINT ["java", "-jar", "seProjectGroup6-0.4-alpha-4-jar-with-dependencies.jar"]
