@@ -4,6 +4,8 @@ package com.napier.seprojectgroup6;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.navigation.Navigator;
 import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
+import com.napier.seprojectgroup6.reports.TopPopulatedCitiesReport;
+
 public class App {
     /**
      *
@@ -28,8 +30,11 @@ public class App {
         }
         else {
 
-            CitiesByDistrictReport report = new CitiesByDistrictReport();
-            report.runWithDistrict("Aichi");
+            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
+            citiesByDistrictReport.runWithDistrict("Aichi");
+
+            TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
+            topPopulatedCitiesReport.runWithLimit(5);
 
             ConnectionManager.getInstance().disconnect();
         }
