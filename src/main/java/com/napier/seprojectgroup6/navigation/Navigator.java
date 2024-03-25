@@ -4,12 +4,14 @@ import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.reports.Report;
 import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
 import com.napier.seprojectgroup6.reports.TopPopulatedCitiesReport;
+import com.napier.seprojectgroup6.reports.UC6TopPopCountryRegion;
 
 public class Navigator {
 
     private final ReportMenu[] reports = {
             new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName()),
-            new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName())
+            new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
+            new ReportMenu( "UC6 Top N Populated Counties In Region", UC6TopPopCountryRegion.class.getName()),
     };
 
     public Navigator() {
