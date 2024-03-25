@@ -5,6 +5,7 @@ import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.navigation.Navigator;
 import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
 import com.napier.seprojectgroup6.reports.TopPopulatedCitiesReport;
+import com.napier.seprojectgroup6.reports.UC6TopPopCountryRegion;
 
 public class App {
     /**
@@ -35,6 +36,9 @@ public class App {
 
             TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
             topPopulatedCitiesReport.runWithLimit(5);
+
+            UC6TopPopCountryRegion UC6TopPopCountryRegion = new UC6TopPopCountryRegion();
+            UC6TopPopCountryRegion.runWithLimit(5);
 
             ConnectionManager.getInstance().disconnect();
         }
