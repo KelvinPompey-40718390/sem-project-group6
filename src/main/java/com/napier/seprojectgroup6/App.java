@@ -4,6 +4,7 @@ package com.napier.seprojectgroup6;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.navigation.Navigator;
 import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
+import com.napier.seprojectgroup6.reports.TopPopulatedCitiesByContinentReport;
 import com.napier.seprojectgroup6.reports.TopPopulatedCitiesReport;
 
 public class App {
@@ -35,6 +36,9 @@ public class App {
 
             TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
             topPopulatedCitiesReport.runWithLimit(5);
+
+            TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
+            topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
 
             ConnectionManager.getInstance().disconnect();
         }
