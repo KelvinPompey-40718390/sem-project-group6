@@ -3,6 +3,7 @@ package com.napier.seprojectgroup6;
 import com.napier.seprojectgroup6.db.CapitalCity;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.reports.PopulatedCapitalCitiesByContinent;
+import com.napier.seprojectgroup6.reports.PopulatedCapitalCitiesByRegion;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CapitalCityReportsIntegrationTest {
 
     static PopulatedCapitalCitiesByContinent report;
+    static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
 
+    // Populated Capital Cities by Continent Integration Tests
     @BeforeAll
     static void init()
     {
-        ConnectionManager.getInstance().connect("localhost:33060", 30000);
+        ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
+        popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
     }
 
     @Test
@@ -71,6 +75,53 @@ public class CapitalCityReportsIntegrationTest {
 
         report.runWithInputs(5,"Africa");
         assertEquals(report.capitalCities.size(),5);
+    }
+
+
+    // Populated Capital Cities by Region Integration Tests
+    @Test
+    void testRunWithEmptyRegion()
+    {
+        CapitalCity capitalCity = new CapitalCity();
+
+        popCapCityRegionReport.runWithInputs(5,"");
+        assertEquals(popCapCityRegionReport.capitalCities.size(),0);
+    }
+
+    @Test
+    void testRunWithEmptyLimitAndRegion()
+    {
+        CapitalCity capitalCity = new CapitalCity();
+
+        popCapCityRegionReport.runWithInputs(null,"");
+        assertEquals(popCapCityRegionReport.capitalCities.size(),0);
+    }
+
+    @Test
+    void testRunWithEmptyLimitWithRegion()
+    {
+        CapitalCity capitalCity = new CapitalCity();
+
+        popCapCityRegionReport.runWithInputs(null,"Caribbean");
+        assertEquals(popCapCityRegionReport.capitalCities.size(),0);
+    }
+
+    @Test
+    void testRunWithRegion()
+    {
+        CapitalCity capitalCity = new CapitalCity();
+
+        popCapCityRegionReport.runWithInputs(5,"Caribbean");
+        assertEquals(popCapCityRegionReport.capitalCities.size(),5);
+    }
+
+    @Test
+    void testRunWithIncorrectRegion()
+    {
+        CapitalCity capitalCity = new CapitalCity();
+
+        popCapCityRegionReport.runWithInputs(5,"Test");
+        assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
 }
