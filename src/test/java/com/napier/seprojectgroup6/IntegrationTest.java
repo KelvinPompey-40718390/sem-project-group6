@@ -1,37 +1,73 @@
 package com.napier.seprojectgroup6;
 
-import com.napier.seprojectgroup6.db.CapitalCity;
-import com.napier.seprojectgroup6.db.ConnectionManager;
-import com.napier.seprojectgroup6.reports.PopulatedCapitalCitiesByContinent;
-import com.napier.seprojectgroup6.reports.PopulatedCapitalCitiesByRegion;
+// Import DB, Reports and Navigation Folders for Testing
+import com.napier.seprojectgroup6.db.*;
+import com.napier.seprojectgroup6.reports.*;
+import com.napier.seprojectgroup6.navigation.*;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CapitalCityReportsIntegrationTest {
+public class IntegrationTest {
 
     static PopulatedCapitalCitiesByContinent report;
     static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+    static CitiesByDistrictReport cityByDistrictReport;
+    static TopPopulatedCitiesReport topPopCitiesReport;
 
-    // Populated Capital Cities by Continent Integration Tests
     @BeforeAll
     static void init()
     {
         ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
+        cityByDistrictReport = new CitiesByDistrictReport();
+        topPopCitiesReport = new TopPopulatedCitiesReport();
+    }
+
+    /**
+     * TOP POPULATED CITIES BY DISTRICT
+     */
+    @Test
+    void testRunWithEmptyDistrct() {
+        City city = new City();
+
+        topPopCitiesReport.runWithLimit(0);
+        assertEquals(topPopCitiesReport.cities.size(), 0);
     }
 
     @Test
-    void testRunWithEmptyContinent()
-    {
-        CapitalCity capitalCity = new CapitalCity();
+    void testRunWithDistrct() {
+        City city = new City();
 
-        report.runWithInputs(0,"");
-        assertEquals(report.capitalCities.size(),0);
+        topPopCitiesReport.runWithLimit(5);
+        assertEquals(topPopCitiesReport.cities.size(), 5);
     }
 
+    /**
+     * CITIES BY DISTRICT
+     */
+    @Test
+    void testRunWithEmptyDistrict() {
+        City city = new City();
+
+        cityByDistrictReport.runWithDistrict("");
+        assertEquals(cityByDistrictReport.cities.size(), 0);
+    }
+
+    @Test
+    void testRunWithDistrict() {
+        City city = new City();
+
+        cityByDistrictReport.runWithDistrict("Aichi");
+        assertEquals(cityByDistrictReport.cities.size(), 15);
+    }
+
+    /**
+     * POPULATED CAPITAL CITIES BY CONTINENT
+     */
     @Test
     void testRunWithEmptyLimitAndContinent()
     {
@@ -78,7 +114,9 @@ public class CapitalCityReportsIntegrationTest {
     }
 
 
-    // Populated Capital Cities by Region Integration Tests
+    /**
+     * POPULATED CAPITAL CITIES BY REGION
+     */
     @Test
     void testRunWithEmptyRegion()
     {
@@ -125,3 +163,5 @@ public class CapitalCityReportsIntegrationTest {
     }
 
 }
+
+
