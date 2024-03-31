@@ -73,7 +73,7 @@ public class PopulationInEachContinent implements Report {
         }
 
         System.out.println("\nThe population of people, people living in cities, and people not living in cities in each continent\n");
-        System.out.printf("%-20s %-20s %-10s %10s\n",  "NAME", "POPULATION", "IN CITY", "OUT CITY");
+        System.out.printf("%-20s %-20s %-10s %10s\n",  "CONTINENT", "POPULATION", "IN CITY", "OUT CITY");
         for(Population population: populations) {
             this.displayPopulation(population);
 
