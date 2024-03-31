@@ -4,7 +4,7 @@ Master ![GitHub Workflow Status (master)](https://img.shields.io/github/actions/
 
 Develop ![Github Workflow Status(develop)](https://img.shields.io/github/actions/workflow/status/KelvinPompey-40718390/sem-project-group6/main.yml?branch=develop)
 
-Code Coverage ![Codecov](https://img.shields.io/codecov/c/github/KelvinPompey-40718390/sem-project-group6)
+Code Coverage ![Gitlab Code Coverage](https://img.shields.io/gitlab/pipeline-coverage/https://github.com/KelvinPompey-40718390/sem-project-group6)
 
 Release ![Releases](https://img.shields.io/github/release/KelvinPompey-40718390/sem-project-group6/all?style=flat-square)
 

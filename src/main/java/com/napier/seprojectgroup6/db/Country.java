@@ -1,6 +1,6 @@
 package com.napier.seprojectgroup6.db;
 
-// Field names for Report Display.
+// Field names for Report Display
 public class Country {
     public String code;
     public String name;

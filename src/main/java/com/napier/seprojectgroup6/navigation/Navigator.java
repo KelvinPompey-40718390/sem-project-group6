@@ -1,16 +1,13 @@
 package com.napier.seprojectgroup6.navigation;
 
 import com.napier.seprojectgroup6.Utils;
-import com.napier.seprojectgroup6.reports.*;
+import com.napier.seprojectgroup6.reports.Report;
+import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
 
 public class Navigator {
 
     private final ReportMenu[] reports = {
-            new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName()),
-            new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
-            new ReportMenu( "Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
-            new ReportMenu( "Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
-            new ReportMenu( "Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName())
+            new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName())
     };
 
     public Navigator() {
