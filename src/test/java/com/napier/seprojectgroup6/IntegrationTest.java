@@ -16,7 +16,7 @@ public class IntegrationTest {
     static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
     static CitiesByDistrictReport cityByDistrictReport;
     static TopPopulatedCitiesReport topPopCitiesReport;
-    static PopulationInEachContinent PopInEachContinentReport;
+    static PopulationInEachRegion PopInEachRegionReport;
 
     @BeforeAll
     static void init()
@@ -26,23 +26,20 @@ public class IntegrationTest {
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
         cityByDistrictReport = new CitiesByDistrictReport();
         topPopCitiesReport = new TopPopulatedCitiesReport();
-        PopInEachContinentReport = new PopulationInEachContinent();
+        PopInEachRegionReport = new PopulationInEachRegion();
     }
 
     /**
-     * Population in Each Continent Report
+     * Population in Each Region Report
      */
 
-
     @Test
-    void testPopInEachContinent(){
+    void testPopInEachRegion(){
         Population population = new Population();
 
-        PopInEachContinentReport.run();
-        assertEquals(PopInEachContinentReport.populations.size(), 7);
+        PopInEachRegionReport.run();
+        assertEquals(PopInEachRegionReport.populations.size(), 25);
     }
-
-
     /**
      * TOP POPULATED CITIES BY DISTRICT
      */
