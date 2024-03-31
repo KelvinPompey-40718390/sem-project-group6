@@ -76,13 +76,16 @@ public class PopulationInEachContinent implements Report {
         System.out.printf("%-20s %-20s %-10s %10s\n",  "NAME", "POPULATION", "IN CITY", "OUT CITY");
         for(Population population: populations) {
             this.displayPopulation(population);
+
         }
     }
 
     private void displayPopulation(Population population) {
         if(population != null) {
             System.out.printf("%-20s %-20s %-10s %10s\n", population.name, population.totalPopulation, population.pctLivingInCities, population.pctNotLivingInCities);
+
         }
+
     }
 
 }
