@@ -18,7 +18,7 @@ public class App {
         System.out.println("Project Works!");
 
         if(args.length < 1){
-            ConnectionManager.getInstance().connect("localhost:33060", 0000);
+            ConnectionManager.getInstance().connect("localhost:33060", 0);
         }else{
             ConnectionManager.getInstance().connect(args[0], Integer.parseInt(args[1]));
         }
