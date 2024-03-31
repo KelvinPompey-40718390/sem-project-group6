@@ -10,7 +10,7 @@ Release ![Releases](https://img.shields.io/github/release/KelvinPompey-40718390/
 
 License [![LICENSE](https://img.shields.io/github/license/KelvinPompey-40718390/sem-project-group6?style=flat-square)](https://github.com/KelvinPompey-40718390/sem-project-group6/blob/master/LICENSE)
 
-#### A total of 32 tasks are required to achieve completion status. Currently, 4 requirements have been implemented, resulting in 12.5% completion.
+#### A total of 32 tasks are required to achieve completion status. Currently, 5 requirements have been implemented, resulting in 15% completion.
 
 | ID | Name                                                                                                                                                                                                                       | Met | Screenshot |  
 |:--:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---:|:----------:|  
