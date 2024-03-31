@@ -3,7 +3,8 @@ package com.napier.seprojectgroup6;
 
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.navigation.Navigator;
-import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
+import com.napier.seprojectgroup6.reports.*;
+
 public class App {
     /**
      *
@@ -17,7 +18,7 @@ public class App {
         System.out.println("Project Works!");
 
         if(args.length < 1){
-            ConnectionManager.getInstance().connect("localhost:33060", 30000);
+            ConnectionManager.getInstance().connect("localhost:33060", 0000);
         }else{
             ConnectionManager.getInstance().connect(args[0], Integer.parseInt(args[1]));
         }
@@ -28,8 +29,15 @@ public class App {
         }
         else {
 
-            CitiesByDistrictReport report = new CitiesByDistrictReport();
-            report.runWithDistrict("Aichi");
+            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
+            citiesByDistrictReport.runWithDistrict("Aichi");
+
+            TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
+            topPopulatedCitiesReport.runWithLimit(5);
+
+            // Populated Capital Cities by Continent
+            PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
+            populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
 
             ConnectionManager.getInstance().disconnect();
         }
