@@ -73,7 +73,7 @@ public class PopulationInEachRegion implements Report {
         }
 
         System.out.println("\nThe population of people, people living in cities, and people not living in cities in each Region\n");
-        System.out.printf("%-30s %-20s %-10s %10s\n",  "NAME", "POPULATION", "IN CITY", "OUT CITY");
+        System.out.printf("%-30s %-20s %-10s %10s\n",  "REGION", "POPULATION", "IN CITY", "OUT CITY");
         for(Population population: populations) {
             this.displayPopulation(population);
 
