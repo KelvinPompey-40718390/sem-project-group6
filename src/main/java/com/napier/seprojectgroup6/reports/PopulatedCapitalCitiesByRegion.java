@@ -78,7 +78,12 @@ public class PopulatedCapitalCitiesByRegion implements Report {
             }
             // If a 0 is entered return all the results of the Query
             else {
-                strSelect = "";
+                strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
+                            "FROM city " +
+                            "INNER JOIN country ON country.Code = city.CountryCode " +
+                            "WHERE country.Region = '" + this.region +"' " +
+                            "ORDER BY city.Population Desc ";
+                        ;
 
             }
 
