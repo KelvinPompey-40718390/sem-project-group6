@@ -106,7 +106,7 @@ public class TopPopulationCountriesRegion implements Report {
             return;
         }
 
-        System.out.println("Top " + this.limit + " populated countries\n");
+        System.out.println("Top " + this.limit + " Populated Countries by Region\n");
         System.out.printf("%-10s %-30s %-20s %-20s %-20s %-10s\n",  "Code", "Name", "Continent", "Region" , "Population", "Capital");
         for(Country country: countries) {
             this.displayCountries(country);
