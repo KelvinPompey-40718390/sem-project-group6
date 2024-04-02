@@ -29,6 +29,7 @@ public class TopPopulationCountriesRegion implements Report {
      */
     public void run() {
         limit = Integer.parseInt(this.getInput());
+        region = this.getRegion();
         this.executeQuery();
         this.displayCountries();
     }
