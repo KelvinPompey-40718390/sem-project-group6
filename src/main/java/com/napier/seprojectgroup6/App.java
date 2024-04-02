@@ -27,7 +27,7 @@ public class App {
         if(!isRunningOnDocker) {
             Navigator navigator = new Navigator();
         }
-        else {
+        else {2
 
             CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
             citiesByDistrictReport.runWithDistrict("Aichi");
