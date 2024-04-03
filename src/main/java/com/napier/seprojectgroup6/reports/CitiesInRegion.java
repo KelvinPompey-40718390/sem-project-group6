@@ -3,6 +3,7 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
+import com.napier.seprojectgroup6.db.Country;
 
 import javax.swing.plaf.synth.Region;
 import java.sql.Connection;
@@ -22,8 +23,7 @@ public class CitiesInRegion implements Report {
     }
 
     /**
-     * Request input from the user and
-     * execute the query
+     * Request input from the user and execute the query
      */
     public void run() {
         region = this.getInput();
@@ -31,7 +31,7 @@ public class CitiesInRegion implements Report {
         this.displayCities();
     }
 
-    public void runWithRegion(String district) {
+    public void runWithRegion(String region) {
         this.region = region;
         this.executeQuery();
         this.displayCities();
@@ -89,7 +89,7 @@ public class CitiesInRegion implements Report {
             return;
         }
 
-        System.out.println("All Cities by Region: " + Region + "\n");
+        System.out.println("All Cities by Region: " + region + "\n");
         System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
         for(City city: cities) {
             this.displayCity(city);
