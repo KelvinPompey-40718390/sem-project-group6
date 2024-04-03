@@ -4,6 +4,7 @@ import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 
+import javax.swing.plaf.synth.Region;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ public class CitiesInRegion implements Report {
 
     private Connection con = null;
     public ArrayList<City> cities;
-    private String district;
+    private String region;
 
 
     public CitiesInRegion() {
@@ -25,26 +26,26 @@ public class CitiesInRegion implements Report {
      * execute the query
      */
     public void run() {
-        district = this.getInput();
+        region = this.getInput();
         this.executeQuery();
         this.displayCities();
     }
 
-    public void runWithDistrict(String district) {
-        this.district = district;
+    public void runWithRegion(String district) {
+        this.region = region;
         this.executeQuery();
         this.displayCities();
     }
 
     private String getInput() {
-        return Utils.readInput("Enter district");
+        return Utils.readInput("Enter Region");
     }
 
     private void executeQuery()
     {
         cities = new ArrayList<>();
 
-        if(this.district.isEmpty()) {
+        if(this.region.isEmpty()) {
             return;
         }
         try
@@ -53,8 +54,11 @@ public class CitiesInRegion implements Report {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "select ID, Name, CountryCode, District, Population from city " +
-                            "where District = '"+ district +"' order by Population desc;";
+                    "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
+                            "FROM city\n" +
+                            "         INNER JOIN country ON city.CountryCode = country.Code\n" +
+                            "WHERE country.Region = 'Caribbean'\n" +
+                            "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -62,10 +66,11 @@ public class CitiesInRegion implements Report {
             {
                 City city = new City();
                 city.name = rset.getString("Name");
-                city.ID = rset.getInt("ID");
-                city.population = rset.getInt("Population");
-                city.countryCode = rset.getString("CountryCode");
+                city.countryName = rset.getString("CountryName");
                 city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+
 
                 this.cities.add(city);
             }
@@ -84,8 +89,8 @@ public class CitiesInRegion implements Report {
             return;
         }
 
-        System.out.println("Cities by District: " + district + "\n");
-        System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "ID", "Population", "CountryCode");
+        System.out.println("All Cities by Region: " + Region + "\n");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
         for(City city: cities) {
             this.displayCity(city);
         }
@@ -93,7 +98,7 @@ public class CitiesInRegion implements Report {
 
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.ID, city.population, city.countryCode);
+            System.out.printf("%-35s %-40s %-30s %-15s\n",  city.name, city.countryName, city.district, city.population);
         }
     }
 
