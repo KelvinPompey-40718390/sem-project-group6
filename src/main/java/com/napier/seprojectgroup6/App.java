@@ -39,6 +39,10 @@ public class App {
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
 
+            // Populated Cities by Continent
+            CitiesInContinent citiesInContinent = new CitiesInContinent();
+            citiesInContinent.runWitContinent("Africa");
+
             ConnectionManager.getInstance().disconnect();
         }
     }
