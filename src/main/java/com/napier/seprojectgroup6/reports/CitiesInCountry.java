@@ -87,7 +87,7 @@ public class CitiesInCountry implements Report {
             return;
         }
 
-        System.out.println("Cities by Country " + country + "\n");
+        System.out.println("Cities by Country: " + country + "\n");
         System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
         for(City city: cities) {
             this.displayCity(city);
