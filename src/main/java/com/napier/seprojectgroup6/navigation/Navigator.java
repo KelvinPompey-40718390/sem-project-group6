@@ -1,24 +1,12 @@
 package com.napier.seprojectgroup6.navigation;
 
 import com.napier.seprojectgroup6.Utils;
-<<<<<<< HEAD
-import com.napier.seprojectgroup6.reports.Report;
-import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
-import com.napier.seprojectgroup6.reports.TopPopulatedCitiesByContinentReport;
-import com.napier.seprojectgroup6.reports.TopPopulatedCitiesReport;
-=======
 import com.napier.seprojectgroup6.reports.*;
->>>>>>> origin/develop
 
 public class Navigator {
 
     private final ReportMenu[] reports = {
-<<<<<<< HEAD
-            new ReportMenu("UC11 - Cities By District", CitiesByDistrictReport.class.getName()),
-            new ReportMenu( "UC12 - Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
-            new ReportMenu("UC13 - Top N cities in continent", TopPopulatedCitiesByContinentReport.class.getName())
-=======
-            new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName()),
+            new ReportMenu( "11 Cities By District", CitiesByDistrictReport.class.getName()),
             new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
@@ -27,7 +15,6 @@ public class Navigator {
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName())
 
->>>>>>> origin/develop
     };
 
     public Navigator() {

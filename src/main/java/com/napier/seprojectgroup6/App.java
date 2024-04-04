@@ -3,13 +3,7 @@ package com.napier.seprojectgroup6;
 
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.navigation.Navigator;
-<<<<<<< HEAD
-import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
-import com.napier.seprojectgroup6.reports.TopPopulatedCitiesByContinentReport;
-import com.napier.seprojectgroup6.reports.TopPopulatedCitiesReport;
-=======
 import com.napier.seprojectgroup6.reports.*;
->>>>>>> origin/develop
 
 public class App {
     /**
