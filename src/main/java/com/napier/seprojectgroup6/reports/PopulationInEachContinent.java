@@ -8,12 +8,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class PopulationInEachRegion implements Report {
+public class PopulationInEachContinent implements Report {
 
     private Connection con = null;
     public ArrayList<Population> populations;
 
-    public PopulationInEachRegion() {
+    public PopulationInEachContinent() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
@@ -38,12 +38,12 @@ public class PopulationInEachRegion implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT country.Region AS Name, SUM(country.Population) AS Population, " +
-                    "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct," +
-                    "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
-                    "FROM country " +
-                    "LEFT JOIN city ON country.Capital = city.ID " +
-                    "GROUP BY country.Region";
+            strSelect = "SELECT country.Continent AS Name, SUM(country.Population) AS Population, " +
+                                "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct," +
+                                "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
+                        "GROUP BY country.Continent";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -72,8 +72,8 @@ public class PopulationInEachRegion implements Report {
             return;
         }
 
-        System.out.println("\nThe population of people, people living in cities, and people not living in cities in each Region\n");
-        System.out.printf("%-30s %-20s %-10s %10s\n",  "REGION", "POPULATION", "IN CITY", "OUT CITY");
+        System.out.println("\nThe population of people, people living in cities, and people not living in cities in each continent\n");
+        System.out.printf("%-20s %-20s %-10s %10s\n",  "CONTINENT", "POPULATION", "IN CITY", "OUT CITY");
         for(Population population: populations) {
             this.displayPopulation(population);
 
@@ -82,7 +82,7 @@ public class PopulationInEachRegion implements Report {
 
     private void displayPopulation(Population population) {
         if(population != null) {
-            System.out.printf("%-30s %-20s %-10s %10s\n", population.name, population.totalPopulation, population.pctLivingInCities, population.pctNotLivingInCities);
+            System.out.printf("%-20s %-20s %-10s %10s\n", population.name, population.totalPopulation, population.pctLivingInCities, population.pctNotLivingInCities);
 
         }
 
