@@ -35,10 +35,6 @@ public class App {
             TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
             topPopulatedCitiesReport.runWithLimit(5);
 
-<<<<<<< HEAD
-            TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
-            topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
-=======
             // Populated Capital Cities by Continent
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
@@ -46,7 +42,6 @@ public class App {
             //Top Populated Countries By Region
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
->>>>>>> origin/develop
 
             ConnectionManager.getInstance().disconnect();
         }
