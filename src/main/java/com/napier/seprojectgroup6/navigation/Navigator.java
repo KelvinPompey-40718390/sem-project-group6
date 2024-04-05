@@ -6,8 +6,10 @@ import com.napier.seprojectgroup6.reports.*;
 public class Navigator {
 
     private final ReportMenu[] reports = {
-            new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName()),
-            new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
+            new ReportMenu( "11 Cities By District", CitiesByDistrictReport.class.getName()),
+            new ReportMenu( "12 Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
+            new ReportMenu( "14 Top Populated Cities by Region", TopPopulatedCitiesByRegionReport.class.getName()),
+            new ReportMenu( "15 Top Populated Cities By Country", TopPopulatedCitiesByCountryReport.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
             new ReportMenu( "22 Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),

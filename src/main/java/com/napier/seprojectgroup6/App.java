@@ -43,6 +43,14 @@ public class App {
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
 
+            // Top Populated Cities by Region
+            TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
+            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribean");
+
+            // Top Populated Cities by Country
+            TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+            topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
+
             ConnectionManager.getInstance().disconnect();
         }
     }
