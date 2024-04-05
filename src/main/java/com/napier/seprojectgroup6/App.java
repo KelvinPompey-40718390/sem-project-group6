@@ -43,6 +43,11 @@ public class App {
             CitiesInWorld citiesInWorld = new CitiesInWorld();
             citiesInWorld.runWithCities();
 
+            //Top Populated Countries By Region
+            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
+
+
             ConnectionManager.getInstance().disconnect();
         }
     }
