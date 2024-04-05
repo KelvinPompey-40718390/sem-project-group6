@@ -39,6 +39,10 @@ public class App {
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
 
+            // All Capital Cities in the World
+            AllCapitalCitiesWorld allCapitalCitiesWorld = new AllCapitalCitiesWorld();
+            allCapitalCitiesWorld.run();
+
             ConnectionManager.getInstance().disconnect();
         }
     }
