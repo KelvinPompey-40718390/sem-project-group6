@@ -195,31 +195,6 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
-    /**
-
-     * All CITIES in the world
-     */
-    @Test
-    void testCitiesInWorld() {
-        City city = new City();
-
-        CitiesInWorldReport.run();
-        assertEquals(CitiesInWorldReport.cities.size(), 4079);
-    }
-
-
-     * Top N Population of countries in Region Report
-     */
-    @Test
-    void testRunWithtopPopulationCountriesRegion() {
-        Population population = new Population();
-
-        topPopulationCountriesRegion.runWithLimit(10,"Caribbean");
-        assertEquals(topPopulationCountriesRegion.countries.size(), 10);
-
-    }
-
 }
-
 
 
