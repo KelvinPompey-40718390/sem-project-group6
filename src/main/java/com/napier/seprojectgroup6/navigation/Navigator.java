@@ -6,7 +6,7 @@ import com.napier.seprojectgroup6.reports.*;
 public class Navigator {
 
     private final ReportMenu[] reports = {
-            new ReportMenu("Countries In World", CountriesInWorld.class.getName()),
+            new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
             new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
             new ReportMenu( "07 All Cities In The World", CitiesInWorld.class.getName()),
