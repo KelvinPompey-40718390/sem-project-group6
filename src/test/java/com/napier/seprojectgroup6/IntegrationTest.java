@@ -23,6 +23,9 @@ public class IntegrationTest {
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
+    static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
+
 
 
     @BeforeAll
@@ -40,8 +43,8 @@ public class IntegrationTest {
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
-
-
+        topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
+        topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
     }
 
     /**
@@ -260,7 +263,21 @@ public class IntegrationTest {
 
     }
 
+    @Test
+    void testTopPopulatedCitiesByRegionReturnsCorrectLimit() {
 
+        topPopulatedCitiesByRegionReport.runWithLimitAndRegion(4, "Caribbean");
+        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
+
+        topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
+        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+
+    }
 }
 
 
