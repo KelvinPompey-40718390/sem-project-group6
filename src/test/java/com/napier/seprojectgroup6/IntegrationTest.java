@@ -214,7 +214,7 @@ public class IntegrationTest {
     {
         City city = new City();
         citiesinContinentReport.runWitContinent("Africa");
-        assertEquals(citiesinContinentReport.cities.size(), 0);
+        assertEquals(citiesinContinentReport.cities.size(), 366);
     }
 
 
@@ -226,7 +226,7 @@ public class IntegrationTest {
         City city = new City();
 
         citiesInCountryReport.runWithCountry("united states");
-        assertEquals(citiesInCountryReport.cities.size(), 0);
+        assertEquals(citiesInCountryReport.cities.size(), 274);
     }
 
     /**
@@ -237,7 +237,7 @@ public class IntegrationTest {
     {
         City city = new City();
         citiesInRegionreport.runWithRegion("Caribbean");
-        assertEquals(citiesInRegionreport.cities.size(), 0);
+        assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
      /**
@@ -276,7 +276,7 @@ public class IntegrationTest {
     void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
 
         topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
-        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+        assertEquals(topPopulatedCitiesByCountryReport.cities.size(), 4);
 
     }
 
