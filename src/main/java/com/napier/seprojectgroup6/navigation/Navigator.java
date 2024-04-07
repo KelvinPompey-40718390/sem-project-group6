@@ -10,6 +10,7 @@ public class Navigator {
             new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
             new ReportMenu( "07 All Cities In The World", CitiesInWorld.class.getName()),
+            new ReportMenu( "08 All Cities In a Continent", CitiesInContinent.class.getName()),
             new ReportMenu( "09 All Cities In A Region", CitiesInRegion.class.getName()),
             new ReportMenu( "10 All Cities by Country", CitiesInCountry.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
