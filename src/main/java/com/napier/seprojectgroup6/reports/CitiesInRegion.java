@@ -3,48 +3,49 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
+import com.napier.seprojectgroup6.db.Country;
 
+import javax.swing.plaf.synth.Region;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CitiesByDistrictReport implements Report {
+public class CitiesInRegion implements Report {
 
     private Connection con = null;
     public ArrayList<City> cities;
-    private String district;
+    private String region;
 
 
-    public CitiesByDistrictReport() {
+    public CitiesInRegion() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
     /**
-     * Request input from the user and
-     * execute the query
+     * Request input from the user and execute the query
      */
     public void run() {
-        district = this.getInput();
+        region = this.getInput();
         this.executeQuery();
         this.displayCities();
     }
 
-    public void runWithDistrict(String district) {
-        this.district = district;
+    public void runWithRegion(String region) {
+        this.region = region;
         this.executeQuery();
         this.displayCities();
     }
 
     private String getInput() {
-        return Utils.readInput("Enter district");
+        return Utils.readInput("Enter Region");
     }
 
     private void executeQuery()
     {
         cities = new ArrayList<>();
 
-        if(this.district.isEmpty()) {
+        if(this.region.isEmpty()) {
             return;
         }
         try
@@ -52,8 +53,12 @@ public class CitiesByDistrictReport implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = String.format("select ID, city.Name, country.Name, CountryCode, District, city.Population from city left join country on city.CountryCode = country.Code where District = '%s' order by city.Population desc", this.district);
-
+            String strSelect =
+                    "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
+                            "FROM city\n" +
+                            "         INNER JOIN country ON city.CountryCode = country.Code\n" +
+                            "WHERE country.Region = 'Caribbean'\n" +
+                            "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -61,11 +66,11 @@ public class CitiesByDistrictReport implements Report {
             {
                 City city = new City();
                 city.name = rset.getString("Name");
-                city.ID = rset.getInt("ID");
-                city.population = rset.getInt("Population");
-                city.countryCode = rset.getString("CountryCode");
-                city.countryName = rset.getString("country.Name");
+                city.countryName = rset.getString("CountryName");
                 city.district = rset.getString("District");
+                city.population = rset.getInt("Population");
+
+
 
                 this.cities.add(city);
             }
@@ -84,16 +89,16 @@ public class CitiesByDistrictReport implements Report {
             return;
         }
 
-        System.out.println("\nCities by District: " + district + "\n");
-        System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "District", "Population", "Country");
+        System.out.println("All Cities by Region: " + region + "\n");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
         for(City city: cities) {
             this.displayCity(city);
         }
-        System.out.println();
     }
+
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.district, city.population, city.countryName);
+            System.out.printf("%-35s %-40s %-30s %-15s\n",  city.name, city.countryName, city.district, city.population);
         }
     }
 
