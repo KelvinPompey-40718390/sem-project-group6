@@ -43,6 +43,16 @@ public class App {
             CitiesInContinent citiesInContinent = new CitiesInContinent();
             citiesInContinent.runWitContinent("Africa");
 
+            //All Cities in the World
+            CitiesInWorld citiesInWorld = new CitiesInWorld();
+            citiesInWorld.runWithCities();
+
+            //Top Populated Countries By Region
+            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
+
+
+
             ConnectionManager.getInstance().disconnect();
         }
     }

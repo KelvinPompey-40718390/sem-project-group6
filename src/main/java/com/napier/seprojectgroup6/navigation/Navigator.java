@@ -8,6 +8,8 @@ public class Navigator {
     private final ReportMenu[] reports = {
             new ReportMenu("Cities By District", CitiesByDistrictReport.class.getName()),
             new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
+            new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
+            new ReportMenu( "07 All Cities In The World", CitiesInWorld.class.getName()),
             new ReportMenu( "08 All Cities In a Continent", CitiesInContinent.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
             new ReportMenu( "22 Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
