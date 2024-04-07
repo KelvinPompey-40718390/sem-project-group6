@@ -192,7 +192,7 @@ public class IntegrationTest {
     }
 
     /**
-     * All CITIES In Continent
+     * All Cities In Continent
      */
     @Test
     void testRunCitiesInContinent() {
