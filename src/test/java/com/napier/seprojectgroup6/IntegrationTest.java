@@ -18,6 +18,14 @@ public class IntegrationTest {
     static TopPopulatedCitiesReport topPopCitiesReport;
     static PopulationInEachRegion PopInEachRegionReport;
     static PopulationInEachCountry popInEachCountryReport;
+    static CitiesInContinent citiesinContinentReport;
+    static CitiesInCountry citiesInCountryReport;
+    static CitiesInRegion citiesInRegionreport;
+    static CitiesInWorld CitiesInWorldReport;
+    static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
+    static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
+    static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
 
     @BeforeAll
     static void init()
@@ -29,6 +37,15 @@ public class IntegrationTest {
         topPopCitiesReport = new TopPopulatedCitiesReport();
         PopInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
+        citiesinContinentReport = new CitiesInContinent();
+        citiesInCountryReport =  new CitiesInCountry();
+        citiesInRegionreport = new CitiesInRegion();
+        CitiesInWorldReport = new CitiesInWorld();
+        topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+        topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
+        topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
+        topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+
     }
 
     /**
@@ -189,6 +206,94 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
+    /**
+     * All Cities In Continent
+     */
+    @Test
+    void testRunCitiesInContinent()
+    {
+        City city = new City();
+        citiesinContinentReport.runWitContinent("Africa");
+        assertEquals(citiesinContinentReport.cities.size(), 0);
+    }
+
+
+    /**
+     * All CITIES In Country
+     */
+    @Test
+    void testrunWithCountry() {
+        City city = new City();
+
+        citiesInCountryReport.runWithCountry("united states");
+        assertEquals(citiesInCountryReport.cities.size(), 0);
+    }
+
+    /**
+     * All CITIES In Region
+     */
+    @Test
+    void testRunCitiesInRegion()
+    {
+        City city = new City();
+        citiesInRegionreport.runWithRegion("Caribbean");
+        assertEquals(citiesInRegionreport.cities.size(), 0);
+    }
+
+     /**
+     * All CITIES in the world
+     */
+    @Test
+    void testCitiesInWorld()
+    {
+        City city = new City();
+        CitiesInWorldReport.run();
+        assertEquals(CitiesInWorldReport.cities.size(), 4079);
+    }
+
+    /**
+     * Top N Population of countries in Region Report
+     */
+    @Test
+    void testRunWithtopPopulationCountriesRegion()
+    {
+        Population population = new Population();
+        topPopulationCountriesRegion.runWithLimit(10,"Caribbean");
+        assertEquals(topPopulationCountriesRegion.countries.size(), 10);
+
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByRegionReturnsCorrectLimit() {
+
+        topPopulatedCitiesByRegionReport.runWithLimitAndRegion(4, "Caribbean");
+        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
+
+        topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
+        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByContinentReportLimitWorks() {
+        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
+        assertEquals(topPopulatedCitiesByContinentReport.cities.size(), 10);
+    }
+
+    @Test
+    void testTopPopulatedCityIsCorrect() {
+        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
+        City topCity = topPopulatedCitiesByContinentReport.cities.get(0);
+        assertEquals(topCity.name, "Cairo");
+    }
+
 }
+
 
 
