@@ -18,6 +18,7 @@ public class IntegrationTest {
     static TopPopulatedCitiesReport topPopCitiesReport;
     static PopulationInEachRegion PopInEachRegionReport;
     static PopulationInEachCountry popInEachCountryReport;
+    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
 
     @BeforeAll
     static void init()
@@ -29,6 +30,7 @@ public class IntegrationTest {
         topPopCitiesReport = new TopPopulatedCitiesReport();
         PopInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
+        allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
     }
 
     /**
@@ -189,6 +191,17 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
+    /**
+     * All the Capital Cities in the World
+     */
+    @Test
+    void testRunWithCapitalCities()
+    {
+        CapitalCity capitalCity = new CapitalCity();
+
+        allCapitalCitiesWorldReport.run();
+        assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
+    }
 }
 
 
