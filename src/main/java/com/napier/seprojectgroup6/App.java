@@ -43,6 +43,36 @@ public class App {
             AllCapitalCitiesWorld allCapitalCitiesWorld = new AllCapitalCitiesWorld();
             allCapitalCitiesWorld.run();
 
+            // Populated Cities by Continent
+            CitiesInContinent citiesInContinent = new CitiesInContinent();
+            citiesInContinent.runWitContinent("Africa");
+
+            // Populated Cities by Country
+            CitiesInCountry citiesInCountry = new CitiesInCountry();
+            citiesInCountry.runWithCountry("North America");
+
+            // Populated Cities by Region
+            CitiesInRegion citiesInRegion = new CitiesInRegion();
+            citiesInRegion.runWithRegion("Caribbean");
+
+
+            //All Cities in the World
+            CitiesInWorld citiesInWorld = new CitiesInWorld();
+            citiesInWorld.runWithCities();
+
+            //Top Populated Countries By Region
+            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
+
+            // Top Populated Cities by Region
+            TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
+            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribean");
+
+            // Top Populated Cities by Country
+            TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+            topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
+
+
             ConnectionManager.getInstance().disconnect();
         }
     }
