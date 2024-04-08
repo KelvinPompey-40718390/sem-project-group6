@@ -17,7 +17,9 @@ public class WorldPopulation implements Report {
 
     private Connection con = null;
     public ArrayList<WorldPopulation> worldPopulation;
+    private int WorldPopulation;
 
+    public WorldPopulation() { this.con = ConnectionManager.getInstance().getConnection();}
 
     /**
      * Request input from the user and
@@ -33,19 +35,26 @@ public class WorldPopulation implements Report {
 
 
     // Execute query when input is provided
-    private void executeQuery()
-    {
+    private void executeQuery() {
         worldPopulation = new ArrayList<>();
 
-        try
-        {
+        try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT SUM(Population) AS WorldPopulation"+
-                    "FROM country";
+            strSelect = "SELECT SUM(Population) AS WorldPopulation FROM country";
+            //Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                WorldPopulation worldPopulation = new WorldPopulation();
+                worldPopulation.WorldPopulation = rset.getInt("Population");
+
+                this.worldPopulation.add(worldPopulation);
+            }
         }
 
         catch (Exception e)
@@ -61,11 +70,14 @@ public void displayCapitalCities() {
     }
 
     System.out.println("Population of the World");
-    System.out.printf("%^-30s","POPULATION");
+    System.out.printf("%-30s","POPULATION");
     for(WorldPopulation worldPopulation: worldPopulation) {
         this.displayWorldPopulation();
     }
 }
-
-
+    private void displayWorldPopulation (WorldPopulation worldPopulation) {
+        if (worldPopulation != null) {
+            System.out.printf("%-30s", "POPULATION");
+        }
+    }
     }
