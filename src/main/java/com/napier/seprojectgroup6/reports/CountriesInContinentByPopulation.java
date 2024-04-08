@@ -75,7 +75,7 @@ try
             return;
         }
 
-        System.out.println("All the Cities In the World: ");
+        System.out.println("Countries In Continent By Population: ");
         System.out.printf("\"%-35s %-40s %-30s %-40s %-40s %-40s  \n", "code", "name","continent", "country", "population", "capital");
         for(Country country: countries) {
             this.displayCountry(country);
