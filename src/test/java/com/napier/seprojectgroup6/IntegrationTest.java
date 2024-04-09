@@ -24,6 +24,7 @@ public class IntegrationTest {
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
     static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
     static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
     static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
@@ -45,9 +46,11 @@ public class IntegrationTest {
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+        populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+
 
     }
 
@@ -209,7 +212,21 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
- 
+
+    /**
+     * POPULATED CAPITAL CITIES IN THE WORLD
+     */
+
+   @Test
+   void testRunWithEmptyLimit()
+   {
+       CapitalCity capitalCity = new CapitalCity();
+
+       populatedCapitalCitiesInWorldReport.runWithInputs(5);
+       assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(),5);
+
+   }
+
      * All Cities In Continent
      */
     @Test
@@ -295,6 +312,7 @@ public class IntegrationTest {
         assertEquals(topCity.name, "Cairo");
     }
 
+
    /**
      * All the Capital Cities in the World
      */
@@ -310,5 +328,7 @@ public class IntegrationTest {
   
 }
 
+
+}
 
 
