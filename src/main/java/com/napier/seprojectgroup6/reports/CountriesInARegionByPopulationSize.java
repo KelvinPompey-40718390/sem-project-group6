@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CountriesInContinentByPopulation implements Report {
+public class CountriesInARegionByPopulationSize implements Report {
 
     private Connection con = null;
     public ArrayList<Country> countries;
-   public CountriesInContinentByPopulation() {
+   public CountriesInARegionByPopulationSize() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
@@ -39,22 +39,19 @@ try
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "select country.code, country.name as CountryName, continent, region, country.population,city.name as Capital\n" +
+                    "select country.name as CountryName, region, country.population\n" +
                             "from country\n" +
                             "inner join city on city.ID = country.Capital\n" +
-                            "order by country.population desc";
+                            "order by country.population desc;";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             while (rset.next())
             {
                 Country country  = new Country();
-                country.code = rset.getString("Code");
                 country.name = rset.getString("CountryName");
-                country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
                 country.population = rset.getInt("Population");
-                country.capital = rset.getString("Capital");
 
 
 
@@ -75,8 +72,8 @@ try
             return;
         }
 
-        System.out.println("Countries In Continent By Population: ");
-        System.out.printf("\"%-35s %-40s %-30s %-40s %-40s %-40s  \n", "code", "name","continent", "country", "population", "capital");
+        System.out.println("Countries In A Region By Population Size:");
+        System.out.printf("\"%-35s %-40s %-30s  \n", "name", "Region", "population");
         for(Country country: countries) {
             this.displayCountry(country);
         }
@@ -84,7 +81,7 @@ try
 
     private void displayCountry(Country country) {
         if(country != null) {
-            System.out.printf("%-35s %-40s %-30s %-40s %-40s %-40s \n",  country.code, country.name,country.continent, country.region, country.population, country.capital);
+            System.out.printf("%-35s %-40s %-30s  \n", country.name, country.region, country.population);
         }
     }
 
