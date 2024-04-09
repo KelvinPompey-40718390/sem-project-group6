@@ -7,9 +7,10 @@ public class Navigator {
 
     private final ReportMenu[] reports = {
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
-             new ReportMenu("02 Countries In Continent By Population", CountriesInContinentByPopulation.class.getName()),
+            new ReportMenu("02 Countries In Continent By Population", CountriesInContinentByPopulation.class.getName()),
             new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
             new ReportMenu("04 Top Populated Countries", TopPopulatedCountries.class.getName()),
+            new ReportMenu("05 Top Populated Countries In A Continent", TopPopulatedCountriesInAContinent.class.getName()),
             new ReportMenu(" Cities By District", CitiesByDistrictReport.class.getName()),
             new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
@@ -30,7 +31,9 @@ public class Navigator {
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
+            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName())
             new ReportMenu( "26 Population of the World", WorldPopulation.class.getName())
+
 
 
     };
