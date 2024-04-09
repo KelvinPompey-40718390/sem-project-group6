@@ -55,8 +55,7 @@ public class TopPopulatedCitiesReport implements Report {
             String strSelect = "";
 
             if(this.limit > 0) {
-                strSelect = "select ID, Name, CountryCode, District, Population from city " +
-                        "order by Population desc limit " + this.limit + ";";
+                strSelect = String.format("select ID, city.Name, country.Name, CountryCode, District, city.Population from city left join country on city.CountryCode = country.Code order by city.Population desc limit %d", this.limit);
             }
             else {
                 strSelect = "";
@@ -73,6 +72,7 @@ public class TopPopulatedCitiesReport implements Report {
                 city.ID = rset.getInt("ID");
                 city.population = rset.getInt("Population");
                 city.countryCode = rset.getString("CountryCode");
+                city.countryName  = rset.getString("country.Name");
                 city.district = rset.getString("District");
 
                 this.cities.add(city);
@@ -92,16 +92,17 @@ public class TopPopulatedCitiesReport implements Report {
             return;
         }
 
-        System.out.println("Top " + this.limit + " populated cities\n");
-        System.out.printf("%-20s %-10s %-10s %-10s\n",  "City", "ID", "Population", "Country");
+        System.out.println("\nTop " + this.limit + " populated cities\n");
+        System.out.printf("%-20s %-10s %-10s %-10s\n",  "City", "District", "Population", "Country");
         for(City city: cities) {
             this.displayCity(city);
         }
+        System.out.println();
     }
 
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-20s %-10s %-10s %-10s\n",  city.name, city.ID, city.population, city.countryCode);
+            System.out.printf("%-20s %-10s %-10s %-10s\n",  city.name, city.district, city.population, city.countryName);
         }
     }
 
