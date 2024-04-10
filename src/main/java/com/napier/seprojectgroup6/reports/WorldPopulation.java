@@ -7,6 +7,7 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.CapitalCity;
 import com.napier.seprojectgroup6.db.ConnectionManager;
+import com.napier.seprojectgroup6.db.Population;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,7 +18,7 @@ public class WorldPopulation implements Report {
 
     private Connection con = null;
     public ArrayList<WorldPopulation> worldPopulation;
-    private int WorldPopulation;
+    public long WorldPopulation;
 
     public WorldPopulation() { this.con = ConnectionManager.getInstance().getConnection();}
 
@@ -28,9 +29,6 @@ public class WorldPopulation implements Report {
     public void run() {
         this.executeQuery();
         this.displayWorldPopulation();
-    }
-
-    private void displayWorldPopulation() {
     }
 
 
@@ -44,16 +42,17 @@ public class WorldPopulation implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT SUM(Population) AS WorldPopulation FROM country";
+            strSelect = "SELECT SUM(Population) AS Population FROM country";
             //Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            while (rset.next())
+           while (rset.next())
             {
-                WorldPopulation worldPopulation = new WorldPopulation();
-                worldPopulation.WorldPopulation = rset.getInt("Population");
+               // WorldPopulation worldPopulation = new WorldPopulation();
+               // worldPopulation.WorldPopulation = rset.getLong("Population");
+                WorldPopulation = rset.getLong("Population");
 
-                this.worldPopulation.add(worldPopulation);
+                // this.worldPopulation.add(worldPopulation);
             }
         }
 
@@ -64,20 +63,22 @@ public class WorldPopulation implements Report {
     }
 }
 
-public void displayCapitalCities() {
+public void displayWorldPopulation() {
     if(this.worldPopulation == null) {
         return;
     }
 
-    System.out.println("Population of the World");
-    System.out.printf("%-30s","POPULATION");
-    for(WorldPopulation worldPopulation: worldPopulation) {
-        this.displayWorldPopulation();
-    }
+    System.out.println("Population of the World:");
+    //System.out.printf("%-30s","POPULATION");
+    //for(WorldPopulation worldPopulation: worldPopulation) {
+    //    this.displayWorldPopulation();
+    //}
+    System.out.println(WorldPopulation);
 }
+
     private void displayWorldPopulation (WorldPopulation worldPopulation) {
         if (worldPopulation != null) {
-            System.out.printf("%-30s", "POPULATION");
+            System.out.printf("%d", this.WorldPopulation);
         }
     }
     }
