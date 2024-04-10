@@ -17,7 +17,8 @@ public class Navigator {
             new ReportMenu( "22 Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
-            new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName())
+            new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
+            new ReportMenu( "27 Total Population of a Continent", TotalInContinent.class.getName())
 
     };
 

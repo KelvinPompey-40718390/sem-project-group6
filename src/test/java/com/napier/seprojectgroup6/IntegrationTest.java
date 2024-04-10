@@ -23,6 +23,7 @@ public class IntegrationTest {
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static TotalInContinent totalInContinentReport;
 
 
     @BeforeAll
@@ -40,6 +41,7 @@ public class IntegrationTest {
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+        totalInContinentReport = new TotalInContinent();
 
 
     }
@@ -260,7 +262,16 @@ public class IntegrationTest {
 
     }
 
-
+    /**
+     * Total Population of a Continent
+     */
+    @Test
+    void testRunTotalInContinent()
+    {
+        TotalInContinent totalInContinent = new TotalInContinent();
+        totalInContinentReport.runWithInputs("Africa");
+        assertEquals(totalInContinent.TotalInContinent, 784475000);
+    }
 }
 
 
