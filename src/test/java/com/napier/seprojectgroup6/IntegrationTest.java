@@ -1,3 +1,4 @@
+//UC 28
 package com.napier.seprojectgroup6;
 
 // Import DB, Reports and Navigation Folders for Testing
@@ -24,6 +25,8 @@ public class IntegrationTest {
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static TotalInContinent totalInContinentReport;
+    static TotalInRegion totalInRegionReport;
     static WorldPopulation worldPopulation;
     static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
     static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
@@ -47,11 +50,14 @@ public class IntegrationTest {
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+        totalInContinentReport = new TotalInContinent();
+        totalInRegionReport = new TotalInRegion();
         worldPopulation = new WorldPopulation();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+
 
 
 
@@ -296,6 +302,29 @@ public class IntegrationTest {
         assertEquals(worldPopulation.worldPopulation.size(),6078749450);
     }
 
+    }
+
+
+    /**
+     * Total Population of a Continent
+     */
+    @Test
+    void testRunTotalInContinent()
+    {
+        TotalInContinent totalInContinent = new TotalInContinent();
+        totalInContinentReport.runWithInputs("Europe");
+        assertEquals(totalInContinentReport.TotalInContinent, 730074600L);
+    }
+
+    /**
+     * Total Population of Region
+     */
+    @Test
+    void testRunTotalInRegion()
+    {
+        TotalInRegion totalInRegion = new TotalInRegion();
+        totalInRegionReport.runWithInputs("Caribbean");
+        assertEquals(totalInRegionReport.TotalInRegion, 38140000);
     }
 
     @Test
