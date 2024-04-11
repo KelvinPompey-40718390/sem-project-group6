@@ -1,3 +1,4 @@
+//UC 28
 package com.napier.seprojectgroup6;
 
 // Import DB, Reports and Navigation Folders for Testing
@@ -24,6 +25,7 @@ public class IntegrationTest {
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
     static TotalInContinent totalInContinentReport;
+    static TotalInRegion totalInRegionReport;
 
 
     @BeforeAll
@@ -42,6 +44,7 @@ public class IntegrationTest {
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
         totalInContinentReport = new TotalInContinent();
+        totalInRegionReport = new TotalInRegion();
 
 
     }
@@ -272,6 +275,18 @@ public class IntegrationTest {
         totalInContinentReport.runWithInputs("Europe");
         assertEquals(totalInContinentReport.TotalInContinent, 730074600L);
     }
+
+    /**
+     * Total Population of Region
+     */
+    @Test
+    void testRunTotalInRegion()
+    {
+        TotalInRegion totalInRegion = new TotalInRegion();
+        totalInRegionReport.runWithInputs("Caribbean");
+        assertEquals(totalInRegionReport.TotalInRegion, 38140000);
+    }
+
 }
 
 
