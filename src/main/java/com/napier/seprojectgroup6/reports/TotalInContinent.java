@@ -54,7 +54,7 @@ public class TotalInContinent implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT SUM(Population) AS Population FROM world.country WHERE Continent = 'Europe'";
+            strSelect = "SELECT SUM(Population) AS Population FROM world.country WHERE Continent = '"+ continent+"'";
             //strSelect = "SELECT SUM(Population) AS ContinentPop FROM  world.country AS c JOIN world.city AS pop On c.countrycode = pop.code WHERE c = 'Africa' ";
 
                     //Execute SQL statement
@@ -84,9 +84,5 @@ public class TotalInContinent implements Report {
         System.out.println(TotalInContinent);
     }
 
-    private void displayTotalInContinent (TotalInContinent totalInContinent) {
-        if (totalInContinent != null) {
-            System.out.printf("%d", this.TotalInContinent);
-        }
-    }
+
 }

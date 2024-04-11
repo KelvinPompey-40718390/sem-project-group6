@@ -269,8 +269,8 @@ public class IntegrationTest {
     void testRunTotalInContinent()
     {
         TotalInContinent totalInContinent = new TotalInContinent();
-        totalInContinentReport.runWithInputs("Africa");
-        assertEquals(totalInContinent.TotalInContinent, 784475000);
+        totalInContinentReport.runWithInputs("Europe");
+        assertEquals(totalInContinentReport.TotalInContinent, 730074600L);
     }
 }
 
