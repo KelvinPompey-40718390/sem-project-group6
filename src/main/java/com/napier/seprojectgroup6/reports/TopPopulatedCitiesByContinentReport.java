@@ -9,14 +9,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CitiesByDistrictReport implements Report {
+public class TopPopulatedCitiesByContinentReport implements Report {
 
     private Connection con = null;
     public ArrayList<City> cities;
-    private String district;
+    private Integer limit;
+    public String continent;
 
 
-    public CitiesByDistrictReport() {
+    public TopPopulatedCitiesByContinentReport() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
@@ -25,26 +26,38 @@ public class CitiesByDistrictReport implements Report {
      * execute the query
      */
     public void run() {
-        district = this.getInput();
+        this.getInput();
         this.executeQuery();
         this.displayCities();
     }
 
-    public void runWithDistrict(String district) {
-        this.district = district;
+    public void runWithLimitAndContinent(Integer limit, String continent ) {
+        this.limit = limit;
+        this.continent = continent;
         this.executeQuery();
         this.displayCities();
     }
 
-    private String getInput() {
-        return Utils.readInput("Enter district");
+    private void getInput() {
+        this.limit = this.getN();
+        this.continent = this.getContinent();
+    }
+
+    private Integer getN() {
+         String input = Utils.readInput("Enter N for the number of cities to display");
+         return Integer.parseInt(input);
+    }
+
+    private String getContinent() {
+        String input = Utils.readInput("Enter the continent");
+        return input;
     }
 
     private void executeQuery()
     {
         cities = new ArrayList<>();
 
-        if(this.district.isEmpty()) {
+        if(this.limit == null) {
             return;
         }
         try
@@ -52,7 +65,18 @@ public class CitiesByDistrictReport implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = String.format("select ID, city.Name, country.Name, CountryCode, District, city.Population from city left join country on city.CountryCode = country.Code where District = '%s' order by city.Population desc", this.district);
+            String strSelect = "";
+
+            if(this.limit > 0) {
+                //strSelect = "select * from city, country where city.CountryCode = country.Code and country.Continent = '" + this.continent+ "' " +
+                //        "order by city.Population desc limit " + this.limit + ";";
+
+                strSelect = String.format("select * from city, country where city.CountryCode = country.Code and country.Continent = '%s' order by city.Population desc limit %d;", this.continent, this.limit);
+            }
+            else {
+                strSelect = "";
+            }
+
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -64,7 +88,6 @@ public class CitiesByDistrictReport implements Report {
                 city.ID = rset.getInt("ID");
                 city.population = rset.getInt("Population");
                 city.countryCode = rset.getString("CountryCode");
-                city.countryName = rset.getString("country.Name");
                 city.district = rset.getString("District");
 
                 this.cities.add(city);
@@ -84,16 +107,16 @@ public class CitiesByDistrictReport implements Report {
             return;
         }
 
-        System.out.println("\nCities by District: " + district + "\n");
-        System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "District", "Population", "Country");
+        System.out.println("Top " + this.limit + " populated cities" + " in " + this.continent);
+        System.out.printf("%-20s %-10s %-10s %-10s\n",  "Name", "District",  "Population", "Country");
         for(City city: cities) {
             this.displayCity(city);
         }
-        System.out.println();
     }
+
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.district, city.population, city.countryName);
+            System.out.printf("%-20s %-10s %-10d %-10s\n",  city.name, city.district, city.population, city.countryCode);
         }
     }
 
