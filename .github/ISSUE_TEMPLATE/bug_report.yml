@@ -1,15 +1,23 @@
 name: Bug Report
 description: File a bug report
 title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
+labels: ["bug",]
+projects: ["SEM-PROJECT-GROUP 6",]
 assignees:
-  - octocat
+  - KelvinPompey
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
+  - type: checkboxes
+    id: new-bug
+       attributes:
+        label: Is there an existing issue for this?
+        description: Please search to see if an issue already exists for the bug you encountered.
+        options:
+          - label: I have searched the existing issues
+            required: true
   - type: input
     id: contact
     attributes:
@@ -58,7 +66,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/KelvinPompey-40718390/sem-project-group6/blob/master/CODE-OF-CONDUCT.md)
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
