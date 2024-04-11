@@ -2,7 +2,7 @@ name: Bug Report
 description: File a bug report
 title: "[Bug]: "
 labels: ["bug",]
-projects: ["SEM-PROJECT-GROUP 6",]
+projects: ["SEM-PROJECT-GROUP 6"]
 assignees:
   - KelvinPompey
 body:
