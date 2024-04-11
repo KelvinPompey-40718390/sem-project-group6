@@ -21,7 +21,7 @@ body:
     id: contact
     attributes:
       label: Contact Name
-      description: How can we get in touch with you if we need more info?
+      description: Can be Full name or First Name
       placeholder: ex. full name
     validations:
       required: false
