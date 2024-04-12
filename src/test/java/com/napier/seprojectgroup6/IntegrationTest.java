@@ -27,11 +27,13 @@ public class IntegrationTest {
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
     static TotalInContinent totalInContinentReport;
     static TotalInRegion totalInRegionReport;
+    static TotalInCountry totalInCountryReport;
     static WorldPopulation worldPopulation;
     static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
     static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
     static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
     static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
+
 
 
     @BeforeAll
@@ -52,12 +54,12 @@ public class IntegrationTest {
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
         totalInContinentReport = new TotalInContinent();
         totalInRegionReport = new TotalInRegion();
+        totalInCountryReport = new TotalInCountry();
         worldPopulation = new WorldPopulation();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-
 
 
 
@@ -325,6 +327,18 @@ public class IntegrationTest {
         TotalInRegion totalInRegion = new TotalInRegion();
         totalInRegionReport.runWithInputs("Caribbean");
         assertEquals(totalInRegionReport.TotalInRegion, 38140000);
+    }
+
+
+    /**
+     * Total Population of Country
+     */
+    @Test
+    void testRunTotalInCountry()
+    {
+        TotalInCountry totalInCountry = new TotalInCountry();
+        totalInCountryReport.runWithInputs("Brazil");
+        assertEquals(totalInCountryReport.TotalInCountry, "170115000");
     }
 
     @Test
