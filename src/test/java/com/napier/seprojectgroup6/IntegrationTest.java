@@ -27,6 +27,7 @@ public class IntegrationTest {
     static TotalInContinent totalInContinentReport;
     static TotalInRegion totalInRegionReport;
     static TotalInCountry totalInCountryReport;
+    static TotalInDistrict totalInDistrictReport;
 
 
     @BeforeAll
@@ -47,6 +48,7 @@ public class IntegrationTest {
         totalInContinentReport = new TotalInContinent();
         totalInRegionReport = new TotalInRegion();
         totalInCountryReport = new TotalInCountry();
+        totalInDistrictReport = new TotalInDistrict();
 
 
     }
@@ -298,6 +300,17 @@ public class IntegrationTest {
         TotalInCountry totalInCountry = new TotalInCountry();
         totalInCountryReport.runWithInputs("Brazil");
         assertEquals(totalInCountryReport.TotalInCountry, "170115000");
+    }
+
+    /**
+     * Total Population of District
+     */
+    @Test
+    void testRunTotalInDistrict()
+    {
+        TotalInDistrict totalInDistrict = new TotalInDistrict();
+        totalInDistrictReport.runWithInputs("Balkh");
+        assertEquals(totalInDistrictReport.TotalInDistrict, "127800");
     }
 }
 

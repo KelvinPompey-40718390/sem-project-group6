@@ -20,7 +20,8 @@ public class Navigator {
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
             new ReportMenu( "27 Total Population of a Continent", TotalInContinent.class.getName()),
             new ReportMenu( "28 Total Population of a Region", TotalInRegion.class.getName()),
-            new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName())
+            new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName()),
+            new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName())
 
     };
 
