@@ -23,7 +23,7 @@ public class Navigator {
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
-            new ReportMenu( "32 Number Of People Speaking A Certain Language", NumberOfPeopleSpeakingACertainLanguage.class.getName())
+            new ReportMenu( "32 Number Of People Speaking A Certain Languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
 
 
 
