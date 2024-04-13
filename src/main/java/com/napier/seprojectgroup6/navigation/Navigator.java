@@ -6,25 +6,44 @@ import com.napier.seprojectgroup6.reports.*;
 public class Navigator {
 
     private final ReportMenu[] reports = {
-
             new ReportMenu( "05 Top Populated Countries In A Continent", TopPopulatedCountriesInAContinent.class.getName()),
             new ReportMenu( "11 Cities By District", CitiesByDistrictReport.class.getName()),
             new ReportMenu( "12 Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
             new ReportMenu("13 Top Populated Cities by Continent", TopPopulatedCitiesByContinentReport.class.getName()),
             new ReportMenu( "14 Top Populated Cities by Region", TopPopulatedCitiesByRegionReport.class.getName()),
             new ReportMenu( "15 Top Populated Cities By Country", TopPopulatedCitiesByCountryReport.class.getName()),
+            new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
+            new ReportMenu("02 Countries In Continent By Population", CountriesInContinentByPopulation.class.getName()),
+            new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
+            new ReportMenu("04 Top Populated Countries", TopPopulatedCountries.class.getName()),
+            new ReportMenu("05 Top Populated Countries In A Continent", TopPopulatedCountriesInAContinent.class.getName()),
+            new ReportMenu(" Cities By District", CitiesByDistrictReport.class.getName()),
+            new ReportMenu( "Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
             new ReportMenu( "07 All Cities In The World", CitiesInWorld.class.getName()),
             new ReportMenu( "08 All Cities In a Continent", CitiesInContinent.class.getName()),
             new ReportMenu( "09 All Cities In A Region", CitiesInRegion.class.getName()),
             new ReportMenu( "10 All Cities by Country", CitiesInCountry.class.getName()),
+            new ReportMenu( "11 Cities By District", CitiesByDistrictReport.class.getName()),
+            new ReportMenu( "12 Top Cities by Population", TopPopulatedCitiesReport.class.getName()),
+            new ReportMenu( "13 Top Populated Cities by Continent", TopPopulatedCitiesByContinentReport.class.getName()),
+            new ReportMenu( "14 Top Populated Cities by Region", TopPopulatedCitiesByRegionReport.class.getName()),
+            new ReportMenu( "15 Top Populated Cities By Country", TopPopulatedCitiesByCountryReport.class.getName()),
+            new ReportMenu( "17 All Capital cities in the World", AllCapitalCitiesWorld.class.getName()),
+            new ReportMenu( "19 All Capital Cities by Region", AllCapitalCitiesbyRegion.class.getName()),
+            new ReportMenu( "20 Populated Capital Cities in the World", PopulatedCapitalCitiesinWorld.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
             new ReportMenu( "22 Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
             new ReportMenu( "32 Number Of People Speaking A Certain Languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
-
+            new ReportMenu( "27 Total Population of a Continent", TotalInContinent.class.getName()),
+            new ReportMenu( "26 Population of the World", WorldPopulation.class.getName())    
+            new ReportMenu( "28 Total Population of a Region", TotalInRegion.class.getName()),
+            new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName()),
+            new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName())
+            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName()),
 
 
 
