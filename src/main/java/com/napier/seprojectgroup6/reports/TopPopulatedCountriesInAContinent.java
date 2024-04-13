@@ -111,7 +111,7 @@ public class TopPopulatedCountriesInAContinent implements Report {
         }
 
         System.out.println("\nTop Populated Countries In A Continent\n");
-        System.out.printf("%-40s %-20s %-10s\n",  "Name", "Continent", "Population");
+        System.out.printf("%-40s %-20s %-10s\n",  "NAME", "CONTINENT", "POPULATION");
         for(Population population: populations) {
             this.displayPopulation(population);
 
