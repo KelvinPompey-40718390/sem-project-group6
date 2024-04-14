@@ -18,6 +18,8 @@ public class TotalInDistrict implements Report {
     public ArrayList<TotalInDistrict> totalInDistrict;
     public long TotalInDistrict;
     private String district;
+    private String inCityPercentage;
+    private String outCityPercentage;
 
     public TotalInDistrict() { this.con = ConnectionManager.getInstance().getConnection();}
 
@@ -54,7 +56,13 @@ public class TotalInDistrict implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT ID, Name, CountryCode, District, Population from city where District = '"+ district +"'";
+            strSelect ="SELECT SUM(country.Population) AS Population, " +
+                    "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
+                    "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
+                    "FROM world.country " +
+                    "LEFT JOIN city ON country.Capital = city.ID " +
+                    "WHERE District = '" + district + "'";
+                    //"SELECT ID, Name, CountryCode, District, Population from city where District = '"+ district +"'";
 
             //Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -62,7 +70,10 @@ public class TotalInDistrict implements Report {
             while (rset.next())
             {
                 TotalInDistrict = rset.getLong("Population");
-
+                inCityPercentage = rset.getString("InCityPct");
+                outCityPercentage = rset.getString("OutCityPct");
+                //System.out.println("Population in cities %: " + inCityPercentage);
+                //System.out.println("Population outside cities %: " + outCityPercentage);
             }
         }
 
@@ -78,8 +89,11 @@ public class TotalInDistrict implements Report {
             return;
         }
 
-        System.out.println("Population of the District:");
-        System.out.println(TotalInDistrict);
+        System.out.println("POPULATION OF THE DISTRICT:");
+        System.out.println("--------------------------------------");
+        System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
+        System.out.printf("%-20d | %-20s | %-20s%n", TotalInDistrict, inCityPercentage, outCityPercentage);
+        System.out.println("--------------------------------------");
     }
 
 

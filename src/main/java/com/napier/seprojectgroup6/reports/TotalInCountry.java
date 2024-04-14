@@ -18,6 +18,8 @@ public class TotalInCountry implements Report {
     public ArrayList<TotalInCountry> totalInCountry;
     public long TotalInCountry;
     private String country;
+    private String inCityPercentage;
+    private String outCityPercentage;
 
     public TotalInCountry() { this.con = ConnectionManager.getInstance().getConnection();}
 
@@ -54,7 +56,13 @@ public class TotalInCountry implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT Population AS Population FROM world.country WHERE Name = '"+ country+"'";
+            strSelect ="SELECT SUM(country.Population) AS Population, " +
+                    "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
+                    "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
+                    "FROM world.country " +
+                    "LEFT JOIN city ON country.Capital = city.ID " +
+                    "WHERE country.Name = '" + country + "'";
+
 
 
             //Execute SQL statement
@@ -63,8 +71,10 @@ public class TotalInCountry implements Report {
             while (rset.next())
             {
                 TotalInCountry = rset.getLong("Population");
-
-                // this.worldPopulation.add(worldPopulation);
+                inCityPercentage = rset.getString("InCityPct");
+                outCityPercentage = rset.getString("OutCityPct");
+                //System.out.println("Population in cities %: " + inCityPercentage);
+                //System.out.println("Population outside cities %: " + outCityPercentage);
             }
         }
 
@@ -79,9 +89,11 @@ public class TotalInCountry implements Report {
         if(this.totalInCountry == null) {
             return;
         }
-
-        System.out.println("Population of "+ country+":");
-        System.out.println(TotalInCountry);
+        System.out.println("POPULATION OF THE COUNTRY:");
+        System.out.println("--------------------------------------");
+        System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
+        System.out.printf("%-20d | %-20s | %-20s%n", TotalInCountry, inCityPercentage, outCityPercentage);
+        System.out.println("--------------------------------------");
     }
 
 
