@@ -7,7 +7,6 @@ public class Navigator {
 
     private final ReportMenu[] reports = {
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
-            new ReportMenu("02 Countries In Continent By Population", CountriesInContinentByPopulation.class.getName()),
             new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
             new ReportMenu("04 Top Populated Countries", TopPopulatedCountries.class.getName()),
             new ReportMenu("05 Top Populated Countries In A Continent", TopPopulatedCountriesInAContinent.class.getName()),
