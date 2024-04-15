@@ -7,5 +7,7 @@ public class City {
     public String name;
     public String countryName;
     public int population;
+    public String continent;
+
 
 }
