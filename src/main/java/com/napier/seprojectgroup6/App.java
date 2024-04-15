@@ -39,9 +39,11 @@ public class App {
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
 
+            /* Removed by A Jardine due to Missing Class Reference
             // All Capital Cities in the World
             AllCapitalCitiesWorld allCapitalCitiesWorld = new AllCapitalCitiesWorld();
             allCapitalCitiesWorld.run();
+            */
 
             // Populated Cities by Continent
             CitiesInContinent citiesInContinent = new CitiesInContinent();
