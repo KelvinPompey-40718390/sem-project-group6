@@ -9,5 +9,4 @@ public class City {
     public int population;
     public String continent;
 
-
 }
