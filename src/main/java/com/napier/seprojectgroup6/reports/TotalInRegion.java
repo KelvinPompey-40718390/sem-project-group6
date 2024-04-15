@@ -18,6 +18,8 @@ public class TotalInRegion implements Report {
     public ArrayList<TotalInRegion> totalInRegion;
     public long TotalInRegion;
     private String region;
+    private String inCityPercentage;
+    private String outCityPercentage;
 
     public TotalInRegion() { this.con = ConnectionManager.getInstance().getConnection();}
 
@@ -54,8 +56,13 @@ public class TotalInRegion implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT SUM(Population) AS Population FROM world.country WHERE Region = '"+ region+"'";
-            //strSelect = "SELECT SUM(Population) AS RegionPop FROM  world.country AS c JOIN world.city AS pop On c.countrycode = pop.code WHERE c = 'Africa' ";
+            strSelect = "SELECT SUM(country.Population) AS Population, " +
+                    "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
+                    "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
+                    "FROM world.country " +
+                    "LEFT JOIN city ON country.Capital = city.ID " +
+                    "WHERE Region = '" + region + "'";
+
 
             //Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -63,8 +70,8 @@ public class TotalInRegion implements Report {
             while (rset.next())
             {
                 TotalInRegion = rset.getLong("Population");
-
-                // this.worldPopulation.add(worldPopulation);
+                inCityPercentage = rset.getString("InCityPct");
+                outCityPercentage = rset.getString("OutCityPct");
             }
         }
 
@@ -80,8 +87,11 @@ public class TotalInRegion implements Report {
             return;
         }
 
-        System.out.println("Population of the Region:");
-        System.out.println(TotalInRegion);
+        System.out.println("POPULATION OF THE REGION:");
+        System.out.println("--------------------------------------");
+        System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
+        System.out.printf("%-20d | %-20s | %-20s%n", TotalInRegion, inCityPercentage, outCityPercentage);
+        System.out.println("--------------------------------------");
     }
 
 

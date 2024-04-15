@@ -37,7 +37,6 @@ public class IntegrationTest {
     static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
 
 
-
     @BeforeAll
     static void init()
     {
@@ -64,7 +63,6 @@ public class IntegrationTest {
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-
 
 
     }
@@ -410,7 +408,7 @@ public class IntegrationTest {
         allCapitalCitiesWorldReport.run();
         assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
     }
-  
+
 }
 
 

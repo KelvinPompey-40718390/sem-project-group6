@@ -18,6 +18,8 @@ public class TotalInContinent implements Report {
     public ArrayList<TotalInContinent> totalInContinent;
     public long TotalInContinent;
     private String continent;
+    private String inCityPercentage;
+    private String outCityPercentage;
 
     public TotalInContinent() { this.con = ConnectionManager.getInstance().getConnection();}
 
@@ -54,8 +56,12 @@ public class TotalInContinent implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect = "SELECT SUM(Population) AS Population FROM world.country WHERE Continent = '"+ continent+"'";
-            //strSelect = "SELECT SUM(Population) AS ContinentPop FROM  world.country AS c JOIN world.city AS pop On c.countrycode = pop.code WHERE c = 'Africa' ";
+            strSelect = "SELECT SUM(country.Population) AS Population, " +
+                    "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
+                    "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
+                    "FROM world.country " +
+                    "LEFT JOIN city ON country.Capital = city.ID " +
+                    "WHERE country.Continent = '" + continent + "'";
 
                     //Execute SQL statement
                     ResultSet rset = stmt.executeQuery(strSelect);
@@ -63,8 +69,11 @@ public class TotalInContinent implements Report {
             while (rset.next())
             {
                 TotalInContinent = rset.getLong("Population");
+                inCityPercentage = rset.getString("InCityPct");
+                outCityPercentage = rset.getString("OutCityPct");
+                //System.out.println("Population in cities %: " + inCityPercentage);
+                //System.out.println("Population outside cities %: " + outCityPercentage);
 
-                // this.worldPopulation.add(worldPopulation);
             }
         }
 
@@ -80,8 +89,11 @@ public class TotalInContinent implements Report {
             return;
         }
 
-        System.out.println("Population of the Continent:");
-        System.out.println(TotalInContinent);
+        System.out.println("POPULATION OF THE CONTINENT:");
+        System.out.println("--------------------------------------");
+        System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
+        System.out.printf("%-20d | %-20s | %-20s%n", TotalInContinent, inCityPercentage, outCityPercentage);
+        System.out.println("--------------------------------------");
     }
 
 
