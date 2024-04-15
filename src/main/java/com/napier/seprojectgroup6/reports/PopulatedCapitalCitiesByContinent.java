@@ -19,6 +19,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
     private String continent;
 
     public PopulatedCapitalCitiesByContinent() {
+
         this.con = ConnectionManager.getInstance().getConnection();
     }
 

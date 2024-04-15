@@ -12,4 +12,7 @@ public class Population {
     public String pctLivingInCities;
     public String pctNotLivingInCities;
 
+    public String continent;
+    public String percentageOfWorldPopulation;
+
 }
