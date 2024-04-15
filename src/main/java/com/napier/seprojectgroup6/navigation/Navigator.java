@@ -27,6 +27,10 @@ public class Navigator {
             new ReportMenu( "13 Top Populated Cities by Continent", TopPopulatedCitiesByContinentReport.class.getName()),
             new ReportMenu( "14 Top Populated Cities by Region", TopPopulatedCitiesByRegionReport.class.getName()),
             new ReportMenu( "15 Top Populated Cities By Country", TopPopulatedCitiesByCountryReport.class.getName()),
+            new ReportMenu( "16 Populated Capital Cities by District", PopulatedCapitalCitiesByDistrict.class.getName()),
+            new ReportMenu( "17 All Capital cities in the World", AllCapitalCitiesWorld.class.getName()),
+            new ReportMenu( "19 All Capital Cities by Region", AllCapitalCitiesbyRegion.class.getName()),
+            new ReportMenu( "20 Populated Capital Cities in the World", PopulatedCapitalCitiesinWorld.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
             new ReportMenu( "22 Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
@@ -38,8 +42,7 @@ public class Navigator {
             new ReportMenu( "28 Total Population of a Region", TotalInRegion.class.getName()),
             new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName()),
             new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName()),
-            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName())
-
+            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName()),
 
 
 

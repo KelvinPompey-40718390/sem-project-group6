@@ -29,6 +29,7 @@ public class IntegrationTest {
     static TotalInRegion totalInRegionReport;
     static TotalInCountry totalInCountryReport;
     static TotalInDistrict totalInDistrictReport;
+    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     static WorldPopulation worldPopulation;
     static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
     static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
@@ -57,6 +58,7 @@ public class IntegrationTest {
         totalInRegionReport = new TotalInRegion();
         totalInCountryReport = new TotalInCountry();
         totalInDistrictReport = new TotalInDistrict();
+        popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
@@ -353,6 +355,18 @@ public class IntegrationTest {
         TotalInDistrict totalInDistrict = new TotalInDistrict();
         totalInDistrictReport.runWithInputs("Balkh");
         assertEquals(totalInDistrictReport.TotalInDistrict, "127800");
+    }
+
+    /**
+     * Populated Capital Cities by District
+     */
+    @Test
+    void testRunWithLimitandDistrict()
+    {
+        PopulatedCapitalCitiesByDistrict populatedCapitalCitiesByDistrict = new PopulatedCapitalCitiesByDistrict();
+        popCapCityDistrictReport.runWithInputs(3,"Acre");
+        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+
     }
 
     @Test
