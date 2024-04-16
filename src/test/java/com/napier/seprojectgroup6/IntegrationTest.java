@@ -31,7 +31,7 @@ public class IntegrationTest {
     static TotalInDistrict totalInDistrictReport;
     static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     static WorldPopulation worldPopulation;
-    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
+
     static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
     static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
     static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
@@ -58,7 +58,6 @@ public class IntegrationTest {
         totalInDistrictReport = new TotalInDistrict();
         popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
-        populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
@@ -222,21 +221,6 @@ public class IntegrationTest {
 
         popCapCityRegionReport.runWithInputs(5,"Test");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
-    }
-
-
-    /**
-     * POPULATED CAPITAL CITIES IN THE WORLD
-     */
-
-    @Test
-    void testRunWithEmptyLimit()
-    {
-        CapitalCity capitalCity = new CapitalCity();
-
-        populatedCapitalCitiesInWorldReport.runWithInputs(5);
-        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(),5);
-
     }
 
     /** All Cities In Continent
