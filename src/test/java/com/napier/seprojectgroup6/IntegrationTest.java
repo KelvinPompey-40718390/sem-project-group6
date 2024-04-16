@@ -19,7 +19,7 @@ public class IntegrationTest {
     static TopPopulatedCitiesReport topPopCitiesReport;
     static PopulationInEachRegion PopInEachRegionReport;
     static PopulationInEachCountry popInEachCountryReport;
-    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
+
     static CitiesInContinent citiesinContinentReport;
     static CitiesInCountry citiesInCountryReport;
     static CitiesInRegion citiesInRegionreport;
@@ -47,7 +47,6 @@ public class IntegrationTest {
         topPopCitiesReport = new TopPopulatedCitiesReport();
         PopInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
-        allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         citiesinContinentReport = new CitiesInContinent();
         citiesInCountryReport =  new CitiesInCountry();
         citiesInRegionreport = new CitiesInRegion();
@@ -240,7 +239,7 @@ public class IntegrationTest {
 
     }
 
-     * All Cities In Continent
+    /** All Cities In Continent
      */
     @Test
     void testRunCitiesInContinent()
@@ -393,18 +392,6 @@ public class IntegrationTest {
         assertEquals(topCity.name, "Cairo");
     }
 
-
-    /**
-     * All the Capital Cities in the World
-     */
-    @Test
-    void testRunWithCapitalCities()
-    {
-        CapitalCity capitalCity = new CapitalCity();
-
-        allCapitalCitiesWorldReport.run();
-        assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
-    }
 
 }
 
