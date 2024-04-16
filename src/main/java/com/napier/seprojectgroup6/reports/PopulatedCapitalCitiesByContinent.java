@@ -18,6 +18,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
     private Integer limit;
     private String continent;
 
+    // Establish connection to Database
     public PopulatedCapitalCitiesByContinent() {
 
         this.con = ConnectionManager.getInstance().getConnection();
