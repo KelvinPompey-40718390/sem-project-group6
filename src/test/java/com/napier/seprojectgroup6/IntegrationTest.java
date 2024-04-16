@@ -1,3 +1,4 @@
+//UC 28
 package com.napier.seprojectgroup6;
 
 // Import DB, Reports and Navigation Folders for Testing
@@ -24,6 +25,11 @@ public class IntegrationTest {
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static TotalInContinent totalInContinentReport;
+    static TotalInRegion totalInRegionReport;
+    static TotalInCountry totalInCountryReport;
+    static TotalInDistrict totalInDistrictReport;
+    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     static WorldPopulation worldPopulation;
     static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
     static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
@@ -47,12 +53,16 @@ public class IntegrationTest {
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+        totalInContinentReport = new TotalInContinent();
+        totalInRegionReport = new TotalInRegion();
+        totalInCountryReport = new TotalInCountry();
+        totalInDistrictReport = new TotalInDistrict();
+        popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-
 
 
     }
@@ -237,7 +247,7 @@ public class IntegrationTest {
     {
         City city = new City();
         citiesinContinentReport.runWitContinent("Africa");
-        assertEquals(citiesinContinentReport.cities.size(), 0);
+        assertEquals(citiesinContinentReport.cities.size(), 366);
     }
 
 
@@ -249,7 +259,7 @@ public class IntegrationTest {
         City city = new City();
 
         citiesInCountryReport.runWithCountry("united states");
-        assertEquals(citiesInCountryReport.cities.size(), 0);
+        assertEquals(citiesInCountryReport.cities.size(), 274);
     }
 
     /**
@@ -260,7 +270,7 @@ public class IntegrationTest {
     {
         City city = new City();
         citiesInRegionreport.runWithRegion("Caribbean");
-        assertEquals(citiesInRegionreport.cities.size(), 0);
+        assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
      /**
@@ -298,6 +308,65 @@ public class IntegrationTest {
 
     }
 
+
+    /**
+     * Total Population of a Continent
+     */
+    @Test
+    void testRunTotalInContinent()
+    {
+        TotalInContinent totalInContinent = new TotalInContinent();
+        totalInContinentReport.runWithInputs("Europe");
+        assertEquals(totalInContinentReport.TotalInContinent, 730074600L);
+    }
+
+    /**
+     * Total Population of Region
+     */
+    @Test
+    void testRunTotalInRegion()
+    {
+        TotalInRegion totalInRegion = new TotalInRegion();
+        totalInRegionReport.runWithInputs("Caribbean");
+        assertEquals(totalInRegionReport.TotalInRegion, 38140000);
+    }
+
+
+    /**
+     * Total Population of Country
+     */
+    @Test
+    void testRunTotalInCountry()
+    {
+        TotalInCountry totalInCountry = new TotalInCountry();
+        totalInCountryReport.runWithInputs("Brazil");
+        assertEquals(totalInCountryReport.TotalInCountry, "170115000");
+    }
+
+
+    /**
+     * Total Population of District
+     */
+    @Test
+    void testRunTotalInDistrict()
+    {
+        TotalInDistrict totalInDistrict = new TotalInDistrict();
+        totalInDistrictReport.runWithInputs("Balkh");
+        assertEquals(totalInDistrictReport.TotalInDistrict, "127800");
+    }
+
+    /**
+     * Populated Capital Cities by District
+     */
+    @Test
+    void testRunWithLimitandDistrict()
+    {
+        PopulatedCapitalCitiesByDistrict populatedCapitalCitiesByDistrict = new PopulatedCapitalCitiesByDistrict();
+        popCapCityDistrictReport.runWithInputs(3,"Acre");
+        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+
+    }
+
     @Test
     void testTopPopulatedCitiesByRegionReturnsCorrectLimit() {
 
@@ -310,7 +379,7 @@ public class IntegrationTest {
     void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
 
         topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
-        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+        assertEquals(topPopulatedCitiesByCountryReport.cities.size(), 4);
 
     }
 
@@ -339,7 +408,7 @@ public class IntegrationTest {
         allCapitalCitiesWorldReport.run();
         assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
     }
-  
+
 }
 
 
