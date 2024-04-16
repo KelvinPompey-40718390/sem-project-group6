@@ -230,15 +230,15 @@ public class IntegrationTest {
      * POPULATED CAPITAL CITIES IN THE WORLD
      */
 
-   @Test
-   void testRunWithEmptyLimit()
-   {
-       CapitalCity capitalCity = new CapitalCity();
+    @Test
+    void testRunWithEmptyLimit()
+    {
+        CapitalCity capitalCity = new CapitalCity();
 
-       populatedCapitalCitiesInWorldReport.runWithInputs(5);
-       assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(),5);
+        populatedCapitalCitiesInWorldReport.runWithInputs(5);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(),5);
 
-   }
+    }
 
      * All Cities In Continent
      */
@@ -273,7 +273,7 @@ public class IntegrationTest {
         assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
-     /**
+    /**
      * All CITIES in the world
      */
     @Test
@@ -305,9 +305,6 @@ public class IntegrationTest {
         worldPopulation.run();
         assertEquals(worldPopulation.worldPopulation.size(),6078749450);
     }
-
-    }
-
 
     /**
      * Total Population of a Continent
@@ -397,7 +394,7 @@ public class IntegrationTest {
     }
 
 
-   /**
+    /**
      * All the Capital Cities in the World
      */
     @Test
@@ -411,7 +408,5 @@ public class IntegrationTest {
 
 }
 
-
-}
 
 
