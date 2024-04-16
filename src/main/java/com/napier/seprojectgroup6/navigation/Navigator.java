@@ -33,15 +33,15 @@ public class Navigator {
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
-            new ReportMenu( "32 Number Of People Speaking A Certain Languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
+            new ReportMenu( "32 Number Of People Speaking A Certain Languages", NumberOfPeopleSpeakingACertainLanguage.class.getName()),
             new ReportMenu( "27 Total Population of a Continent", TotalInContinent.class.getName()),
             new ReportMenu( "26 Population of the World", WorldPopulation.class.getName()),
             new ReportMenu( "28 Total Population of a Region", TotalInRegion.class.getName()),
             new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName()),
             new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName()),
-            new ReportMenu( "16 Populated Capital Cities by District", PopulatedCapitalCitiesByDistrict.class.getName())
-            new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName())
-            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName()),
+            new ReportMenu( "16 Populated Capital Cities by District", PopulatedCapitalCitiesByDistrict.class.getName()),
+            new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName()),
+            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName())
 
     };
 
