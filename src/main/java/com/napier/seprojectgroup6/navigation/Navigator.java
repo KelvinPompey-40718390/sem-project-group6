@@ -38,7 +38,6 @@ public class Navigator {
             new ReportMenu( "26 Population of the World", WorldPopulation.class.getName()),
             new ReportMenu( "28 Total Population of a Region", TotalInRegion.class.getName()),
             new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName()),
-            new ReportMenu( "16 Populated Capital Cities by District", PopulatedCapitalCitiesByDistrict.class.getName()),
             new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName()),
             new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName())
 
