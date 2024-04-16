@@ -45,7 +45,10 @@ public class Navigator {
      * Display the reports available
      */
     private void showMenu() {
-
+        System.out.println();
+        System.out.println("-----------");
+        System.out.println("REPORT MENU");
+        System.out.println("-----------");
         for(int i = 0; i < this.reports.length; i++) {
             System.out.println(i + ": " + this.reports[i].title);
         }
