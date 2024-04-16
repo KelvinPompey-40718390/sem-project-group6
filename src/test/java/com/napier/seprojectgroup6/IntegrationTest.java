@@ -286,7 +286,7 @@ public class IntegrationTest {
     {
         WorldPopulation worldPopulation = new WorldPopulation();
         worldPopulation.run();
-        assertEquals(worldPopulation.worldPopulation.size(),6078749450);
+        assertEquals(worldPopulation.worldPopulation.size(),6078749450L);
     }
 
     /**
