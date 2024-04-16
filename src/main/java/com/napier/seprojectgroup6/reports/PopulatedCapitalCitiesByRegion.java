@@ -20,6 +20,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
     private Integer limit;
     private String region;
 
+    // Establish connection to Database
     public PopulatedCapitalCitiesByRegion() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
