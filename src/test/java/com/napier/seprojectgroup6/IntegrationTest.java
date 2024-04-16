@@ -239,7 +239,7 @@ public class IntegrationTest {
        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(),5);
 
    }
-
+    /**
      * All Cities In Continent
      */
     @Test
