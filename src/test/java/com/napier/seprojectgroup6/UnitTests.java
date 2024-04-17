@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,14 +15,19 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UnitTests
 {
     static ReportMenu reportMenu;
+    static PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent;
 
     // Initialize Classes for Testing
     @BeforeAll
     static void init()
     {
         reportMenu = new ReportMenu("Population of City Report", PopulationOfACity.class.getName());
+
     }
 
+    /**
+     * Report Menu Tests
+     */
     @Test
     void reportMenuTestTitle()
     {
@@ -33,4 +39,5 @@ public class UnitTests
     {
         assertEquals(reportMenu.className, "com.napier.seprojectgroup6.reports.PopulationOfACity");
     }
+
 }
