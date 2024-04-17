@@ -101,7 +101,8 @@ public class PopulatedCapitalCitiesinWorld implements Report {
             return;
         }
 
-        System.out.println("Populated Capital Cities in the World");
+        System.out.println("POPULATED CAPITAL CITIES IN THE WORLD");
+        System.out.println("---------------------------------------------------------------------------------");
         System.out.printf("%-20s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
         for(CapitalCity capitalCity: capitalCities) {
             this.displayCapitalCity(capitalCity);
