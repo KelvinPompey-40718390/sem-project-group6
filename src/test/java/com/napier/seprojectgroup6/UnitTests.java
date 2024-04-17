@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UnitTests
 {
     static ReportMenu reportMenu;
-    static PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent;
 
     // Initialize Classes for Testing
     @BeforeAll
