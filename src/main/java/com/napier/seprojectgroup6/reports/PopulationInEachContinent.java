@@ -18,10 +18,8 @@ public class PopulationInEachContinent implements Report {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
-    /**
-     * Request input from the user and
-     * execute the query
-     */
+
+     // Request input from the user and Execute Query
     public void run() {
         this.executeQuery();
         this.displayPopulations();
@@ -49,6 +47,7 @@ public class PopulationInEachContinent implements Report {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            // Load Results of Query into Array
             while (rset.next())
             {
                 Population population = new Population();
