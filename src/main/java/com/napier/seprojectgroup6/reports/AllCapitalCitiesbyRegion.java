@@ -62,7 +62,7 @@ public class AllCapitalCitiesbyRegion implements Report {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
                             "FROM city " +
                             "INNER JOIN country ON country.Code = city.CountryCode " +
-                            "WHERE country.Region = 'Middle East'\n" +
+                            "WHERE country.Region = '"+region+"'" +
                             "ORDER BY city.Population Desc ";
 
                    // Execute SQL statement
@@ -92,7 +92,8 @@ public class AllCapitalCitiesbyRegion implements Report {
         }
 
 
-        System.out.println("All Capital Cities by Region: ");
+        System.out.println("All CAPITAL CITIES BY REGION: ");
+        System.out.println("------------------------------------------------------------------");
         System.out.printf("%-30s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
         for(CapitalCity capitalCity: capitalCities) {
             this.displayCapitalCity(capitalCity);
