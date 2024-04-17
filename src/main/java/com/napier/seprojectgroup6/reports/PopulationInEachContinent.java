@@ -13,6 +13,7 @@ public class PopulationInEachContinent implements Report {
     private Connection con = null;
     public ArrayList<Population> populations;
 
+    // Establish Connection to Database
     public PopulationInEachContinent() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
@@ -67,6 +68,7 @@ public class PopulationInEachContinent implements Report {
         }
     }
 
+    // Insert Header Rows in Preparation to Display Query results
     public void displayPopulations() {
         if(this.populations == null) {
             return;
@@ -80,6 +82,7 @@ public class PopulationInEachContinent implements Report {
         }
     }
 
+    // Display results of Query
     private void displayPopulation(Population population) {
         if(population != null) {
             System.out.printf("%-20s %-20s %-10s %10s\n", population.name, population.totalPopulation, population.pctLivingInCities, population.pctNotLivingInCities);
