@@ -35,9 +35,32 @@ public class App {
             TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
             topPopulatedCitiesReport.runWithLimit(5);
 
-            // Populated Capital Cities by Continent
+            /**
+             *  CAPITAL CITY REPORTS
+             */
+            // Populated Capital Cities by Continent with Limit
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
+
+            // ALL Populated Capital Cities by Continent
+            populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
+
+            // Populated Capital Cities by Region with Limit
+            PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
+            populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
+
+            // ALL Populated Capital Cities by Region
+            populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
+
+            /* Removed by A Jardine due to Missing Class Reference
+            // All Capital Cities in the World
+            AllCapitalCitiesWorld allCapitalCitiesWorld = new AllCapitalCitiesWorld();
+            allCapitalCitiesWorld.run();
+            */
+
+            // Populated Cities by Continent
+            CitiesInContinent citiesInContinent = new CitiesInContinent();
+            citiesInContinent.runWitContinent("Africa");
 
             // Populated Cities by Country
             CitiesInCountry citiesInCountry = new CitiesInCountry();
@@ -47,6 +70,7 @@ public class App {
             CitiesInRegion citiesInRegion = new CitiesInRegion();
             citiesInRegion.runWithRegion("Caribbean");
 
+
             //All Cities in the World
             CitiesInWorld citiesInWorld = new CitiesInWorld();
             citiesInWorld.runWithCities();
@@ -55,6 +79,13 @@ public class App {
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
 
+            // Top Populated Cities by Region
+            TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
+            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribean");
+
+            // Top Populated Cities by Country
+            TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+            topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
 
 
             ConnectionManager.getInstance().disconnect();

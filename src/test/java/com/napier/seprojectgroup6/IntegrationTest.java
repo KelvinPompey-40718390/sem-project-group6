@@ -1,3 +1,4 @@
+//UC 28
 package com.napier.seprojectgroup6;
 
 // Import DB, Reports and Navigation Folders for Testing
@@ -18,10 +19,22 @@ public class IntegrationTest {
     static TopPopulatedCitiesReport topPopCitiesReport;
     static PopulationInEachRegion PopInEachRegionReport;
     static PopulationInEachCountry popInEachCountryReport;
+
+    static CitiesInContinent citiesinContinentReport;
     static CitiesInCountry citiesInCountryReport;
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static TotalInContinent totalInContinentReport;
+    static TotalInRegion totalInRegionReport;
+    static TotalInCountry totalInCountryReport;
+    static TotalInDistrict totalInDistrictReport;
+    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
+    static WorldPopulation worldPopulation;
+
+    static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
+    static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
+    static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
 
 
     @BeforeAll
@@ -34,10 +47,20 @@ public class IntegrationTest {
         topPopCitiesReport = new TopPopulatedCitiesReport();
         PopInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
+        citiesinContinentReport = new CitiesInContinent();
         citiesInCountryReport =  new CitiesInCountry();
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+        totalInContinentReport = new TotalInContinent();
+        totalInRegionReport = new TotalInRegion();
+        totalInCountryReport = new TotalInCountry();
+        totalInDistrictReport = new TotalInDistrict();
+        popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
+        worldPopulation = new WorldPopulation();
+        topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
+        topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
+        topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
 
 
     }
@@ -200,6 +223,17 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
+    /** All Cities In Continent
+     */
+    @Test
+    void testRunCitiesInContinent()
+    {
+        City city = new City();
+        citiesinContinentReport.runWitContinent("Africa");
+        assertEquals(citiesinContinentReport.cities.size(), 366);
+    }
+
+
     /**
      * All CITIES In Country
      */
@@ -208,42 +242,138 @@ public class IntegrationTest {
         City city = new City();
 
         citiesInCountryReport.runWithCountry("united states");
-        assertEquals(citiesInCountryReport.cities.size(), 0);
+        assertEquals(citiesInCountryReport.cities.size(), 274);
+    }
+
+    /**
      * All CITIES In Region
      */
     @Test
-    void testRunCitiesInRegion() {
+    void testRunCitiesInRegion()
+    {
         City city = new City();
-
         citiesInRegionreport.runWithRegion("Caribbean");
-        assertEquals(citiesInRegionreport.cities.size(), 0);
+        assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
-
-
-
-      
+    /**
      * All CITIES in the world
      */
     @Test
-    void testCitiesInWorld() {
+    void testCitiesInWorld()
+    {
         City city = new City();
-
         CitiesInWorldReport.run();
         assertEquals(CitiesInWorldReport.cities.size(), 4079);
     }
 
-
+    /**
      * Top N Population of countries in Region Report
      */
     @Test
-    void testRunWithtopPopulationCountriesRegion() {
+    void testRunWithtopPopulationCountriesRegion()
+    {
         Population population = new Population();
-
         topPopulationCountriesRegion.runWithLimit(10,"Caribbean");
         assertEquals(topPopulationCountriesRegion.countries.size(), 10);
+    }
+
+    /**
+     * Population of the World
+     */
+    @Test
+    void testWorldPopulation()
+    {
+        WorldPopulation worldPopulation = new WorldPopulation();
+        worldPopulation.run();
+        assertEquals(worldPopulation.WorldPopulation,6078749450L);
+    }
+
+    /**
+     * Total Population of a Continent
+     */
+    @Test
+    void testRunTotalInContinent()
+    {
+        TotalInContinent totalInContinent = new TotalInContinent();
+        totalInContinentReport.runWithInputs("Europe");
+        assertEquals(totalInContinentReport.TotalInContinent, 730074600L);
+    }
+
+    /**
+     * Total Population of Region
+     */
+    @Test
+    void testRunTotalInRegion()
+    {
+        TotalInRegion totalInRegion = new TotalInRegion();
+        totalInRegionReport.runWithInputs("Caribbean");
+        assertEquals(totalInRegionReport.TotalInRegion, 38140000);
+    }
 
 
+    /**
+     * Total Population of Country
+     */
+    @Test
+    void testRunTotalInCountry()
+    {
+        TotalInCountry totalInCountry = new TotalInCountry();
+        totalInCountryReport.runWithInputs("Brazil");
+        assertEquals(totalInCountryReport.TotalInCountry, 170115000);
+    }
+
+
+    /**
+     * Total Population of District
+     */
+    @Test
+    void testRunTotalInDistrict()
+    {
+        TotalInDistrict totalInDistrict = new TotalInDistrict();
+        totalInDistrictReport.runWithInputs("Balkh");
+        assertEquals(totalInDistrictReport.TotalInDistrict, 127800);
+    }
+
+    /**
+     * Populated Capital Cities by District
+     */
+    @Test
+    void testRunWithLimitandDistrict()
+    {
+        PopulatedCapitalCitiesByDistrict populatedCapitalCitiesByDistrict = new PopulatedCapitalCitiesByDistrict();
+        popCapCityDistrictReport.runWithInputs(3,"Acre");
+        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByRegionReturnsCorrectLimit() {
+
+        topPopulatedCitiesByRegionReport.runWithLimitAndRegion(4, "Caribbean");
+        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
+
+        topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
+        assertEquals(topPopulatedCitiesByCountryReport.cities.size(), 4);
+
+    }
+
+    @Test
+    void testTopPopulatedCitiesByContinentReportLimitWorks() {
+        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
+        assertEquals(topPopulatedCitiesByContinentReport.cities.size(), 10);
+    }
+
+    @Test
+    void testTopPopulatedCityIsCorrect() {
+        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
+        City topCity = topPopulatedCitiesByContinentReport.cities.get(0);
+        assertEquals(topCity.name, "Cairo");
     }
 
 

@@ -11,16 +11,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class PopulatedCapitalCitiesByContinent implements Report {
+public class PopulatedCapitalCitiesinWorld implements Report {
 
     private Connection con = null;
     public ArrayList<CapitalCity> capitalCities;
     private Integer limit;
-    private String continent;
 
-    // Establish connection to Database
-    public PopulatedCapitalCitiesByContinent() {
 
+    public PopulatedCapitalCitiesinWorld() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
@@ -29,15 +27,13 @@ public class PopulatedCapitalCitiesByContinent implements Report {
      * execute the query
      */
     public void run() {
-        continent = this.getContinent();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCapitalCities();
     }
 
     // For use when testing the Application
-    public void runWithInputs(Integer limit, String continent) {
-        this.continent = continent;
+    public void runWithInputs(Integer limit) {
         this.limit = limit;
         this.executeQuery();
         this.displayCapitalCities();
@@ -46,12 +42,6 @@ public class PopulatedCapitalCitiesByContinent implements Report {
     // Ask user for input to generate report.
     private String getInput() {
         return Utils.readInput("Enter number of Capital cities to display, or 0 to show all");
-    }
-
-    // Ask user to enter name of continent
-    private String getContinent()
-    {
-        return Utils.readInput("Enter Name of Continent");
     }
 
     // Execute query with inputs provided
@@ -69,22 +59,19 @@ public class PopulatedCapitalCitiesByContinent implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            // Limit results based on user Input
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code = city.CountryCode " +
-                            "WHERE country.Continent = '" + this.continent +"' " +
-                            "ORDER BY city.Population Desc " +
-                            "LIMIT " + this.limit;
+                        "FROM city " +
+                        "INNER JOIN country ON country.Code = city.CountryCode " +
+                        "ORDER BY city.Population Desc " +
+                        "LIMIT " + this.limit;
             }
             // If a 0 is entered return all the results of the Query
             else {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code = city.CountryCode " +
-                            "WHERE country.Continent = '" + this.continent +"' " +
-                            "ORDER BY city.Population Desc ";
+                        "FROM city " +
+                        "INNER JOIN country ON country.Code = city.CountryCode " +
+                        "ORDER BY city.Population Desc ";
 
             }
 
@@ -109,20 +96,19 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         }
     }
 
-    // Format header Rows in preparation to Show Query Result
     public void displayCapitalCities() {
         if(this.capitalCities == null) {
             return;
         }
 
-        System.out.println("Populated Capital Cities by Continent");
+        System.out.println("POPULATED CAPITAL CITIES IN THE WORLD");
+        System.out.println("---------------------------------------------------------------------------------");
         System.out.printf("%-20s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
         for(CapitalCity capitalCity: capitalCities) {
             this.displayCapitalCity(capitalCity);
         }
     }
 
-    // Display Query Results
     private void displayCapitalCity(CapitalCity capitalCity) {
         if(capitalCity != null) {
             System.out.printf("%-20s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
