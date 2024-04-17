@@ -1,26 +1,26 @@
+/**
+ * UC 16
+ */
+
 package com.napier.seprojectgroup6.reports;
 
 import com.napier.seprojectgroup6.Utils;
-import com.napier.seprojectgroup6.db.ConnectionManager;
-
-// Import the Capital city Class for necessary Variables
 import com.napier.seprojectgroup6.db.CapitalCity;
+import com.napier.seprojectgroup6.db.ConnectionManager;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class PopulatedCapitalCitiesByContinent implements Report {
+public class PopulatedCapitalCitiesByDistrict implements Report {
 
     private Connection con = null;
     public ArrayList<CapitalCity> capitalCities;
     private Integer limit;
-    private String continent;
+    private String district;
 
-    // Establish connection to Database
-    public PopulatedCapitalCitiesByContinent() {
-
+    public PopulatedCapitalCitiesByDistrict() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
@@ -29,15 +29,15 @@ public class PopulatedCapitalCitiesByContinent implements Report {
      * execute the query
      */
     public void run() {
-        continent = this.getContinent();
+        district = this.getDistrict();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCapitalCities();
     }
 
     // For use when testing the Application
-    public void runWithInputs(Integer limit, String continent) {
-        this.continent = continent;
+    public void runWithInputs(Integer limit, String district) {
+        this.district = district;
         this.limit = limit;
         this.executeQuery();
         this.displayCapitalCities();
@@ -48,10 +48,9 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         return Utils.readInput("Enter number of Capital cities to display, or 0 to show all");
     }
 
-    // Ask user to enter name of continent
-    private String getContinent()
+    private String getDistrict()
     {
-        return Utils.readInput("Enter Name of Continent");
+        return Utils.readInput("Enter Name of District");
     }
 
     // Execute query with inputs provided
@@ -69,22 +68,22 @@ public class PopulatedCapitalCitiesByContinent implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            // Limit results based on user Input
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code = city.CountryCode " +
-                            "WHERE country.Continent = '" + this.continent +"' " +
-                            "ORDER BY city.Population Desc " +
-                            "LIMIT " + this.limit;
+                        "FROM city " +
+                        "INNER JOIN country ON country.Code = city.CountryCode " +
+                        "WHERE city.District = '" + this.district +"' " +
+                        "ORDER BY city.Population Desc " +
+                        "LIMIT " + this.limit;
             }
             // If a 0 is entered return all the results of the Query
             else {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                            "FROM city " +
-                            "INNER JOIN country ON country.Code = city.CountryCode " +
-                            "WHERE country.Continent = '" + this.continent +"' " +
-                            "ORDER BY city.Population Desc ";
+                        "FROM city " +
+                        "INNER JOIN country ON country.Code = city.CountryCode " +
+                        "WHERE city.District = '" + this.district +"' " +
+                        "ORDER BY city.Population Desc ";
+                ;
 
             }
 
@@ -109,23 +108,21 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         }
     }
 
-    // Format header Rows in preparation to Show Query Result
     public void displayCapitalCities() {
         if(this.capitalCities == null) {
             return;
         }
 
-        System.out.println("Populated Capital Cities by Continent");
-        System.out.printf("%-20s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
+        System.out.println("Populated Capital Cities by District: "+ this.district);
+        System.out.printf("%-30s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
         for(CapitalCity capitalCity: capitalCities) {
             this.displayCapitalCity(capitalCity);
         }
     }
 
-    // Display Query Results
     private void displayCapitalCity(CapitalCity capitalCity) {
         if(capitalCity != null) {
-            System.out.printf("%-20s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
+            System.out.printf("%-30s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
         }
     }
 
