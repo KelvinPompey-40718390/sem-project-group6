@@ -35,9 +35,22 @@ public class App {
             TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
             topPopulatedCitiesReport.runWithLimit(5);
 
-            // Populated Capital Cities by Continent
+            /**
+             *  CAPITAL CITY REPORTS
+             */
+            // Populated Capital Cities by Continent with Limit
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
+
+            // ALL Populated Capital Cities by Continent
+            populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
+
+            // Populated Capital Cities by Region with Limit
+            PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
+            populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
+
+            // ALL Populated Capital Cities by Region
+            populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
             /* Removed by A Jardine due to Missing Class Reference
             // All Capital Cities in the World

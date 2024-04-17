@@ -70,6 +70,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
+            // Apply Limit to Query Results
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
                             "FROM city " +
