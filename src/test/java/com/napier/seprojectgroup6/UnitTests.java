@@ -1,10 +1,8 @@
 package com.napier.seprojectgroup6;
 
-import com.napier.seprojectgroup6.db.Population;
+import com.napier.seprojectgroup6.db.*;
 import com.napier.seprojectgroup6.navigation.*;
-import com.napier.seprojectgroup6.navigation.ReportMenu;
-import com.napier.seprojectgroup6.reports.CitiesByDistrictReport;
-import com.napier.seprojectgroup6.reports.PopulationOfACity;
+import com.napier.seprojectgroup6.reports.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -17,6 +15,7 @@ public class UnitTests
 {
     static ReportMenu reportMenu;
 
+    // Initialize Classes for Testing
     @BeforeAll
     static void init()
     {
@@ -32,6 +31,6 @@ public class UnitTests
     @Test
     void reportMenuTestClass()
     {
-        assertEquals(reportMenu.className, "PopulationOfACity");
+        assertEquals(reportMenu.className, "com.napier.seprojectgroup6.reports.PopulationOfACity");
     }
 }
