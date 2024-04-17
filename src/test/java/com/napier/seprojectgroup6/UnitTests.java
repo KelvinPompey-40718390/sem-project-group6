@@ -16,13 +16,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UnitTests
 {
     static ReportMenu reportMenu;
-    static CitiesByDistrictReport citiesByDistrictReport;
 
     @BeforeAll
     static void init()
     {
         reportMenu = new ReportMenu("Population of City Report", PopulationOfACity.class.getName());
-        citiesByDistrictReport = new CitiesByDistrictReport();
     }
 
     @Test
