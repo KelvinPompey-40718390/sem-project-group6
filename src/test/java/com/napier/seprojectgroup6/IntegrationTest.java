@@ -286,7 +286,7 @@ public class IntegrationTest {
     {
         WorldPopulation worldPopulation = new WorldPopulation();
         worldPopulation.run();
-        assertEquals(worldPopulation.worldPopulation.size(),6078749450L);
+        assertEquals(worldPopulation.WorldPopulation,6078749450L);
     }
 
     /**
@@ -320,7 +320,7 @@ public class IntegrationTest {
     {
         TotalInCountry totalInCountry = new TotalInCountry();
         totalInCountryReport.runWithInputs("Brazil");
-        assertEquals(totalInCountryReport.TotalInCountry, "170115000");
+        assertEquals(totalInCountryReport.TotalInCountry, 170115000);
     }
 
 
@@ -332,7 +332,7 @@ public class IntegrationTest {
     {
         TotalInDistrict totalInDistrict = new TotalInDistrict();
         totalInDistrictReport.runWithInputs("Balkh");
-        assertEquals(totalInDistrictReport.TotalInDistrict, "127800");
+        assertEquals(totalInDistrictReport.TotalInDistrict, 127800);
     }
 
     /**

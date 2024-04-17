@@ -56,12 +56,12 @@ public class TotalInDistrict implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            strSelect ="SELECT SUM(country.Population) AS Population, " +
+            strSelect ="SELECT SUM(city.Population) AS Population, " +
                     "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
                     "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
-                    "FROM world.country " +
-                    "LEFT JOIN city ON country.Capital = city.ID " +
-                    "WHERE District = '" + district + "'";
+                    "FROM world.city " +
+                    "INNER JOIN country ON country.Code = city.CountryCode " +
+                    "WHERE city.District = '" + district + "'";
                     //"SELECT ID, Name, CountryCode, District, Population from city where District = '"+ district +"'";
 
             //Execute SQL statement
@@ -92,7 +92,7 @@ public class TotalInDistrict implements Report {
         System.out.println("POPULATION OF THE DISTRICT:");
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
-        System.out.printf("%-20d | %-20s | %-20s%n", TotalInDistrict, inCityPercentage, outCityPercentage);
+        System.out.printf("%-20d | %-20s | %-20s%n", this.TotalInDistrict, inCityPercentage, outCityPercentage);
         System.out.println("--------------------------------------");
     }
 
