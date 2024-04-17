@@ -18,6 +18,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
     private Integer limit;
     private String continent;
 
+    // Establish connection to Database
     public PopulatedCapitalCitiesByContinent() {
 
         this.con = ConnectionManager.getInstance().getConnection();
@@ -47,6 +48,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         return Utils.readInput("Enter number of Capital cities to display, or 0 to show all");
     }
 
+    // Ask user to enter name of continent
     private String getContinent()
     {
         return Utils.readInput("Enter Name of Continent");
@@ -106,6 +108,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         }
     }
 
+    // Format header Rows in preparation to Show Query Result
     public void displayCapitalCities() {
         if(this.capitalCities == null) {
             return;
@@ -118,6 +121,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         }
     }
 
+    // Display Query Results
     private void displayCapitalCity(CapitalCity capitalCity) {
         if(capitalCity != null) {
             System.out.printf("%-20s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
