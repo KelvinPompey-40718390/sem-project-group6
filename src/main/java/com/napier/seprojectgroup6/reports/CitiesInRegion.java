@@ -57,7 +57,7 @@ public class CitiesInRegion implements Report {
                     "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
                             "FROM city\n" +
                             "         INNER JOIN country ON city.CountryCode = country.Code\n" +
-                            "WHERE country.Region = 'Caribbean'\n" +
+                            "WHERE country.Region = '" + this.region + "'\n" +
                             "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -90,7 +90,7 @@ public class CitiesInRegion implements Report {
         }
 
         System.out.println("All Cities by Region: " + region + "\n");
-        System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "CITY", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
         }
