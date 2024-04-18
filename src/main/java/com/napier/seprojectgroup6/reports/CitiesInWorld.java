@@ -15,8 +15,11 @@ public class CitiesInWorld implements Report {
     private Connection con = null;
     public ArrayList<City> cities;
     public ArrayList<Country> countries;
-   public CitiesInWorld() {
-        this.con = ConnectionManager.getInstance().getConnection();
+
+    public String city;
+    private Integer limit;
+    public CitiesInWorld() {
+    this.con = ConnectionManager.getInstance().getConnection();
     }
 
     /**
@@ -24,29 +27,50 @@ public class CitiesInWorld implements Report {
      * execute the query
      */
     public void run() {
+        limit = Integer.parseInt(this.getInput());
+        this.executeQuery();
+        this.displayCities();
+    }
+    // for integration test
+    public void runWithInputs(Integer limit, String city) {
+        this.city = city;
+        this.limit = limit;
         this.executeQuery();
         this.displayCities();
     }
 
-    public void runWithCities() {
-        this.executeQuery();
-        this.displayCities();
-    }
+    private String getInput() { return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");   }
 
-       private void executeQuery()
+    private void executeQuery()
     {
         cities = new ArrayList<>();
-try
-               {
+        if(this.limit == null) {
+            return;
+        }
+        try
+        {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
-                            "FROM city\n" +
-                            "         INNER JOIN country ON city.CountryCode = country.Code\n" +
-                            "WHERE country.Continent\n" +
-                            "ORDER BY city.Population DESC ";
+            String strSelect = "";
+
+            // Limit results based on user Input
+            if(this.limit > 0) {
+            strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
+                        "FROM city\n" +
+                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                        "ORDER BY city.Population Desc " +
+                        "LIMIT " + this.limit;
+            }
+            // If a 0 is entered return all the results of the Query
+            else {
+            strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
+                        "FROM city\n" +
+                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                        "ORDER BY city.Population Desc ";
+            }
+
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -72,18 +96,20 @@ try
         }
     }
 
+    // Format header Rows in preparation to Show Query Result
     public void displayCities() {
         if(this.cities == null) {
             return;
         }
 
-        System.out.println("All the Cities In the World: ");
-        System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
+        System.out.println("Top N and All Cities In the World: ");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "CITY", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
         }
     }
 
+    // Display Query Results
     private void displayCity(City city) {
         if(city != null) {
             System.out.printf("%-35s %-40s %-30s %-15s\n",  city.name, city.countryName, city.district, city.population);
