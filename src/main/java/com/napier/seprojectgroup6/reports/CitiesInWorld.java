@@ -27,10 +27,11 @@ public class CitiesInWorld implements Report {
      * execute the query
      */
     public void run() {
+        limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
     }
-
+    // for integration test
     public void runWithInputs(Integer limit, String city) {
         this.city = city;
         this.limit = limit;
@@ -40,7 +41,6 @@ public class CitiesInWorld implements Report {
 
     private String getInput() { return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");   }
 
-    private String getCity() { return Utils.readInput("Enter Name of City"); }
     private void executeQuery()
     {
         cities = new ArrayList<>();
@@ -59,7 +59,6 @@ public class CitiesInWorld implements Report {
             strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "WHERE country.Continent\n" +
                         "ORDER BY city.Population Desc " +
                         "LIMIT " + this.limit;
             }
@@ -68,7 +67,6 @@ public class CitiesInWorld implements Report {
             strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "WHERE country.Continent\n" +
                         "ORDER BY city.Population Desc ";
             }
 
