@@ -89,7 +89,7 @@ public class TotalInDistrict implements Report {
             return;
         }
 
-        System.out.println("POPULATION OF THE DISTRICT:");
+        System.out.println("POPULATION OF " +this.district.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
         System.out.printf("%-20d | %-20s | %-20s%n", this.TotalInDistrict, inCityPercentage, outCityPercentage);
