@@ -24,7 +24,7 @@ public class CitiesInWorld implements Report {
 
     /**
      * Request input from the user and
-     * execute the query
+     * execute the query.
      */
     public void run() {
         city = this.getCity();
