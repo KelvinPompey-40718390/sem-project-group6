@@ -36,6 +36,7 @@ public class IntegrationTest {
     static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
     static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
     static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
+    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
 
     @BeforeAll
@@ -63,6 +64,7 @@ public class IntegrationTest {
         topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
         topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
+        populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
 
 
     }
@@ -385,6 +387,12 @@ public class IntegrationTest {
         assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
     }
 
+    //UC20
+    @Test
+    void testRunWithLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(5);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
+    }
 
 }
 
