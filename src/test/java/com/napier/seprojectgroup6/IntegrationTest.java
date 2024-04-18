@@ -256,16 +256,26 @@ public class IntegrationTest {
         assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
-    /**
-     * All CITIES in the world
-     */
+    /** CITIES in the world */
+     @Test
+     void testCitiesInWorld() {
+         City city = new City();
+
+         CitiesInWorldReport.run();
+         assertEquals(CitiesInWorldReport.cities.size(),4079);
+     }
+
     @Test
-    void testCitiesInWorld()
+    void testRunWithLimitAndCity()
     {
-        City city = new City();
-        CitiesInWorldReport.run();
-        assertEquals(CitiesInWorldReport.cities.size(), 4079);
+        City City = new City();
+
+        CitiesInWorldReport.runWithInputs(5,"");
+        assertEquals(CitiesInWorldReport.cities.size(),5);
     }
+
+
+
 
     /**
      * Top N Population of countries in Region Report
