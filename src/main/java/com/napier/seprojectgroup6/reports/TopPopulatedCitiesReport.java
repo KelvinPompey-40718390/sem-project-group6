@@ -93,7 +93,7 @@ public class TopPopulatedCitiesReport implements Report {
         }
 
         System.out.println("\nTop " + this.limit + " populated cities\n");
-        System.out.printf("%-20s %-10s %-10s %-10s\n",  "City", "District", "Population", "Country");
+        System.out.printf("%-20s %-10s %-10s %-10s\n",  "NAME", "DISTRICT", "POPULATION", "COUNTRY");
         for(City city: cities) {
             this.displayCity(city);
         }
