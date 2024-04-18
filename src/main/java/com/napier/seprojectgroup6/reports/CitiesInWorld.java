@@ -103,7 +103,7 @@ public class CitiesInWorld implements Report {
         }
 
         System.out.println("Top N and All Cities In the World: ");
-        System.out.printf("%-35s %-40s %-30s %-15s\n",  "CITY", "COUNTRY", "DISTRICT", "POPULATION");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "NAME", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
         }
