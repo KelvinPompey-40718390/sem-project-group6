@@ -60,9 +60,26 @@ public class Navigator {
     private void processInput() {
         String input = Utils.readInput("\nSelect your report number or q to quit!");
 
-        if(input.equals("q")) {
+
+        // Test for both lowercase and uppercase Q
+
+        if(input.toUpperCase().equals("Q")) {
+
             return;
         }
+
+        // Is the string is not numeric reject the input
+        // and try again
+
+        String regex = "-?\\d+";
+        boolean isNumber = input.matches(regex);
+
+        if(!isNumber) {
+            System.out.println("Not a valid number");
+            this.processInput();
+            return;
+        }
+
         int index = Integer.parseInt(input);
 
         if(index > this.reports.length || index < 0)  {
