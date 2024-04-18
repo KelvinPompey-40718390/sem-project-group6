@@ -20,6 +20,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
     private Integer limit;
     private String region;
 
+    // Establish connection to Database
     public PopulatedCapitalCitiesByRegion() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
@@ -48,6 +49,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
         return Utils.readInput("Enter number of Capital cities to display, or 0 to show all");
     }
 
+    // Ask User to Enter the Region
     private String getRegion()
     {
         return Utils.readInput("Enter Name of Region");
@@ -68,6 +70,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
+            // Apply Limit to Query Results
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
                             "FROM city " +
@@ -108,6 +111,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
         }
     }
 
+    // Insert Header Rows in Preparation to Display Query results
     public void displayCapitalCities() {
         if(this.capitalCities == null) {
             return;
@@ -120,6 +124,7 @@ public class PopulatedCapitalCitiesByRegion implements Report {
         }
     }
 
+    // Display results of Query
     private void displayCapitalCity(CapitalCity capitalCity) {
         if(capitalCity != null) {
             System.out.printf("%-30s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
