@@ -15,10 +15,11 @@ public class CitiesInWorld implements Report {
     private Connection con = null;
     public ArrayList<City> cities;
     public ArrayList<Country> countries;
-    private Integer limit;
+
     public String city;
+    private Integer limit;
     public CitiesInWorld() {
-        this.con = ConnectionManager.getInstance().getConnection();
+    this.con = ConnectionManager.getInstance().getConnection();
     }
 
     /**
@@ -39,14 +40,9 @@ public class CitiesInWorld implements Report {
         this.displayCities();
     }
 
-    private String getInput() {
-        return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");
-    }
+    private String getInput() { return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");   }
 
-    private String getCity()
-    {
-        return Utils.readInput("Enter Name of City");
-    }
+    private String getCity() { return Utils.readInput("Enter Name of City"); }
     private void executeQuery()
     {
         cities = new ArrayList<>();
@@ -60,7 +56,7 @@ public class CitiesInWorld implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-
+            // Limit results based on user Input
             if(this.limit > 0) {
                 strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
                         "FROM city\n" +
@@ -69,7 +65,7 @@ public class CitiesInWorld implements Report {
                         "ORDER BY city.Population Desc " +
                         "LIMIT " + this.limit;
             }
-
+            // If a 0 is entered return all the results of the Query
             else {
                 strSelect =     "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
                         "FROM city\n" +
@@ -104,6 +100,7 @@ public class CitiesInWorld implements Report {
         }
     }
 
+    // Format header Rows in preparation to Show Query Result
     public void displayCities() {
         if(this.cities == null) {
             return;
@@ -116,6 +113,7 @@ public class CitiesInWorld implements Report {
         }
     }
 
+    // Display Query Results
     private void displayCity(City city) {
         if(city != null) {
             System.out.printf("%-35s %-40s %-30s %-15s\n",  city.name, city.countryName, city.district, city.population);
