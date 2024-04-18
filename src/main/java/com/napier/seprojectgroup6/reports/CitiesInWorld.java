@@ -27,8 +27,6 @@ public class CitiesInWorld implements Report {
      * execute the query
      */
     public void run() {
-        city = this.getCity();
-        limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
     }
