@@ -54,11 +54,11 @@ public class CitiesInWorld implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
+         //   String strSelect = "";
 
             // Limit results based on user Input
             if(this.limit > 0) {
-                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
+             String   = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
                         "WHERE country.Continent\n" +
@@ -67,7 +67,7 @@ public class CitiesInWorld implements Report {
             }
             // If a 0 is entered return all the results of the Query
             else {
-                strSelect =     "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
+                String = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
                         "WHERE country.Continent\n" +
