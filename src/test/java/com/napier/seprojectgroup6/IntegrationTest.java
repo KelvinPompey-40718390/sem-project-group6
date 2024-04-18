@@ -224,14 +224,15 @@ public class IntegrationTest {
     }
 
     /** All Cities In Continent
-     */
+
     @Test
     void testRunCitiesInContinent()
     {
         City city = new City();
-        citiesinContinentReport.runWitContinent("Africa");
+        citiesinContinentReport.runWithContinent("africa");
         assertEquals(citiesinContinentReport.cities.size(), 366);
     }
+     */
 
 
     /**
@@ -256,23 +257,41 @@ public class IntegrationTest {
         assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
-    /** CITIES in the world */
+    /** CITIES IN THE WORLD REPORTS
+      */
+
+    //All cities in world
      @Test
      void testCitiesInWorld() {
          City city = new City();
-
          CitiesInWorldReport.run();
          assertEquals(CitiesInWorldReport.cities.size(),4079);
      }
-
+    // Cities with world with limits
     @Test
-    void testRunWithLimitAndCity()
-    {
+    void testRunWithLimitAndCity()     {
         City City = new City();
-
         CitiesInWorldReport.runWithInputs(5,"");
         assertEquals(CitiesInWorldReport.cities.size(),5);
     }
+
+     // Cities in Continent
+    @Test
+    void TestTopPopulatedCitiesByContinent() {
+         City city = new City();
+         topPopulatedCitiesByContinentReport.run();
+         assertEquals(topPopulatedCitiesByContinentReport.cities.size(),274);
+    }
+    // Cities in Continent with Limits
+    @Test
+    void testRunWithCityLimitAndContinent () {
+         City City = new City();
+        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(5,"africa");
+        assertEquals(topPopulatedCitiesByContinentReport.cities.size(),5);
+    }
+
+    topPopulatedCitiesByRegionReport.runWithLimitAndRegion(4, "Caribbean");
+    assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
 
 
 
@@ -373,11 +392,7 @@ public class IntegrationTest {
 
     }
 
-    @Test
-    void testTopPopulatedCitiesByContinentReportLimitWorks() {
-        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
-        assertEquals(topPopulatedCitiesByContinentReport.cities.size(), 10);
-    }
+
 
     @Test
     void testTopPopulatedCityIsCorrect() {

@@ -3,6 +3,7 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
+import com.napier.seprojectgroup6.db.Country;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ public class TopPopulatedCitiesByContinentReport implements Report {
 
     private Connection con = null;
     public ArrayList<City> cities;
+    public ArrayList<Country> countries;
     private Integer limit;
     public String continent;
 
@@ -67,15 +69,21 @@ public class TopPopulatedCitiesByContinentReport implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
-            if(this.limit > 0) {
-                //strSelect = "select * from city, country where city.CountryCode = country.Code and country.Continent = '" + this.continent+ "' " +
-                //        "order by city.Population desc limit " + this.limit + ";";
 
-                strSelect = String.format("select * from city, country where city.CountryCode = country.Code and country.Continent = '%s' order by city.Population desc limit %d;", this.continent, this.limit);
+            // Limit results based on user Input
+            if (this.limit > 0) {
+                strSelect = "select * from city," +
+                        " country where city.CountryCode = country.Code and country.Continent = '" + this.continent+ "' " +
+                        "order by city.Population desc"+
+                        "LIMIT " + this.limit;
             }
+            // If a 0 is entered return all the results of the Query
             else {
-                strSelect = "";
+                strSelect = "select * from city, " +
+                        "country where city.CountryCode = country.Code and country.Continent = '" + this.continent+ "' " +
+                        "order by city.Population desc";
             }
+
 
 
             // Execute SQL statement
@@ -86,6 +94,7 @@ public class TopPopulatedCitiesByContinentReport implements Report {
                 City city = new City();
                 city.name = rset.getString("Name");
                 city.ID = rset.getInt("ID");
+              //  city.countryName = rset.getString("CountryName");
                 city.population = rset.getInt("Population");
                 city.countryCode = rset.getString("CountryCode");
                 city.district = rset.getString("District");
@@ -107,8 +116,8 @@ public class TopPopulatedCitiesByContinentReport implements Report {
             return;
         }
 
-        System.out.println("Top " + this.limit + " populated cities" + " in " + this.continent);
-        System.out.printf("%-20s %-10s %-10s %-10s\n",  "Name", "District",  "Population", "Country");
+        System.out.println(" Cities In A Continent ");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "CITY", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
         }
@@ -116,7 +125,7 @@ public class TopPopulatedCitiesByContinentReport implements Report {
 
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-20s %-10s %-10d %-10s\n",  city.name, city.district, city.population, city.countryCode);
+            System.out.printf("%-35s %-10s %-30s %-15s\n",  city.name, city.countryCode, city.district, city.population);
         }
     }
 

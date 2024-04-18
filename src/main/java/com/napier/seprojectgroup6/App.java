@@ -58,21 +58,10 @@ public class App {
             allCapitalCitiesWorld.run();
             */
 
-            // Populated Cities by Continent
-            CitiesInContinent citiesInContinent = new CitiesInContinent();
-            citiesInContinent.runWitContinent("Africa");
-
-            // Populated Cities by Country
-            CitiesInCountry citiesInCountry = new CitiesInCountry();
-            citiesInCountry.runWithCountry("North America");
-
-            // Populated Cities by Region
-            CitiesInRegion citiesInRegion = new CitiesInRegion();
-            citiesInRegion.runWithRegion("Caribbean");
 
 
             /**
-             *  Populated Cities In World
+             *  CITIES REPORTS
              */
 
             //Cities in the World
@@ -82,6 +71,23 @@ public class App {
             // Cities in the World with Limit
             citiesInWorld.runWithInputs(5,"Bridgetown");
 
+            // Cities In a Continent
+            TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
+            topPopulatedCitiesByContinentReport.run();
+
+            // Cities In a Continent with limit
+            topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "africa");
+
+
+
+
+            // Populated Cities by Country
+            CitiesInCountry citiesInCountry = new CitiesInCountry();
+            citiesInCountry.runWithCountry("North America");
+
+            // Populated Cities by Region
+            CitiesInRegion citiesInRegion = new CitiesInRegion();
+            citiesInRegion.runWithRegion("Caribbean");
 
 
 
