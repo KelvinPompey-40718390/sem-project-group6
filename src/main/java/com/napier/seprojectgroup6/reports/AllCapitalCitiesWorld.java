@@ -1,5 +1,5 @@
 /**
- * This Reports covers Use Case 19 and 22
+ * This Reports covers Use Case 17
  */
 
 package com.napier.seprojectgroup6.reports;
@@ -74,7 +74,7 @@ public class AllCapitalCitiesWorld implements Report {
         if(this.capitalCities == null) {
             return;
         }
-
+        //General Structure of Print output, All Uppercase
         System.out.println("ALL POPULATED CAPITAL CITIES IN THE WORLD:");
         System.out.println("------------------------------------------------------------------");
         System.out.printf("%-30s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
