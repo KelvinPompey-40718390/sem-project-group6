@@ -59,7 +59,7 @@ public class App {
             citiesInWorld.run();
 
             // Cities in the World with Limit
-            citiesInWorld.runWithInputs(5,"Bridgetown");
+            //citiesInWorld.runWithInputs(5,"Bridgetown");
 
             // Populated Cities by Continent with Limit
             CitiesInContinent citiesInContinent = new CitiesInContinent();
