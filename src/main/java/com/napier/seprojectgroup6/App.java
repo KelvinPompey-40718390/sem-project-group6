@@ -13,7 +13,7 @@ public class App {
     public static void main(String[] args) {
 
         // Connect to database and instantiate Navigator
-        // if running locally i.e not on Github actions.
+        // if running locally ie not on GitHub actions.
 
         System.out.println("Project Works!");
 
@@ -69,10 +69,6 @@ public class App {
             CitiesInRegion citiesInRegion = new CitiesInRegion();
             citiesInRegion.runWithRegionandLimits(3,"Caribbean");
 
-            /**
-             * POPULATION REPORTS
-             */
-
             //Top Populated Countries By Region
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
@@ -84,6 +80,18 @@ public class App {
             // Top Populated Cities by Country
             TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
             topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
+
+            /**
+             * POPULATION REPORTS
+             */
+
+            // Population of people living in and out of cities in each continent
+            PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
+            populationInEachContinent.run();
+
+
+
+
 
             // Close Connection to Database
             ConnectionManager.getInstance().disconnect();
