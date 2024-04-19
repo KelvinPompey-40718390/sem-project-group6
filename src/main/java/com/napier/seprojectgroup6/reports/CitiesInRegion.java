@@ -16,7 +16,8 @@ public class CitiesInRegion implements Report {
     private Connection con = null;
     public ArrayList<City> cities;
     private String region;
-
+    public String city;
+    private Integer limit;
 
     public CitiesInRegion() {
         this.con = ConnectionManager.getInstance().getConnection();
@@ -26,18 +27,20 @@ public class CitiesInRegion implements Report {
      * Request input from the user and execute the query
      */
     public void run() {
-        region = this.getInput();
+        region = this.getRegion();
+        limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
     }
 
-    public void runWithRegion(String region) {
+    public void runWithRegionandLimits(Integer limit, String region) {
+        this.limit = limit;
         this.region = region;
         this.executeQuery();
         this.displayCities();
     }
-
-    private String getInput() {
+    private String getInput() { return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");   }
+    private String getRegion() {
         return Utils.readInput("Enter Region");
     }
 
@@ -53,12 +56,27 @@ public class CitiesInRegion implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
-                            "FROM city\n" +
-                            "         INNER JOIN country ON city.CountryCode = country.Code\n" +
-                            "WHERE country.Region = '" + this.region + "'\n" +
-                            "ORDER BY city.Population DESC";
+            String strSelect = "";
+
+            // Limit results based on user Input
+            if(this.limit > 0) {
+
+                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
+                        "FROM city\n" +
+                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                        "WHERE country.Region = '" + this.region + "'" +
+                        "ORDER BY city.Population DESC " +
+                        "LIMIT " + this.limit;
+            }
+
+            // If a 0 is entered return all the results of the Query
+            else {
+                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
+                        "FROM city\n" +
+                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                        "WHERE country.Region = '" + this.region + "'" +
+                        "ORDER BY city.Population DESC ";
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
