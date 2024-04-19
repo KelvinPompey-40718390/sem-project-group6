@@ -29,47 +29,30 @@ public class App {
         }
         else {
 
-            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
-            citiesByDistrictReport.runWithDistrict("Aichi");
-/**
- TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
- topPopulatedCitiesReport.runWithLimit(5);
- */
             /**
              *  CAPITAL CITY REPORTS
              */
-            // Populated Capital Cities by Continent with Limit
+            // Populated Capital Cities by Continent with and without Limit
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
-
-            // ALL Populated Capital Cities by Continent
             populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
-            // Populated Capital Cities by Region with Limit
+            // Populated Capital Cities by Region with and without Limit
             PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
             populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
-
-            // ALL Populated Capital Cities by Region
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
-            /* Removed by A Jardine due to Missing Class Reference
-            // All Capital Cities in the World
-            AllCapitalCitiesWorld allCapitalCitiesWorld = new AllCapitalCitiesWorld();
-            allCapitalCitiesWorld.run();
-            */
-
-
+            /**
+             *  CITY REPORTS
+             */
 
             // Populated Cities by Country
             CitiesInCountry citiesInCountry = new CitiesInCountry();
             citiesInCountry.runWithCountry("North America");
 
-
-
-
-            /**
-             *  Cities Reports
-             */
+            // Populated Cities by District
+            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
+            citiesByDistrictReport.runWithDistrict("Aichi");
 
             //Cities in the World
             CitiesInWorld citiesInWorld = new CitiesInWorld();
@@ -87,7 +70,9 @@ public class App {
             citiesInRegion.runWithRegionandLimits(3,"Caribbean");
 
 
-
+            /**
+             * POPULATION REPORTS
+             */
 
             //Top Populated Countries By Region
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
@@ -95,13 +80,13 @@ public class App {
 
             // Top Populated Cities by Region
             TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
-            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribean");
+            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribbean");
 
             // Top Populated Cities by Country
             TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
             topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
 
-
+            // Close Connection to Database
             ConnectionManager.getInstance().disconnect();
         }
     }
