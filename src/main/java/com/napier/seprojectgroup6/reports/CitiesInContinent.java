@@ -31,8 +31,8 @@ public class CitiesInContinent implements Report {
         this.executeQuery();
         this.displayCities();
     }
-
-    public void runWithContinentandLimits(String continent) {
+    // for integration test
+    public void runWithContinentandLimits(Integer limit, String continent) {
         this.limit = limit;
         this.continent = continent;
         this.executeQuery();
