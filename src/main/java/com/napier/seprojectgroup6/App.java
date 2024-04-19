@@ -32,9 +32,9 @@ public class App {
             CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
             citiesByDistrictReport.runWithDistrict("Aichi");
 /**
-            TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
-            topPopulatedCitiesReport.runWithLimit(5);
-*/
+ TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
+ topPopulatedCitiesReport.runWithLimit(5);
+ */
             /**
              *  CAPITAL CITY REPORTS
              */
@@ -64,13 +64,11 @@ public class App {
             CitiesInCountry citiesInCountry = new CitiesInCountry();
             citiesInCountry.runWithCountry("North America");
 
-            // Populated Cities by Region
-            CitiesInRegion citiesInRegion = new CitiesInRegion();
-            citiesInRegion.runWithRegion("Caribbean");
+
 
 
             /**
-             *  Cities In World Reports
+             *  Cities Reports
              */
 
             //Cities in the World
@@ -83,6 +81,10 @@ public class App {
             // Populated Cities by Continent with Limit
             CitiesInContinent citiesInContinent = new CitiesInContinent();
             citiesInContinent.runWithContinentandLimits(3,"Africa");
+
+            // Populated Cities by Region with Limit
+            CitiesInRegion citiesInRegion = new CitiesInRegion();
+            citiesInRegion.runWithRegionandLimits(3,"Caribbean");
 
 
 
