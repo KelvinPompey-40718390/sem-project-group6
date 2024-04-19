@@ -69,7 +69,6 @@ public class App {
             CitiesInRegion citiesInRegion = new CitiesInRegion();
             citiesInRegion.runWithRegionandLimits(3,"Caribbean");
 
-
             /**
              * POPULATION REPORTS
              */
