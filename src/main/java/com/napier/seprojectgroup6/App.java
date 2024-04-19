@@ -89,8 +89,9 @@ public class App {
             PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
             populationInEachContinent.run();
 
-
-
+            // Population of people living in and out of cities in each region
+            PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
+            populationInEachRegion.run();
 
 
             // Close Connection to Database
