@@ -59,14 +59,14 @@ public class App {
             citiesInWorld.runWithInputs(5);
             citiesInWorld.runWithInputs(0);
 
-
             // Populated Cities by Continent with and Without Limit
             CitiesInContinent citiesInContinent = new CitiesInContinent();
             citiesInContinent.runWithContinentandLimits(3,"Africa");
 
-            // Populated Cities by Region with Limit
+            // Populated Cities by Region with and Without Limit
             CitiesInRegion citiesInRegion = new CitiesInRegion();
             citiesInRegion.runWithRegionandLimits(3,"Caribbean");
+
 
             //Top Populated Countries By Region
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
