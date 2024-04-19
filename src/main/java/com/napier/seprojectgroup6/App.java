@@ -80,9 +80,9 @@ public class App {
             // Cities in the World with Limit
             citiesInWorld.runWithInputs(5,"Bridgetown");
 
-            // Populated Cities by Continent
+            // Populated Cities by Continent with Limit
             CitiesInContinent citiesInContinent = new CitiesInContinent();
-            citiesInContinent.runWithContinentandLimits("Africa");
+            citiesInContinent.runWithContinentandLimits(3,"Africa");
 
 
 
