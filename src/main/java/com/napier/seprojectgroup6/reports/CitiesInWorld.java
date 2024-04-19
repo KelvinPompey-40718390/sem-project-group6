@@ -32,8 +32,7 @@ public class CitiesInWorld implements Report {
         this.displayCities();
     }
     // for integration test
-    public void runWithInputs(Integer limit, String city) {
-        this.city = city;
+    public void runWithInputs(Integer limit) {
         this.limit = limit;
         this.executeQuery();
         this.displayCities();
