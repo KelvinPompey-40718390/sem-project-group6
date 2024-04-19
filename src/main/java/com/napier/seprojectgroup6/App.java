@@ -15,7 +15,7 @@ public class App {
         // Connect to database and instantiate Navigator
         // if running locally ie not on GitHub actions.
 
-        System.out.println("Project Works!");
+        System.out.println("SEM GROUP 6 PROJECT LOADED!");
 
         if(args.length < 1){
             ConnectionManager.getInstance().connect("localhost:33060", 0);
