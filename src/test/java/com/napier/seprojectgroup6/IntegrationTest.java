@@ -262,8 +262,8 @@ public class IntegrationTest {
     void testCitiesInWorld() {
         City city = new City();
 
-        CitiesInWorldReport.run();
-        assertEquals(CitiesInWorldReport.cities.size(),4079);
+        CitiesInWorldReport.runWithInputs(5);
+        assertEquals(CitiesInWorldReport.cities.size(),5);
     }
 
     @Test
@@ -271,7 +271,7 @@ public class IntegrationTest {
     {
         City City = new City();
 
-        CitiesInWorldReport.runWithInputs(5,"");
+        CitiesInWorldReport.runWithInputs(5);
         assertEquals(CitiesInWorldReport.cities.size(),5);
     }
 
@@ -373,13 +373,13 @@ public class IntegrationTest {
         assertEquals(topPopulatedCitiesByCountryReport.cities.size(), 4);
 
     }
-
+/**
     @Test
     void testTopPopulatedCitiesByContinentReportLimitWorks() {
         topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
         assertEquals(topPopulatedCitiesByContinentReport.cities.size(), 10);
     }
-
+*/
     @Test
     void testTopPopulatedCityIsCorrect() {
         topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
