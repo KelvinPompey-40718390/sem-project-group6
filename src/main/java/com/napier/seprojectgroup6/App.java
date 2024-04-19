@@ -54,14 +54,13 @@ public class App {
             CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
             citiesByDistrictReport.runWithDistrict("Aichi");
 
-            //Cities in the World
+            //Cities in the World with and Without Limit
             CitiesInWorld citiesInWorld = new CitiesInWorld();
-            citiesInWorld.run();
+            citiesInWorld.runWithInputs(5);
+            citiesInWorld.runWithInputs(0);
 
-            // Cities in the World with Limit
-            //citiesInWorld.runWithInputs(5,"Bridgetown");
 
-            // Populated Cities by Continent with Limit
+            // Populated Cities by Continent with and Without Limit
             CitiesInContinent citiesInContinent = new CitiesInContinent();
             citiesInContinent.runWithContinentandLimits(3,"Africa");
 
