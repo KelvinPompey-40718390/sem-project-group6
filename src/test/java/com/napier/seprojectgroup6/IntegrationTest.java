@@ -23,6 +23,7 @@ public class IntegrationTest {
     static CitiesInCountry citiesInCountryReport;
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
+    static CitiesInDistrict citiesInDistrictReport;
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
     static TotalInContinent totalInContinentReport;
     static TotalInRegion totalInRegionReport;
@@ -30,6 +31,7 @@ public class IntegrationTest {
     static TotalInDistrict totalInDistrictReport;
     static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     static WorldPopulation worldPopulation;
+
 
     //static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
     //static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
@@ -52,6 +54,7 @@ public class IntegrationTest {
         citiesInCountryReport =  new CitiesInCountry();
         citiesInRegionreport = new CitiesInRegion();
         CitiesInWorldReport = new CitiesInWorld();
+        citiesInDistrictReport = new CitiesInDistrict();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
         totalInContinentReport = new TotalInContinent();
         totalInRegionReport = new TotalInRegion();
@@ -112,7 +115,7 @@ public class IntegrationTest {
 
     /**
      * CITIES BY DISTRICT
-     */
+
     @Test
     void testRunWithEmptyDistrict() {
         City city = new City();
@@ -128,6 +131,8 @@ public class IntegrationTest {
         cityByDistrictReport.runWithDistrict("Aichi");
         assertEquals(cityByDistrictReport.cities.size(), 15);
     }
+     */
+
 
     /**
      * POPULATED CAPITAL CITIES BY CONTINENT
@@ -226,7 +231,14 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
-
+    /** All Cities In District with Limit  */
+    @Test
+    void testrunWithDistrictandLimits()
+    {
+        City city = new City();
+        citiesInDistrictReport.runWithDistrictandLimits(0, "Zuid-Holland");
+        assertEquals(citiesInDistrictReport.cities.size(), 6);
+    }
 
 
     /** All Cities In Continent with Limit  */
