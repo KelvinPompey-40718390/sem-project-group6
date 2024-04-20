@@ -10,12 +10,12 @@ public class Navigator {
             // Country Reports UC01 - UC 06
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
             new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
-            new ReportMenu("04 Top Populated Countries", TopPopulatedCountries.class.getName()),
-            new ReportMenu( "Top N and All Populated Countries By Continent", TopPopulatedCountriesInAContinent.class.getName()),
-            new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
+            new ReportMenu("Top N and All Populated Countries by Region", TopPopulatedCountries.class.getName()),
+            new ReportMenu("Top N and All Populated Countries by Continent", TopPopulatedCountriesInAContinent.class.getName()),
+            new ReportMenu("06 Top Populated Countries by Region", TopPopulationCountriesRegion.class.getName()),
 
             // City Reports UC07 - UC16
-            new ReportMenu( "Top N and All Populated Cities In The World", CitiesInWorld.class.getName()),
+            new ReportMenu( "Top N and All Populated Cities in The World", CitiesInWorld.class.getName()),
             new ReportMenu( "Top N and All Populated Cities by Continent", CitiesInContinent.class.getName()),
             new ReportMenu( "Top N and All Populated Cities by Region", CitiesInRegion.class.getName()),
             new ReportMenu( "Top N and All Populated Cities by Country", CitiesInCountry.class.getName()),
