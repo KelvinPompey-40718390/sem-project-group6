@@ -42,7 +42,7 @@ public class TopPopulatedCountries implements Report {
     }
 
     private String getInput() {
-        return Utils.readInput("Enter N for the number of countries to display");
+        return Utils.readInput("Enter N for the number of countries to display, or 0 to Show All");
     }
 
     private String getRegion()
@@ -72,7 +72,9 @@ public class TopPopulatedCountries implements Report {
 
             }
             else {
-                strSelect = "";
+                strSelect = "select country.code, country.Name, country.Continent,country.Region, country.Population, country.Capital from country\n" +
+                        "WHERE country.Region = '" + this.region +"' " +
+                        "order by Population desc ";
             }
 
 
@@ -107,7 +109,7 @@ public class TopPopulatedCountries implements Report {
         }
 
         System.out.println("Top " + this.limit + " Populated Countries\n");
-        System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  "Code", "Name", "Continent", "Region" , "Population", "Capital");
+        System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  "CODE", "NAME", "CONTINENT", "REGION" , "POPULATION", "CAPITAL");
         for(Country country: countries) {
             this.displayCountries(country);
         }
