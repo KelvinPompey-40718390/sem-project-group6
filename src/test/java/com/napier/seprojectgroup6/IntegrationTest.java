@@ -245,14 +245,13 @@ public class IntegrationTest {
     }
 
     /**
-     * All CITIES In Country
+     * All CITIES In Country with Limit
      */
     @Test
-    void testrunWithCountry() {
+    void testRunCitiesInCountry() {
         City city = new City();
-
-        citiesInCountryReport.runWithCountry("united states");
-        assertEquals(citiesInCountryReport.cities.size(), 274);
+        citiesInCountryReport.runWithCountryandLimits(0,"united states");
+        assertEquals(citiesInCountryReport.cities.size(),274);
     }
 
 
