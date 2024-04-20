@@ -330,34 +330,6 @@ public class IntegrationTest {
         assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
     }
 
-    /**
-    @Test
-    void testTopPopulatedCitiesByRegionReturnsCorrectLimit() {
-
-        topPopulatedCitiesByRegionReport.runWithLimitAndRegion(4, "Caribbean");
-        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
-
-    }
-    @Test
-    void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
-
-        topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
-        assertEquals(topPopulatedCitiesByCountryReport.cities.size(), 4);
-    }
-/**
-    @Test
-    void testTopPopulatedCitiesByContinentReportLimitWorks() {
-        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
-        assertEquals(topPopulatedCitiesByContinentReport.cities.size(), 10);
-    }
-    @Test
-    void testTopPopulatedCityIsCorrect() {
-        topPopulatedCitiesByContinentReport.runWithLimitAndContinent(10, "Africa");
-        City topCity = topPopulatedCitiesByContinentReport.cities.get(0);
-        assertEquals(topCity.name, "Cairo");
-    }
-*/
-
     //UC17
     @Test
     void testAllCapitalCitiesWorld()
