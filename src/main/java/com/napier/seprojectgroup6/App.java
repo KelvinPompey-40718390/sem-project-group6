@@ -32,63 +32,75 @@ public class App {
             /**
              *  CAPITAL CITY REPORTS
              */
-            // Populated Capital Cities by Continent with and without Limit
+            // Populated Capital Cities by Continent with and without Limit - UC 18 & UC21
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
             populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
-            // Populated Capital Cities by Region with and without Limit
+            // Populated Capital Cities by Region with and without Limit  - UC19 & UC22
             PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
             populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
+
+
 
             /**
              *  CITY REPORTS
              */
 
-            // Populated Cities by Country
-            CitiesInCountry citiesInCountry = new CitiesInCountry();
-            citiesInCountry.runWithCountry("North America");
-
-            // Populated Cities by District
-            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
-            citiesByDistrictReport.runWithDistrict("Aichi");
-
-            //Cities in the World with and Without Limit
+            //Cities in the World with and Without Limit - UC7 & UC12
             CitiesInWorld citiesInWorld = new CitiesInWorld();
             citiesInWorld.runWithInputs(5);
             citiesInWorld.runWithInputs(0);
 
-            // Populated Cities by Continent with and Without Limit
+            // Cities by Continent with and Without Limit - UC8 & UC13
             CitiesInContinent citiesInContinent = new CitiesInContinent();
             citiesInContinent.runWithContinentandLimits(3,"Africa");
 
-            // Populated Cities by Region with and Without Limit
+            // Cities by Region with and Without Limit - UC9 & UC14
             CitiesInRegion citiesInRegion = new CitiesInRegion();
             citiesInRegion.runWithRegionandLimits(3,"Caribbean");
 
+            // Cities by Country with and Without Limit - UC10 & UC15
+            CitiesInCountry citiesInCountry = new CitiesInCountry();
+            citiesInCountry.runWithCountryandLimits(3,"North America");
 
-            //Top Populated Countries By Region
+            //Cities by District - 11
+            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
+            citiesByDistrictReport.runWithDistrict("Aichi");
+
+
+            // Top Populated Cities by Region
+            //TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
+           // topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribbean");
+
+            // Top Populated Cities by Country
+           // TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
+           // topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
+
+
+
+
+            /**
+             * COUNTRIES REPORTS
+             */
+
+            //Top Populated Countries By Region - UC6
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
 
-            // Top Populated Cities by Region
-            TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
-            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribbean");
 
-            // Top Populated Cities by Country
-            TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-            topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
+
 
             /**
              * POPULATION REPORTS
              */
 
-            // Population of people living in and out of cities in each continent
+            // Population of people living in and out of cities in each continent - UC 23
             PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
             populationInEachContinent.run();
 
-            // Population of people living in and out of cities in each region
+            // Population of people living in and out of cities in each region - UC 24
             PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
             populationInEachRegion.run();
 
