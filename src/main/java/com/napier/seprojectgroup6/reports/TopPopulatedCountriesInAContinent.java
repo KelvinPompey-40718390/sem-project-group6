@@ -16,6 +16,7 @@ public class TopPopulatedCountriesInAContinent implements Report {
     private Integer limit;
     public String continent;
 
+
     public TopPopulatedCountriesInAContinent() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
@@ -64,7 +65,7 @@ public class TopPopulatedCountriesInAContinent implements Report {
                 // Create string for SQL statement
                 String strSelect = "";
             if(this.limit > 0){
-                strSelect = "select country.name as CountryName, continent, country.population as Population " +
+                strSelect = "select country.code as Code, country.name as CountryName, continent, region, country.population, city.name as Capital\n" +
                 "from country\n" +
                 "inner join city on city.ID = country.Capital\n" +
                 "where continent = '" + this.continent + "' " +
@@ -74,7 +75,7 @@ public class TopPopulatedCountriesInAContinent implements Report {
             }
             // If a 0 is entered return all the results of the Query
             else {
-                strSelect = "select country.name as CountryName, continent, country.population as Population " +
+                strSelect = "select country.code as Code, country.name as CountryName, continent, region, country.population, city.name as Capital\n" +
                         "from country\n" +
                         "inner join city on city.ID = country.Capital\n" +
                         "where continent = '" + continent + "' " +
@@ -89,9 +90,12 @@ public class TopPopulatedCountriesInAContinent implements Report {
             while (rset.next())
             {
                 Population population = new Population();
+                population.code = rset.getString("Code");
                 population.name = rset.getString("CountryName");
                 population.continent = rset.getString("Continent");
+                population.region = rset.getString("Region");
                 population.totalPopulation = rset.getLong("Population");
+                population.capital = rset.getString("Capital");
 
 
                 this.populations.add(population);
@@ -110,8 +114,8 @@ public class TopPopulatedCountriesInAContinent implements Report {
             return;
         }
 
-        System.out.println("\nTop Populated Countries In A Continent\n");
-        System.out.printf("%-40s %-20s %-10s\n",  "NAME", "CONTINENT", "POPULATION");
+        System.out.println("\nTop Populated Countries In A Continent:\n");
+        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "CODE", "NAME", "CONTINENT", "REGION", "POPULATION", "CAPITAL");
         for(Population population: populations) {
             this.displayPopulation(population);
 
@@ -120,7 +124,7 @@ public class TopPopulatedCountriesInAContinent implements Report {
 
     private void displayPopulation(Population population) {
         if(population != null) {
-            System.out.printf("%-40s %-20s %-10s\n", population.name, population.continent, population.totalPopulation);
+            System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n",population.code, population.name, population.continent,population.region, population.totalPopulation, population.capital);
 
         }
 
