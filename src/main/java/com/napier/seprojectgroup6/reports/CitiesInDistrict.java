@@ -32,7 +32,7 @@ public class CitiesInDistrict implements Report{
         this.executeQuery();
         this.displayCities();
     }
-
+    //for integration test
     public void runWithDistrictandLimits(Integer limit, String district) {
         this.limit = limit;
         this.district = district;
@@ -64,7 +64,7 @@ public class CitiesInDistrict implements Report{
                 strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "WHERE city.District = '" + this.district + "' " +
+                        "WHERE city.District = '" + this.district + "'" +
                         "ORDER BY city.Population DESC " +
                         "LIMIT " + this.limit;
             }
@@ -74,7 +74,7 @@ public class CitiesInDistrict implements Report{
                 strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "WHERE city.District = '" + this.district + "' " +
+                        "WHERE city.District = '" + this.district + "'" +
                         "ORDER BY city.Population DESC ";
             }
             // Execute SQL statement
