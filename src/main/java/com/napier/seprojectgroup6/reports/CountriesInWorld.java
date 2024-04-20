@@ -57,8 +57,6 @@ try
                 country.population = rset.getInt("Population");
                 country.capital = rset.getString("Capital");
 
-
-
                 this.countries.add(country);
             }
 
