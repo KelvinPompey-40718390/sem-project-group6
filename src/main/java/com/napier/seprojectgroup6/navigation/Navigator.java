@@ -6,22 +6,30 @@ import com.napier.seprojectgroup6.reports.*;
 public class Navigator {
 
     private final ReportMenu[] reports = {
+
+            // Country Reports UC01 - UC 06
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
             new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
             new ReportMenu("04 Top Populated Countries", TopPopulatedCountries.class.getName()),
             new ReportMenu( "Top N and All Populated Countries By Continent", TopPopulatedCountriesInAContinent.class.getName()),
             new ReportMenu( "06 Top Populated Countries By Region", TopPopulationCountriesRegion.class.getName()),
+
+            // City Reports UC07 - UC16
             new ReportMenu( "Top N and All Populated Cities In The World", CitiesInWorld.class.getName()),
             new ReportMenu( "Top N and All Populated Cities by Continent", CitiesInContinent.class.getName()),
             new ReportMenu( "Top N and All Populated Cities by Region", CitiesInRegion.class.getName()),
             new ReportMenu( "Top N and All Populated Cities by Country", CitiesInCountry.class.getName()),
             new ReportMenu( "Top N and All Populated Cities By District", CitiesInDistrict.class.getName()),
+
+            // Capital City Reports UC17 - UC22
             new ReportMenu( "17 All Capital Cities", AllCapitalCitiesWorld.class.getName()),
             new ReportMenu( "20 Populated Capital Cities in the World", PopulatedCapitalCitiesinWorld.class.getName()),
             new ReportMenu( "21 Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
             new ReportMenu( "22 Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
             new ReportMenu( "Top N and All Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
             new ReportMenu( "Top N and All Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
+
+            // Population Reports UC23 - UC31
             new ReportMenu( "23 Percent of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
             new ReportMenu( "24 Percent of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
             new ReportMenu( "25 Percent of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
@@ -30,7 +38,9 @@ public class Navigator {
             new ReportMenu( "28 Total Population of a Region", TotalInRegion.class.getName()),
             new ReportMenu( "29 Total Population of a country", TotalInCountry.class.getName()),
             new ReportMenu( "30 Total Population of a District", TotalInDistrict.class.getName()),
-            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName())   ,
+            new ReportMenu( "31 Population Of ACity", PopulationOfACity.class.getName()),
+
+            // Language Report UC32
             new ReportMenu( "32 Number Of People Speaking A Certain Languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
 
     };
