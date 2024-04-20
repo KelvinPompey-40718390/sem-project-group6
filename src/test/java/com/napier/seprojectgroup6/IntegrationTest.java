@@ -13,31 +13,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegrationTest {
 
-    static PopulatedCapitalCitiesByContinent report;
-    static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+    // Country Reports UC01 - UC06
+    static PopulationInEachCountry popInEachCountryReport;
+    static TopPopulationCountriesRegion topPopulationCountriesRegion;
+
+    // City Reports UC07 - UC16
     static CitiesByDistrictReport cityByDistrictReport;
     static TopPopulatedCitiesReport topPopCitiesReport;
-    static PopulationInEachRegion PopInEachRegionReport;
-    static PopulationInEachCountry popInEachCountryReport;
     static CitiesInContinent citiesinContinentReport;
     static CitiesInCountry citiesInCountryReport;
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static CitiesInDistrict citiesInDistrictReport;
-    static TopPopulationCountriesRegion topPopulationCountriesRegion;
+
+    // Capital City Reports UC17 - UC22
+    static PopulatedCapitalCitiesByContinent report;
+    static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
+    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
+    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
+
+    // Population Reports UC23 - 31
+    static PopulationInEachRegion PopInEachRegionReport;
+    static WorldPopulation worldPopulation;
     static TotalInContinent totalInContinentReport;
     static TotalInRegion totalInRegionReport;
     static TotalInCountry totalInCountryReport;
     static TotalInDistrict totalInDistrictReport;
-    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
-    static WorldPopulation worldPopulation;
 
+    // Language Report UC32
 
-    //static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
-    //static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
-    //static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
-    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
-    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
 
     @BeforeAll
