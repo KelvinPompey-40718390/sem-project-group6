@@ -114,8 +114,8 @@ public class TopPopulatedCountriesInAContinent implements Report {
             return;
         }
 
-        System.out.println("\nTop Populated Countries In A Continent:\n");
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n", "CODE", "NAME", "CONTINENT", "REGION", "POPULATION", "CAPITAL");
+        System.out.println("\nCountries In A Continent:" + continent+ "\n");
+        System.out.printf("%-10s %-40s %-20s %-20s %-20s %-20s\n", "CODE", "NAME", "CONTINENT", "REGION", "POPULATION", "CAPITAL");
         for(Population population: populations) {
             this.displayPopulation(population);
 
@@ -124,7 +124,7 @@ public class TopPopulatedCountriesInAContinent implements Report {
 
     private void displayPopulation(Population population) {
         if(population != null) {
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n",population.code, population.name, population.continent,population.region, population.totalPopulation, population.capital);
+            System.out.printf("%-10s %-40s %-20s %-20s %-20s %-20s\n",population.code, population.name, population.continent,population.region, population.totalPopulation, population.capital);
 
         }
 
