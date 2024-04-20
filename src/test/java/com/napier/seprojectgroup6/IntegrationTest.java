@@ -227,6 +227,9 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
+
+
+
     /** All Cities In Continent with Limit  */
     @Test
     void testRunCitiesInContinent()
@@ -235,6 +238,7 @@ public class IntegrationTest {
         citiesinContinentReport.runWithContinentandLimits(0,"Africa");
         assertEquals(citiesinContinentReport.cities.size(), 366);
     }
+
     /** All CITIES In Region with Limit */
     @Test
     void testRunCitiesInRegion()
@@ -244,9 +248,8 @@ public class IntegrationTest {
         assertEquals(citiesInRegionreport.cities.size(), 58);
     }
 
-    /**
-     * All CITIES In Country with Limit
-     */
+     /** All CITIES In Country with Limit */
+
     @Test
     void testRunCitiesInCountry() {
         City city = new City();
@@ -254,13 +257,10 @@ public class IntegrationTest {
         assertEquals(citiesInCountryReport.cities.size(),274);
     }
 
-
-
     /** All CITIES in the World */
     @Test
     void testCitiesInWorld() {
         City city = new City();
-
         CitiesInWorldReport.runWithInputs(5);
         assertEquals(CitiesInWorldReport.cities.size(),5);
     }
@@ -269,7 +269,6 @@ public class IntegrationTest {
     void testRunWithLimitAndCity()
     {
         City City = new City();
-
         CitiesInWorldReport.runWithInputs(5);
         assertEquals(CitiesInWorldReport.cities.size(),5);
     }
