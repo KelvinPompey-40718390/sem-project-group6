@@ -3,6 +3,7 @@ package com.napier.seprojectgroup6;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+// Reads input from user
 public class Utils {
     /**
      * Helper method for reading user input
@@ -13,7 +14,6 @@ public class Utils {
         try {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(System.in));
-
 
             System.out.println(prompt);
             return reader.readLine();

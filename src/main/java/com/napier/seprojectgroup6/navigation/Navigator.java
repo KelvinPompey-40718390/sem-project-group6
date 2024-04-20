@@ -7,6 +7,7 @@ public class Navigator {
 
     // Report menu Labels
     private final ReportMenu[] reports = {
+
             // Country Reports UC01 - UC06
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
             new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
