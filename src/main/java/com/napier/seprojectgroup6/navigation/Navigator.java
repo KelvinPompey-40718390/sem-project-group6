@@ -68,7 +68,7 @@ public class Navigator {
         String input = Utils.readInput("\nSelect your report number or q to quit!");
 
         // Test for both lowercase and uppercase Q
-        if(input.toUpperCase().equals("Q")) {
+        if(input.equalsIgnoreCase("Q")) {
 
             return;
         }
