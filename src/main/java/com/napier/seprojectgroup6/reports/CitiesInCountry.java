@@ -67,7 +67,9 @@ public class CitiesInCountry implements Report {
                     "FROM city\n" +
                     "INNER JOIN country ON city.CountryCode = country.Code\n" +
                     "WHERE country.Name = '" + this.country + "' " +
-                    "ORDER BY city.Population DESC";
+                    "ORDER BY city.Population DESC " +
+                    "LIMIT " + this.limit;
+
         }
 
             // If a 0 is entered return all the results of the Query
@@ -76,7 +78,7 @@ public class CitiesInCountry implements Report {
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
                         "WHERE country.Name = '" + this.country + "' " +
-                        "ORDER BY city.Population DESC";
+                        "ORDER BY city.Population DESC ";
 
                          }
 
