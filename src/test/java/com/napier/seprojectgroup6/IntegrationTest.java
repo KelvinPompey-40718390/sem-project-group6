@@ -67,9 +67,6 @@ public class IntegrationTest {
         totalInDistrictReport = new TotalInDistrict();
         popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
-        //topPopulatedCitiesByContinentReport = new TopPopulatedCitiesByContinentReport();
-       // topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByRegionReport();
-      //  topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
 
