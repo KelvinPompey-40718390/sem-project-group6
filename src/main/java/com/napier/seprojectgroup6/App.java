@@ -29,7 +29,7 @@ public class App {
         else {
 
             /**
-             *  CAPITAL CITY REPORTS
+             *
              */
             // Populated Capital Cities by Continent with and without Limit - UC 18 & UC21
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
