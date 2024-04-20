@@ -46,9 +46,9 @@ public class App {
              *  CITY REPORTS
              */
 
-            // Populated Cities by Country
+            // Populated Cities by Country with and Without Limit
             CitiesInCountry citiesInCountry = new CitiesInCountry();
-            citiesInCountry.runWithCountry("North America");
+            citiesInCountry.runWithCountryandLimits(3,"North America");
 
             // Populated Cities by District
             CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
@@ -66,6 +66,8 @@ public class App {
             // Populated Cities by Region with and Without Limit
             CitiesInRegion citiesInRegion = new CitiesInRegion();
             citiesInRegion.runWithRegionandLimits(3,"Caribbean");
+
+
 
 
             //Top Populated Countries By Region
