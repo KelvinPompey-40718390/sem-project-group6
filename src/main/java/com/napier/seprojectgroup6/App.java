@@ -1,6 +1,5 @@
 package com.napier.seprojectgroup6;
 
-
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.navigation.Navigator;
 import com.napier.seprojectgroup6.reports.*;
@@ -42,8 +41,6 @@ public class App {
             populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
-
-
             /**
              *  CITY REPORTS
              */
@@ -69,18 +66,6 @@ public class App {
             CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
             citiesInDistrict.runWithDistrictandLimits(3, "Zuid-Holland");
 
-
-            // Top Populated Cities by Region
-            //TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
-           // topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribbean");
-
-            // Top Populated Cities by Country
-           // TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-           // topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
-
-
-
-
             /**
              * COUNTRIES REPORTS
              */
@@ -88,9 +73,6 @@ public class App {
             //Top Populated Countries By Region - UC6
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
-
-
-
 
             /**
              * POPULATION REPORTS
