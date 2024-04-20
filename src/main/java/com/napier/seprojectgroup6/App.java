@@ -65,9 +65,9 @@ public class App {
             CitiesInCountry citiesInCountry = new CitiesInCountry();
             citiesInCountry.runWithCountryandLimits(3,"North America");
 
-            //Cities by District - 11
-            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
-            citiesByDistrictReport.runWithDistrict("Aichi");
+            // Cities by District with and Without Limit - UC11 & UC16
+            CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
+            citiesInDistrict.runWithDistrictandLimits(3, "Zuid-Holland");
 
 
             // Top Populated Cities by Region
