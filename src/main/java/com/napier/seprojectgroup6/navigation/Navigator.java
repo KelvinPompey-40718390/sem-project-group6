@@ -56,7 +56,7 @@ public class Navigator {
         System.out.println("REPORT MENU");
         System.out.println("-----------");
         for(int i = 0; i < this.reports.length; i++) {
-            System.out.println(i + ": " + this.reports[i].title);
+            System.out.println(String.format("%02d", i) + ": " + this.reports[i].title);
         }
         this.processInput();
     }
