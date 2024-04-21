@@ -9,7 +9,6 @@ public class Navigator {
 
             // Country Reports UC01 - UC 06
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
-            new ReportMenu("03 Countries In A Region By Population Size", CountriesInARegionByPopulationSize.class.getName()),
             new ReportMenu("Top N and All Populated Countries by Region", TopPopulatedCountries.class.getName()),
             new ReportMenu("Top N and All Populated Countries by Continent", TopPopulatedCountriesInAContinent.class.getName()),
             new ReportMenu("06 Top Populated Countries by Region", TopPopulationCountriesRegion.class.getName()),
