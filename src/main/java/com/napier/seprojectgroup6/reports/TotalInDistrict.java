@@ -62,7 +62,6 @@ public class TotalInDistrict implements Report {
                     "FROM world.city " +
                     "INNER JOIN country ON country.Code = city.CountryCode " +
                     "WHERE city.District = '" + district + "'";
-                    //"SELECT ID, Name, CountryCode, District, Population from city where District = '"+ district +"'";
 
             //Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);

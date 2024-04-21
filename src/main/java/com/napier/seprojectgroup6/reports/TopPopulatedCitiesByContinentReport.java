@@ -68,8 +68,6 @@ public class TopPopulatedCitiesByContinentReport implements Report {
             String strSelect = "";
 
             if(this.limit > 0) {
-                //strSelect = "select * from city, country where city.CountryCode = country.Code and country.Continent = '" + this.continent+ "' " +
-                //        "order by city.Population desc limit " + this.limit + ";";
 
                 strSelect = String.format("select * from city, country where city.CountryCode = country.Code and country.Continent = '%s' order by city.Population desc limit %d;", this.continent, this.limit);
             }
