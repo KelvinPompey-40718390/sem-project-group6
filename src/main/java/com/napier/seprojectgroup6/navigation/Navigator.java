@@ -5,6 +5,7 @@ import com.napier.seprojectgroup6.reports.*;
 
 public class Navigator {
 
+    // List of menu Items for user Navigation
     private final ReportMenu[] reports = {
 
             // Country Reports UC01 - UC 06
@@ -39,6 +40,7 @@ public class Navigator {
             new ReportMenu( "Percentage of World speaking different languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
     };
 
+    // Show navigator Menu
     public Navigator() {
 
         this.showMenu();
