@@ -13,32 +13,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IntegrationTest {
 
-    static PopulatedCapitalCitiesByContinent report;
-    static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+    // Country Reports
+    static TopPopulationCountriesRegion topPopulationCountriesRegion;
+
+    // City Reports
     static CitiesByDistrictReport cityByDistrictReport;
     static TopPopulatedCitiesReport topPopCitiesReport;
-    static PopulationInEachRegion PopInEachRegionReport;
-    static PopulationInEachCountry popInEachCountryReport;
     static CitiesInContinent citiesinContinentReport;
     static CitiesInCountry citiesInCountryReport;
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static CitiesInDistrict citiesInDistrictReport;
-    static TopPopulationCountriesRegion topPopulationCountriesRegion;
+
+    // Capital City Reports
+    static PopulatedCapitalCitiesByContinent report;
+    static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
+    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
+    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
+
+    // Population Reports
+    static PopulationInEachRegion PopInEachRegionReport;
+    static PopulationInEachCountry popInEachCountryReport;
+
+    // Total Population Reports
     static TotalInContinent totalInContinentReport;
     static TotalInRegion totalInRegionReport;
     static TotalInCountry totalInCountryReport;
     static TotalInDistrict totalInDistrictReport;
-    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     static WorldPopulation worldPopulation;
 
-
-    //static TopPopulatedCitiesByContinentReport topPopulatedCitiesByContinentReport;
-    //static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
-    //static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
-    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
-    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
-
+    // Language Report
 
     @BeforeAll
     static void init()
@@ -166,6 +171,33 @@ public class IntegrationTest {
      * CAPITAL CITY REPORTS INTEGRATION TESTS
      */
 
+    /**
+     * Populated Capital Cities by District
+     */
+    @Test
+    void testRunWithLimitandDistrict()
+    {
+        PopulatedCapitalCitiesByDistrict populatedCapitalCitiesByDistrict = new PopulatedCapitalCitiesByDistrict();
+        popCapCityDistrictReport.runWithInputs(3,"Acre");
+        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+
+    }
+
+
+    //UC17
+    @Test
+    void testAllCapitalCitiesWorld(){
+        allCapitalCitiesWorldReport.run();
+        assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
+    }
+
+    //UC20
+    @Test
+    void testRunWithLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(5);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
+    }
+
     // Capital City by Continent if empty returns no results
     @Test
     void testRunWithEmptyLimitAndContinent()
@@ -270,8 +302,6 @@ public class IntegrationTest {
         assertEquals(citiesInDistrictReport.cities.size(), 6);
     }
 
-
-
     /**
      * Top N Population of countries in Region Report
      */
@@ -340,32 +370,7 @@ public class IntegrationTest {
         assertEquals(totalInDistrictReport.TotalInDistrict, 127800);
     }
 
-    /**
-     * Populated Capital Cities by District
-     */
-    @Test
-    void testRunWithLimitandDistrict()
-    {
-        PopulatedCapitalCitiesByDistrict populatedCapitalCitiesByDistrict = new PopulatedCapitalCitiesByDistrict();
-        popCapCityDistrictReport.runWithInputs(3,"Acre");
-        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
 
-    }
-
-
-    //UC17
-    @Test
-    void testAllCapitalCitiesWorld(){
-        allCapitalCitiesWorldReport.run();
-        assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
-    }
-
-    //UC20
-    @Test
-    void testRunWithLimit() {
-        populatedCapitalCitiesInWorldReport.runWithInputs(5);
-        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
-    }
 
 }
 
