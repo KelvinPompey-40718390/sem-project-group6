@@ -14,7 +14,8 @@ public class CitiesInContinent implements Report {
     private Connection con = null;
     public ArrayList<City> cities;
     private String continent;
-
+    public String city;
+    private Integer limit;
 
     public CitiesInContinent() {
         this.con = ConnectionManager.getInstance().getConnection();
@@ -25,20 +26,26 @@ public class CitiesInContinent implements Report {
      * execute the query
      */
     public void run() {
-        continent = this.getInput();
+        continent = this.getContinent();
+        limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
     }
-
-    public void runWitContinent (String continent) {
+    // for integration test
+    public void runWithContinentandLimits(Integer limit, String continent) {
+        this.limit = limit;
         this.continent = continent;
         this.executeQuery();
         this.displayCities();
     }
 
-    private String getInput() {
+    private String getInput() { return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");   }
+
+
+    private String getContinent() {
         return Utils.readInput("Enter Continent");
     }
+
 
     private void executeQuery()
     {
@@ -52,12 +59,28 @@ public class CitiesInContinent implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, Continent\n" +
-                            "FROM city\n" +
-                            "         INNER JOIN country ON city.CountryCode = country.Code\n" +
-                            "WHERE country.Continent = 'Africa'\n" +
-                            "ORDER BY city.Population DESC";
+            String strSelect = "";
+
+            // Limit results based on user Input
+            if(this.limit > 0) {
+                strSelect =     "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, Continent\n" +
+                                "FROM city\n" +
+                                " INNER JOIN country ON city.CountryCode = country.Code\n" +
+                                "WHERE country.Continent = '" + this.continent + "' " +
+                                "ORDER BY city.Population DESC " +
+                                "LIMIT " + this.limit;
+            }
+            // If a 0 is entered return all the results of the Query
+            else {
+                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, Continent\n" +
+                        "FROM city\n" +
+                        " INNER JOIN country ON city.CountryCode = country.Code\n" +
+                        "WHERE country.Continent = '" + this.continent + "' " +
+                        "ORDER BY city.Population DESC ";
+            }
+
+
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -82,19 +105,19 @@ public class CitiesInContinent implements Report {
             System.out.println("Failed to get population details");
         }
     }
-
+    // Format header Rows in preparation to Show Query Result
     public void displayCities() {
         if(this.cities == null) {
             return;
         }
 
         System.out.println(" All Cities In Continent: " + continent + "\n");
-        System.out.printf("%-35s %-40s %-30s %-15s\n",  "City", "Country", "District", "Population");
+        System.out.printf("%-35s %-40s %-30s %-15s\n",  "CITY", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
         }
     }
-
+    // Display Query Results
     private void displayCity(City city) {
         if(city != null) {
             System.out.printf("%-35s %-40s %-30s %-15s\n",  city.name, city.countryName, city.district, city.population);

@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class PopulationOfACity implements Report {
 
     private Connection con = null;
-    public ArrayList<City> cities;
+    public String cityName = null;
+    public City city = null;
 
     public PopulationOfACity() {
         this.con = ConnectionManager.getInstance().getConnection();
@@ -23,6 +24,7 @@ public class PopulationOfACity implements Report {
      * execute the query
      */
     public void run() {
+        this.cityName = Utils.readInput("Enter city name");
         this.executeQuery();
         this.displayCities();
     }
@@ -34,31 +36,22 @@ public class PopulationOfACity implements Report {
 
     private void executeQuery()
     {
-        cities = new ArrayList<>();
-
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =
-                         "select ID, Name, CountryCode, District, Population from city " +
-                        "order by Population desc";
-
+            String strSelect = String.format("select Name, Population from city where Name = '%s'", cityName);
+            System.out.println(strSelect);
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             while (rset.next())
             {
-                City city = new City();
-                city.name = rset.getString("Name");
-                city.ID = rset.getInt("ID");
-                city.population = rset.getInt("Population");
-                city.countryCode = rset.getString("CountryCode");
-                city.district = rset.getString("District");
-
-                this.cities.add(city);
+                this.city = new City();
+                this.city.name = rset.getString("Name");
+                this.city.population = rset.getInt("Population");
             }
 
 
@@ -71,20 +64,19 @@ public class PopulationOfACity implements Report {
     }
 
     public void displayCities() {
-        if(this.cities == null) {
+        if(this.city == null) {
             return;
         }
 
         System.out.println("Population Of A City\n");
-        System.out.printf("%-20s %-10s %-10s %-10s\n",  "City", "ID", "Population", "Country");
-        for(City city: cities) {
-            this.displayCity(city);
-        }
+        System.out.printf("%-20s %-10s\n",  "City", "Population");
+        this.displayCity(city);
+
     }
 
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-20s %-10s %-10s %-10s\n",  city.name, city.ID, city.population, city.countryCode);
+            System.out.printf("%-20s %d\n",  city.name, city.population);
         }
     }
 

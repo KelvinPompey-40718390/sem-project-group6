@@ -7,15 +7,15 @@ import com.napier.seprojectgroup6.reports.*;
 
 public class App {
     /**
-     *
+     * Main App Class
      * @param args
      */
     public static void main(String[] args) {
 
         // Connect to database and instantiate Navigator
-        // if running locally i.e not on Github actions.
+        // if running locally ie not on GitHub actions.
 
-        System.out.println("Project Works!");
+        System.out.println("SEM GROUP 6 PROJECT LOADED!");
 
         if(args.length < 1){
             ConnectionManager.getInstance().connect("localhost:33060", 0);
@@ -27,67 +27,71 @@ public class App {
         if(!isRunningOnDocker) {
             Navigator navigator = new Navigator();
         }
+
+        // Run all Reports automatically on Docker
         else {
 
-            CitiesByDistrictReport citiesByDistrictReport = new CitiesByDistrictReport();
-            citiesByDistrictReport.runWithDistrict("Aichi");
+            /**
+             * COUNTRY REPORTS
+             */
 
-            TopPopulatedCitiesReport topPopulatedCitiesReport = new TopPopulatedCitiesReport();
-            topPopulatedCitiesReport.runWithLimit(5);
+            //Top Populated Countries By Region - UC6
+            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
+
+            /**
+             *  CITY REPORTS
+             */
+
+            //Cities in the World with and Without Limit - UC7 & UC12
+            CitiesInWorld citiesInWorld = new CitiesInWorld();
+            citiesInWorld.runWithInputs(5);
+            citiesInWorld.runWithInputs(0);
+
+            // Cities by Continent with and Without Limit - UC8 & UC13
+            CitiesInContinent citiesInContinent = new CitiesInContinent();
+            citiesInContinent.runWithContinentandLimits(3,"Africa");
+
+            // Cities by Region with and Without Limit - UC9 & UC14
+            CitiesInRegion citiesInRegion = new CitiesInRegion();
+            citiesInRegion.runWithRegionandLimits(3,"Caribbean");
+
+            // Cities by Country with and Without Limit - UC10 & UC15
+            CitiesInCountry citiesInCountry = new CitiesInCountry();
+            citiesInCountry.runWithCountryandLimits(3,"North America");
+
+            // Cities by District with and Without Limit - UC11 & UC16
+            CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
+            citiesInDistrict.runWithDistrictandLimits(3, "Zuid-Holland");
 
             /**
              *  CAPITAL CITY REPORTS
              */
-            // Populated Capital Cities by Continent with Limit
+            // Populated Capital Cities by Continent with and without Limit - UC 18 & UC21
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
-
-            // ALL Populated Capital Cities by Continent
             populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
-            // Populated Capital Cities by Region with Limit
+            // Populated Capital Cities by Region with and without Limit  - UC19 & UC22
             PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
             populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
-
-            // ALL Populated Capital Cities by Region
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
-            /* Removed by A Jardine due to Missing Class Reference
-            // All Capital Cities in the World
-            AllCapitalCitiesWorld allCapitalCitiesWorld = new AllCapitalCitiesWorld();
-            allCapitalCitiesWorld.run();
-            */
 
-            // Populated Cities by Continent
-            CitiesInContinent citiesInContinent = new CitiesInContinent();
-            citiesInContinent.runWitContinent("Africa");
+            /**
+             * POPULATION REPORTS
+             */
 
-            // Populated Cities by Country
-            CitiesInCountry citiesInCountry = new CitiesInCountry();
-            citiesInCountry.runWithCountry("North America");
+            // Population of people living in and out of cities in each continent - UC 23
+            PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
+            populationInEachContinent.run();
 
-            // Populated Cities by Region
-            CitiesInRegion citiesInRegion = new CitiesInRegion();
-            citiesInRegion.runWithRegion("Caribbean");
+            // Population of people living in and out of cities in each region - UC 24
+            PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
+            populationInEachRegion.run();
 
 
-            //All Cities in the World
-            CitiesInWorld citiesInWorld = new CitiesInWorld();
-            citiesInWorld.runWithCities();
-
-            //Top Populated Countries By Region
-            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
-            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
-
-            // Top Populated Cities by Region
-            TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
-            topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribean");
-
-            // Top Populated Cities by Country
-            TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-            topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
-
-
+            // Close Connection to Database
             ConnectionManager.getInstance().disconnect();
         }
     }

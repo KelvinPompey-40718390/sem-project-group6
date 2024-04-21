@@ -85,7 +85,7 @@ public class CitiesByDistrictReport implements Report {
         }
 
         System.out.println("\nCities by District: " + district + "\n");
-        System.out.printf("%-10s %-10s %-10s %-10s\n",  "City", "District", "Population", "Country");
+        System.out.printf("%-10s %-10s %-10s %-10s\n",  "NAME", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
         }
@@ -93,7 +93,7 @@ public class CitiesByDistrictReport implements Report {
     }
     private void displayCity(City city) {
         if(city != null) {
-            System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.district, city.population, city.countryName);
+            System.out.printf("%-10s %-10s %-10s %-10s\n",  city.name, city.countryName, city.district, city.population);
         }
     }
 
