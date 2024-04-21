@@ -358,7 +358,6 @@ public class IntegrationTest {
         assertEquals(totalInCountryReport.TotalInCountry, 170115000);
     }
 
-
     /**
      * Total Population of District
      */
@@ -369,8 +368,6 @@ public class IntegrationTest {
         totalInDistrictReport.runWithInputs("Balkh");
         assertEquals(totalInDistrictReport.TotalInDistrict, 127800);
     }
-
-
 
 }
 
