@@ -7,7 +7,7 @@ import com.napier.seprojectgroup6.reports.*;
 
 public class App {
     /**
-     *
+     * Main App Class
      * @param args
      */
     public static void main(String[] args) {
@@ -27,22 +27,17 @@ public class App {
         if(!isRunningOnDocker) {
             Navigator navigator = new Navigator();
         }
+
+        // Run all Reports automatically on Docker
         else {
 
             /**
-             *  CAPITAL CITY REPORTS
+             * COUNTRY REPORTS
              */
-            // Populated Capital Cities by Continent with and without Limit - UC 18 & UC21
-            PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
-            populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
-            populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
-            // Populated Capital Cities by Region with and without Limit  - UC19 & UC22
-            PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
-            populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
-            populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
-
-
+            //Top Populated Countries By Region - UC6
+            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
+            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
 
             /**
              *  CITY REPORTS
@@ -69,27 +64,18 @@ public class App {
             CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
             citiesInDistrict.runWithDistrictandLimits(3, "Zuid-Holland");
 
-
-            // Top Populated Cities by Region
-            //TopPopulatedCitiesByCountryReport topPopulatedCitiesByRegionReport = new TopPopulatedCitiesByCountryReport();
-           // topPopulatedCitiesByRegionReport.runWithLimitAndCountry(5, "Caribbean");
-
-            // Top Populated Cities by Country
-           // TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
-           // topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
-
-
-
-
             /**
-             * COUNTRIES REPORTS
+             *  CAPITAL CITY REPORTS
              */
+            // Populated Capital Cities by Continent with and without Limit - UC 18 & UC21
+            PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
+            populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
+            populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
-            //Top Populated Countries By Region - UC6
-            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
-            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
-
-
+            // Populated Capital Cities by Region with and without Limit  - UC19 & UC22
+            PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
+            populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
+            populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
 
             /**
