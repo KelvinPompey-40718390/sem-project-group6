@@ -69,7 +69,7 @@ public class Navigator {
 
         // Test for both lowercase and uppercase Q
 
-        if(input.toUpperCase().equals("Q")) {
+        if(input.equalsIgnoreCase("Q")) {
 
             return;
         }
