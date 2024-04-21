@@ -89,7 +89,7 @@ public class TotalInCountry implements Report {
         if(this.totalInCountry == null) {
             return;
         }
-        System.out.println("POPULATION OF THE COUNTRY:");
+        System.out.println("POPULATION OF THE COUNTRY:" + this.country.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
         System.out.printf("%-20d | %-20s | %-20s%n", TotalInCountry, inCityPercentage, outCityPercentage);

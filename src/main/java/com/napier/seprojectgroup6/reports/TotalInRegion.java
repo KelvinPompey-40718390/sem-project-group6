@@ -87,7 +87,7 @@ public class TotalInRegion implements Report {
             return;
         }
 
-        System.out.println("POPULATION OF THE REGION:");
+        System.out.println("POPULATION OF " + this.region.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
         System.out.printf("%-20d | %-20s | %-20s%n", TotalInRegion, inCityPercentage, outCityPercentage);
