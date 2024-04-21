@@ -33,12 +33,12 @@ public class Navigator {
             new ReportMenu( "Total Population of the World", WorldPopulation.class.getName()),
             new ReportMenu( "Total Population of a Continent", TotalInContinent.class.getName()),
             new ReportMenu( "Total Population of a Region", TotalInRegion.class.getName()),
-            new ReportMenu( "Total Population of a country", TotalInCountry.class.getName()),
+            new ReportMenu( "Total Population of a Country", TotalInCountry.class.getName()),
             new ReportMenu( "Total Population of a District", TotalInDistrict.class.getName()),
             new ReportMenu( "Population of a City", PopulationOfACity.class.getName()),
 
             // Language Report UC32
-            new ReportMenu( "32 Number Of People Speaking A Certain Languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
+            new ReportMenu( "Percentage of World speaking different languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
     };
 
     public Navigator() {
