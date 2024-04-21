@@ -33,7 +33,7 @@ public class Navigator {
             new ReportMenu( "Total Population of a Region", TotalInRegion.class.getName()),
             new ReportMenu( "Total Population of a Country", TotalInCountry.class.getName()),
             new ReportMenu( "Total Population of a District", TotalInDistrict.class.getName()),
-            new ReportMenu( "Population of a City", PopulationOfACity.class.getName()),
+            new ReportMenu( "Total Population of a City", PopulationOfACity.class.getName()),
 
             // Language Report UC32
             new ReportMenu( "Percentage of World speaking different languages", NumberOfPeopleSpeakingACertainLanguage.class.getName())
