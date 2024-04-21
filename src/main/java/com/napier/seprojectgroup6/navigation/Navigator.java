@@ -11,7 +11,6 @@ public class Navigator {
             new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
             new ReportMenu("Top N and All Populated Countries by Region", TopPopulatedCountries.class.getName()),
             new ReportMenu("Top N and All Populated Countries by Continent", TopPopulatedCountriesInAContinent.class.getName()),
-            new ReportMenu("06 Top Populated Countries by Region", TopPopulationCountriesRegion.class.getName()),
 
             // City Reports UC07 - UC16
             new ReportMenu( "Top N and All Populated Cities in The World", CitiesInWorld.class.getName()),
