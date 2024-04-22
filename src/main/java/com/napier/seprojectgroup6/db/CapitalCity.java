@@ -6,9 +6,16 @@ package com.napier.seprojectgroup6.db;
  */
 public class CapitalCity {
 
+    // Name of the capital city
     public String name;
+
+    // Name of the country
     public String country;
+
+    // Population of the country
     public int population;
+
+    // Contructor
 
     public CapitalCity() {
 
