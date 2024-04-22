@@ -36,6 +36,8 @@ public final class IntegrationTest {
     public static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
     public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
+    public static NumberOfPeopleSpeakingACertainLanguage languageReport;
+
     private IntegrationTest() {}
     @BeforeAll
     static void init()
@@ -62,6 +64,7 @@ public final class IntegrationTest {
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         countriesInWorldReport = new CountriesInWorld();
+        languageReport = new NumberOfPeopleSpeakingACertainLanguage();
 
 
     }
@@ -483,6 +486,29 @@ public final class IntegrationTest {
     void testPopulatedCitiesInWorldWithLimit() {
         populatedCapitalCitiesInWorldReport.runWithInputs(5);
         assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
+    }
+
+    @Test
+    void testLanguageReportsReturnsCorrectNumberOfLanguages() {
+     languageReport.run();
+     assertEquals(languageReport.populations.size(), 5);
+    }
+
+    @Test
+    void testLanguageReportReturnsCorrectValues() {
+        languageReport.run();
+
+        Population arabicPopulation = languageReport.populations.get(0);
+        Population englishPopulation = languageReport.populations.get(1);
+        Population spanishPopulation = languageReport.populations.get(2);
+        Population hindiPopulation = languageReport.populations.get(3);
+        Population chinesePopulation = languageReport.populations.get(4);
+
+        assert(arabicPopulation.name.equals("Arabic") && arabicPopulation.totalPopulation == 233839238L );
+        assert(englishPopulation.name.equals("English") && englishPopulation.totalPopulation == 347077867L);
+        assert(spanishPopulation.name.equals("Spanish") && spanishPopulation.totalPopulation == 355029462L);
+        assert(hindiPopulation.name.equals("Hindi") && hindiPopulation.totalPopulation == 405633070L);
+        assert(chinesePopulation.name.equals("Chinese") && chinesePopulation.totalPopulation == 1191843539L);
     }
 }
 

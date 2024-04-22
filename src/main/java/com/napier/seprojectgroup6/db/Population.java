@@ -9,7 +9,7 @@ public class Population {
     //Name of Continent/region/country
     public String name;
 
-    public Long totalPopulation;
+    public long totalPopulation;
 
     // Outputs from these should include a % sign
     public String pctLivingInCities;
