@@ -1,6 +1,5 @@
 package com.napier.seprojectgroup6.reports;
 
-import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.db.Country;
 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 public class CountriesInWorld implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Country> countries;
    public CountriesInWorld() {
         this.con = ConnectionManager.getInstance().getConnection();
@@ -57,12 +56,8 @@ try
                 country.population = rset.getInt("Population");
                 country.capital = rset.getString("Capital");
 
-
-
                 this.countries.add(country);
             }
-
-
         }
         catch (Exception e)
         {
@@ -76,7 +71,7 @@ try
             return;
         }
 
-        System.out.println("All the Cities In the World: ");
+        System.out.println("All the Countries In the World: ");
         System.out.printf("%-35s %-40s %-30s %-40s %-40s %-40s\n", "CODE", "NAME","CONTINENT", "REGION", "POPULATION", "CAPITAL");
         for(Country country: countries) {
             this.displayCountry(country);
