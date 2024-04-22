@@ -498,9 +498,7 @@ public final class IntegrationTest {
         assertEquals(topPopulationCountriesRegion.countries.size(), 10);
     }
 
-    /**
-     * Population of the World
-     */
+    //Population of the World
     @Test
     void testWorldPopulation()
     {
@@ -509,9 +507,7 @@ public final class IntegrationTest {
         assertEquals(worldPopulation.total,6078749450L);
     }
 
-    /**
-     * Total Population of a Continent
-     */
+    //Total Population of a Continent
     @Test
     void testRunTotalInContinent()
     {
@@ -519,9 +515,7 @@ public final class IntegrationTest {
         assertEquals(totalInContinentReport.total, 730074600L);
     }
 
-    /**
-     * Total Population of Region
-     */
+    //Total Population of Region
     @Test
     void testRunTotalInRegion()
     {
@@ -530,9 +524,7 @@ public final class IntegrationTest {
     }
 
 
-    /**
-     * Total Population of Country
-     */
+    //Total Population of Country
     @Test
     void testRunTotalInCountry()
     {
@@ -540,24 +532,29 @@ public final class IntegrationTest {
         assertEquals(totalInCountryReport.total, 170115000);
     }
 
-    /**
-     * Total Population of District
-     */
-    @Test
+    //Total Population of District
+         @Test
     void testRunTotalInDistrict()
     {
         totalInDistrictReport.runWithInputs("Balkh");
         assertEquals(totalInDistrictReport.total, 127800);
     }
 
-    /**
-     * Populated Capital Cities by District
-     */
-    @Test
+    //Populated Capital Cities by District
+         @Test
     void testRunWithLimitandDistrict()
     {
         popCapCityDistrictReport.runWithInputs(3,"Acre");
         assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+
+    }
+
+    //UC19 All Capital Cities by Region
+    @Test
+    void testPopulatedCapitalCitiesByRegionRunWithLimit()
+    {
+        popCapCityRegionReport.runWithInputs(0,"Caribbean");
+        assertEquals(popCapCityRegionReport.capitalCities.size(),58);
 
     }
 
