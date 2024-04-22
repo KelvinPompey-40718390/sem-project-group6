@@ -509,20 +509,16 @@ public final class IntegrationTest {
         assertEquals(worldPopulation.total,6078749450L);
     }
 
-    /**
-     * Total Population of a Continent
-     */
-    @Test
+        //Total Population of a Continent. UC27
+        @Test
     void testRunTotalInContinent()
     {
         totalInContinentReport.runWithInputs("Europe");
         assertEquals(totalInContinentReport.total, 730074600L);
     }
 
-    /**
-     * Total Population of Region
-     */
-    @Test
+         //Total Population of Region. UC28
+         @Test
     void testRunTotalInRegion()
     {
         totalInRegionReport.runWithInputs("Caribbean");
@@ -530,9 +526,8 @@ public final class IntegrationTest {
     }
 
 
-    /**
-     * Total Population of Country
-     */
+    //Total Population of Country. UC29
+
     @Test
     void testRunTotalInCountry()
     {
@@ -540,9 +535,8 @@ public final class IntegrationTest {
         assertEquals(totalInCountryReport.total, 170115000);
     }
 
-    /**
-     * Total Population of District
-     */
+    //Total Population of District. UC30
+
     @Test
     void testRunTotalInDistrict()
     {
