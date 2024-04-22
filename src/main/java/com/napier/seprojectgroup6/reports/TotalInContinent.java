@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class TotalInContinent implements Report {
 
     private final Connection con;
-    public ArrayList<TotalInContinent> totalInContinent;
     public long total;
     private String continent;
     private String inCityPercentage;
@@ -48,7 +47,6 @@ public class TotalInContinent implements Report {
 
     // Execute query when input is provided
     private void executeQuery() {
-        totalInContinent = new ArrayList<>();
 
         try {
             // Create an SQL statement
@@ -82,10 +80,6 @@ public class TotalInContinent implements Report {
     }
 
     public void displayTotalInContinent() {
-        if(this.totalInContinent == null) {
-            return;
-        }
-
         System.out.println("POPULATION OF THE CONTINENT:" + this.continent.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");

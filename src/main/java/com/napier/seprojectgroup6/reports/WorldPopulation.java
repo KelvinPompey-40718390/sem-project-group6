@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class WorldPopulation implements Report {
 
     private final Connection con;
-    public ArrayList<WorldPopulation> worldPopulation;
     public long total;
 
     public WorldPopulation() { this.con = ConnectionManager.getInstance().getConnection();}
@@ -31,7 +30,6 @@ public class WorldPopulation implements Report {
 
     // Execute query when input is provided
     private void executeQuery() {
-            worldPopulation = new ArrayList<>();
 
             try {
                 // Create an SQL statement
@@ -56,9 +54,6 @@ public class WorldPopulation implements Report {
     }
 
     public void displayWorldPopulation() {
-        if(this.worldPopulation == null) {
-            return;
-        }
 
         System.out.println("Population of the World:");
 

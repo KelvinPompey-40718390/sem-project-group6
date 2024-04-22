@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class TotalInRegion implements Report {
 
     private final Connection con;
-    public ArrayList<TotalInRegion> totalInRegion;
     public long total;
     private String region;
     private String inCityPercentage;
@@ -48,7 +47,6 @@ public class TotalInRegion implements Report {
 
     // Execute query when input is provided
     private void executeQuery() {
-        totalInRegion = new ArrayList<>();
 
         try {
             // Create an SQL statement
@@ -82,9 +80,6 @@ public class TotalInRegion implements Report {
     }
 
     public void displayTotalInRegion() {
-        if(this.totalInRegion == null) {
-            return;
-        }
 
         System.out.println("POPULATION OF " + this.region.toUpperCase());
         System.out.println("--------------------------------------");

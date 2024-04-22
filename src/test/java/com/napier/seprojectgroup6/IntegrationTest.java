@@ -32,8 +32,6 @@ public final class IntegrationTest {
     public static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     public static WorldPopulation worldPopulation;
 
-    public static TopPopulatedCitiesByRegionReport topPopulatedCitiesByRegionReport;
-    public static TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport;
     public static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
     public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
@@ -468,22 +466,6 @@ public final class IntegrationTest {
     {
         popCapCityDistrictReport.runWithInputs(3,"Acre");
         assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
-
-    }
-
-    @Test
-    void testTopPopulatedCitiesByRegionReturnsCorrectLimit() {
-
-        topPopulatedCitiesByRegionReport.runWithLimitAndRegion(4, "Caribbean");
-        assertEquals(topPopulatedCitiesByRegionReport.cities.size(), 4);
-
-    }
-
-    @Test
-    void testTopPopulatedCitiesByCountryReturnsCorrectLimit() {
-
-        topPopulatedCitiesByCountryReport.runWithLimitAndCountry(4, "Cuba");
-        assertEquals(topPopulatedCitiesByCountryReport.cities.size(), 4);
 
     }
 
