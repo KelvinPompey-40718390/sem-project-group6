@@ -18,6 +18,9 @@ public final class IntegrationTest {
     public static TopPopulatedCitiesReport topPopCitiesReport;
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
+    // Country Reports
+    public static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    public static CountriesInWorld countriesInWorld;
 
     public static CitiesInContinent citiesInContinentReport;
     public static CitiesInCountry citiesInCountryReport;
@@ -25,7 +28,6 @@ public final class IntegrationTest {
     public static CitiesInWorld citiesInWorldReport;
     public static CitiesInDistrict citiesInDistrictReport;
     public static CountriesInWorld countriesInWorldReport;
-    public static TopPopulationCountriesRegion topPopulationCountriesRegion;
     public static TotalInContinent totalInContinentReport;
     public static TotalInRegion totalInRegionReport;
     public static TotalInCountry totalInCountryReport;
@@ -65,9 +67,23 @@ public final class IntegrationTest {
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         countriesInWorldReport = new CountriesInWorld();
         languageReport = new NumberOfPeopleSpeakingACertainLanguage();
+        countriesInWorld = new CountriesInWorld();
 
 
     }
+
+
+    /**
+     * COUNTRY REPORTS INTEGRATION TESTS
+    **/
+    @Test
+    void setCountriesInWorld(){
+        Population population = new Population();
+
+        countriesInWorld.run();
+        assertEquals(countriesInWorld.countries.size(), 232);
+    }
+
     /**
      * POPULATION REPORTS INTEGRATION TESTS
      */
