@@ -75,6 +75,7 @@ public class IntegrationTest {
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         countriesInWorld = new CountriesInWorld();
 
+
     }
 
     /**
