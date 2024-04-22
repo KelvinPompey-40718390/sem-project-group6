@@ -18,6 +18,8 @@ public class Population {
     public String continent;
     public String percentageOfWorldPopulation;
 
+    public String code;
+    public String region;
+    public String capital;
     public Population() {}
-
 }

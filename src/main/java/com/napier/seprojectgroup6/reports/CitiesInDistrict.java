@@ -3,53 +3,52 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
+import com.napier.seprojectgroup6.db.Country;
 
+import javax.swing.plaf.synth.Region;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+public class CitiesInDistrict implements Report{
 
-public class CitiesInCountry implements Report {
 
-    private Connection con;
+    private Connection con = null;
     public ArrayList<City> cities;
-    private String country;
-    private String city;
+    private String district;
+    public String city;
     private Integer limit;
 
-
-    public CitiesInCountry() {
+    public CitiesInDistrict() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
     /**
-     * Request input from the user and
-     * execute the query
+     * Request input from the user and execute the query
      */
     public void run() {
-        country = this.getCountry();
+        district = this.getDistrict();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
     }
-
-    public void runWithCountryAndLimits(Integer limit, String country) {
+    //for integration test
+    public void runWithDistrictandLimits(Integer limit, String district) {
         this.limit = limit;
-        this.country = country;
+        this.district = district;
         this.executeQuery();
         this.displayCities();
     }
-
     private String getInput() { return Utils.readInput("Enter Number of Cities to display, or 0 to Show All");   }
-    private String getCountry() {
-        return Utils.readInput("Enter Country");
+    private String getDistrict() {
+        return Utils.readInput("Enter District");
     }
 
     private void executeQuery()
     {
         cities = new ArrayList<>();
 
-        if(this.country.isEmpty()) {
+        if(this.district.isEmpty()) {
             return;
         }
         try
@@ -62,25 +61,22 @@ public class CitiesInCountry implements Report {
             // Limit results based on user Input
             if(this.limit > 0) {
 
-            strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, Region\n" +
-                    "FROM city\n" +
-                    "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                    "WHERE country.Name = '" + this.country + "' " +
-                    "ORDER BY city.Population DESC " +
-                    "LIMIT " + this.limit;
-
-        }
+                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
+                        "FROM city\n" +
+                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                        "WHERE city.District = '" + this.district + "'" +
+                        "ORDER BY city.Population DESC " +
+                        "LIMIT " + this.limit;
+            }
 
             // If a 0 is entered return all the results of the Query
             else {
-                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, Region\n" +
+                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
                         "FROM city\n" +
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "WHERE country.Name = '" + this.country + "' " +
+                        "WHERE city.District = '" + this.district + "'" +
                         "ORDER BY city.Population DESC ";
-
-                         }
-
+            }
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -91,6 +87,8 @@ public class CitiesInCountry implements Report {
                 city.countryName = rset.getString("CountryName");
                 city.district = rset.getString("District");
                 city.population = rset.getInt("Population");
+
+
 
                 this.cities.add(city);
             }
@@ -109,7 +107,7 @@ public class CitiesInCountry implements Report {
             return;
         }
 
-        System.out.println("Cities by Country: " + country + "\n");
+        System.out.println("All Cities by District: " + district + "\n");
         System.out.printf("%-35s %-40s %-30s %-15s\n",  "CITY", "COUNTRY", "DISTRICT", "POPULATION");
         for(City city: cities) {
             this.displayCity(city);
@@ -124,3 +122,4 @@ public class CitiesInCountry implements Report {
 
 
 }
+

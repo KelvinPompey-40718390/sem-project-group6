@@ -72,7 +72,7 @@ public class PopulationInEachCountry implements Report {
         }
 
         System.out.println("\nThe population of people, people living in cities, and people not living in cities in each Country\n");
-        System.out.printf("%-40s %-20s %-10s %10s\n",  "COUNTRY", "POPULATION", "IN CITY", "OUT CITY");
+        System.out.printf("%-50s %-20s %-10s %10s\n",  "COUNTRY", "POPULATION", "IN CITY", "OUT CITY");
         for(Population population: populations) {
             this.displayPopulation(population);
 
@@ -81,7 +81,7 @@ public class PopulationInEachCountry implements Report {
 
     private void displayPopulation(Population population) {
         if(population != null) {
-            System.out.printf("%-40s %-20s %-10s %10s\n", population.name, population.totalPopulation, population.pctLivingInCities, population.pctNotLivingInCities);
+            System.out.printf("%-50s %-20s %-10s %10s\n", population.name, population.totalPopulation, population.pctLivingInCities, population.pctNotLivingInCities);
 
         }
 
