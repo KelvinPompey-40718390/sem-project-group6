@@ -16,6 +16,7 @@ public final class IntegrationTest {
     public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
     public static CitiesByDistrictReport cityByDistrictReport;
     public static TopPopulatedCitiesReport topPopCitiesReport;
+    public static TopPopulatedCountries topPopulatedCountriesReport;
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
     public static PopulationInEachContinent popInEachContinentReport;
@@ -50,6 +51,7 @@ public final class IntegrationTest {
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
         cityByDistrictReport = new CitiesByDistrictReport();
         topPopCitiesReport = new TopPopulatedCitiesReport();
+        topPopulatedCountriesReport = new TopPopulatedCountries();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
         popInEachContinentReport = new PopulationInEachContinent();
@@ -129,6 +131,34 @@ public final class IntegrationTest {
         assert (southAmericaPopulation.name.equals("South America") && southAmericaPopulation.pctLivingInCities.equals("8.36%") && southAmericaPopulation.pctNotLivingInCities.equals("91.64%")) ;
         assert (oceaniaPopulation.name.equals("Oceania") && oceaniaPopulation.pctLivingInCities.equals("3.76%") && oceaniaPopulation.pctNotLivingInCities.equals("96.24%")) ;
         assert (antarcticaPopulation.name.equals("Antarctica") && antarcticaPopulation.pctLivingInCities.equals("0.00%") && antarcticaPopulation.pctNotLivingInCities.equals("0.00%")) ;
+    }
+
+
+    @Test
+    void testPopulatedRegionsReturnsAllCountries() {
+        topPopulatedCountriesReport.runWithLimit(0, "Caribbean");
+        assertEquals(topPopulatedCountriesReport.countries.size(), 24);
+    }
+
+    @Test
+    void testPopulatedRegionsReturnsLimitedCountries() {
+        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
+        assertEquals(topPopulatedCountriesReport.countries.size(), 5);
+    }
+
+    @Test
+    void testPopulatedRegionsReturnsCountriesInDescendingOrder() {
+        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
+
+        Country firstCountry = topPopulatedCountriesReport.countries.get(0);
+        boolean result = true;
+
+        for(Country country : topPopulatedCountriesReport.countries) {
+            if(country.population > firstCountry.population) {
+                result = false;
+            }
+        }
+        assertTrue(result);
     }
 
     /**
