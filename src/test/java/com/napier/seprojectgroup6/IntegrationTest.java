@@ -105,6 +105,140 @@ public class IntegrationTest {
      * CITY REPORTS INTEGRATION TESTS
      */
 
+    /** All CITIES in the World */
+    //cities in the world with limits//
+    @Test
+    void testCitiesInWorld() {
+        City city = new City();
+        CitiesInWorldReport.runWithInputs(0);
+        assertEquals(CitiesInWorldReport.cities.size(),4079);
+    }
+    //With limit and city
+    @Test
+    void testRunWithLimitAndCity()
+    {
+        City City = new City();
+        CitiesInWorldReport.runWithInputs(5);
+        assertEquals(CitiesInWorldReport.cities.size(),5);
+
+    }
+
+
+    /** All Cities In Continent with Limit  */
+    // continent no limits
+    @Test
+    void testRunCitiesInContinentNoLimits()
+    {
+        City city = new City();
+        citiesinContinentReport.runWithContinentandLimits(0,"Africa");
+        assertEquals(citiesinContinentReport.cities.size(), 366);
+    }
+    // with limits and continent//
+    @Test
+    void testRunCitiesInContinentWithLimits()
+    {
+        City city = new City();
+        citiesinContinentReport.runWithContinentandLimits(10,"Africa");
+        assertEquals(citiesinContinentReport.cities.size(), 10);
+    }
+
+    //run with invalid continent//
+    @Test
+    void testRunCitiesWithInvalidContinent()
+    {
+        City city = new City();
+        citiesinContinentReport.runWithContinentandLimits(0,"Afr'ica");
+        assertEquals(citiesinContinentReport.cities.size(), 0);
+    }
+
+    /** All CITIES In Region integration tests */
+    //region with limits//
+    @Test
+    void testRunCitiesInRegion()
+    {
+        City city = new City();
+        citiesInRegionreport.runWithRegionandLimits(5,"Caribbean");
+        assertEquals(citiesInRegionreport.cities.size(), 5);
+    }
+    //region with no limits//
+    @Test
+    void testRunCitiesInRegionWithNoLimits()
+    {
+        City city = new City();
+        citiesInRegionreport.runWithRegionandLimits(0,"Caribbean");
+        assertEquals(citiesInRegionreport.cities.size(), 58);
+    }
+    // with invalid region//
+    @Test
+    void testRunCitiesInvalidRegion()
+    {
+        City city = new City();
+        citiesInRegionreport.runWithRegionandLimits(0,"Caribb'ean");
+        assertEquals(citiesInRegionreport.cities.size(), 0);
+    }
+
+    /** All CITIES In Country with Limit */
+    //country no limits//
+
+    @Test
+    void testRunCitiesInCountry() {
+        City city = new City();
+        citiesInCountryReport.runWithCountryandLimits(0,"united states");
+        assertEquals(citiesInCountryReport.cities.size(),274);
+    }
+    //Country with limits//
+    @Test
+    void testRunCitiesInCountryWithLimits() {
+        City city = new City();
+        citiesInCountryReport.runWithCountryandLimits(5,"united states");
+        assertEquals(citiesInCountryReport.cities.size(),5);
+    }
+
+    //invalid country//
+    @Test
+    void testRunCitiesInCountryWithError() {
+        City city = new City();
+        citiesInCountryReport.runWithCountryandLimits(0,"unit'ed states");
+        assertEquals(citiesInCountryReport.cities.size(),0);
+    }
+
+    /** All Cities In District  Integration tests */
+    //district and no limits
+    @Test
+    void testRunWithDistrictNoLimits()
+    {
+        City city = new City();
+        citiesInDistrictReport.runWithDistrictandLimits(0, "Zuid-Holland");
+        assertEquals(citiesInDistrictReport.cities.size(), 6);
+    }
+
+    //district and limits
+    @Test
+    void testRunWithDistrictAndLimits()
+    {
+        City city = new City();
+        citiesInDistrictReport.runWithDistrictandLimits(3, "Zuid-Holland");
+        assertEquals(citiesInDistrictReport.cities.size(), 3);
+    }
+
+    //no district no limits//
+    @Test
+    void testRunWithDistrictNoLimitsEmptyDistrict()
+    {
+        City city = new City();
+        citiesInDistrictReport.runWithDistrictandLimits(0, " ");
+        assertEquals(citiesInDistrictReport.cities.size(), 0);
+    }
+
+    // invalid district to trigger error in query//
+    @Test
+    void testRunWithInvalidDistrict()
+    {
+        City city = new City();
+        citiesInDistrictReport.runWithDistrictandLimits(0, "Noor'd-Holland");
+        assertEquals(citiesInDistrictReport.cities.size(), 0);
+    }
+
     // City by District if empty, returns no results
     @Test
     void testRunWithEmptyDistrict() {
@@ -123,48 +257,15 @@ public class IntegrationTest {
         assertEquals(cityByDistrictReport.cities.size(), 15);
     }
 
-    /** All Cities In Continent with Limit  */
-    @Test
-    void testRunCitiesInContinent()
-    {
-        City city = new City();
-        citiesinContinentReport.runWithContinentandLimits(0,"Africa");
-        assertEquals(citiesinContinentReport.cities.size(), 366);
-    }
 
-    /** All CITIES In Region with Limit */
-    @Test
-    void testRunCitiesInRegion()
-    {
-        City city = new City();
-        citiesInRegionreport.runWithRegionandLimits(0,"Caribbean");
-        assertEquals(citiesInRegionreport.cities.size(), 58);
-    }
+    /**
+     * END OF CITY REPORTS INTEGRATION TESTS
+     */
 
-    /** All CITIES In Country with Limit */
 
-    @Test
-    void testRunCitiesInCountry() {
-        City city = new City();
-        citiesInCountryReport.runWithCountryandLimits(0,"united states");
-        assertEquals(citiesInCountryReport.cities.size(),274);
-    }
 
-    /** All CITIES in the World */
-    @Test
-    void testCitiesInWorld() {
-        City city = new City();
-        CitiesInWorldReport.runWithInputs(5);
-        assertEquals(CitiesInWorldReport.cities.size(),5);
-    }
 
-    @Test
-    void testRunWithLimitAndCity()
-    {
-        City City = new City();
-        CitiesInWorldReport.runWithInputs(5);
-        assertEquals(CitiesInWorldReport.cities.size(),5);
-    }
+
 
 
     /**
@@ -293,14 +394,7 @@ public class IntegrationTest {
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
-    /** All Cities In District with Limit  */
-    @Test
-    void testrunWithDistrictandLimits()
-    {
-        City city = new City();
-        citiesInDistrictReport.runWithDistrictandLimits(0, "Zuid-Holland");
-        assertEquals(citiesInDistrictReport.cities.size(), 6);
-    }
+
 
     /**
      * Top N Population of countries in Region Report
