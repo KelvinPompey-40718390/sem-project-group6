@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 public class NumberOfPeopleSpeakingACertainLanguage implements Report{
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Population> populations;
 
     public NumberOfPeopleSpeakingACertainLanguage() {
@@ -34,16 +34,15 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-            strSelect = "SELECT cl.language, " +
+            String strSelect = "SELECT cl.language, " +
                     "SUM(cl.percentage * 0.01 * c.population) AS number_of_people, " +
                     "CONCAT(ROUND((SUM(cl.percentage * 0.01 * c.population) / (SELECT SUM(population) FROM country))*100, 2),'%') AS percentage_of_world_population " +
                     "FROM countrylanguage cl " +
                     "JOIN country c ON cl.countrycode = c.code " +
                     "WHERE cl.language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') " +
                     "GROUP BY cl.language " +
-                    "ORDER BY number_of_people ASC";
+                    "ORDER BY number_of_people";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TopPopulatedCountries implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Country> countries;
     private Integer limit;
 
@@ -83,15 +83,15 @@ public class TopPopulatedCountries implements Report {
 
             while (rset.next())
             {
-                Country Country = new Country();
-                Country.code = rset.getString("Code");
-                Country.name = rset.getString("Name");
-                Country.continent = rset.getString("Continent");
-                Country.region = rset.getString("Region");
-                Country.population = rset.getInt("Population");
-                Country.capital = rset.getString("Capital");
+                Country country = new Country();
+                country.code = rset.getString("Code");
+                country.name = rset.getString("Name");
+                country.continent = rset.getString("Continent");
+                country.region = rset.getString("Region");
+                country.population = rset.getInt("Population");
+                country.capital = rset.getString("Capital");
 
-                this.countries.add(Country);
+                this.countries.add(country);
             }
 
 
@@ -115,9 +115,9 @@ public class TopPopulatedCountries implements Report {
         }
     }
 
-    private void displayCountries(Country Country) {
+    private void displayCountries(Country country) {
         if(countries != null) {
-            System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  Country.code, Country.name, Country.continent, Country.region, Country.population, Country.capital);
+            System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  country.code, country.name, country.continent, country.region, country.population, country.capital);
         }
     }
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CitiesByDistrictReport implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     private String district;
 
@@ -61,7 +61,7 @@ public class CitiesByDistrictReport implements Report {
             {
                 City city = new City();
                 city.name = rset.getString("Name");
-                city.ID = rset.getInt("ID");
+                city.id = rset.getInt("ID");
                 city.population = rset.getInt("Population");
                 city.countryCode = rset.getString("CountryCode");
                 city.countryName = rset.getString("country.Name");
