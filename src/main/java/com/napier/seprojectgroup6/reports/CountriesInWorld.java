@@ -56,12 +56,8 @@ try
                 country.population = rset.getInt("Population");
                 country.capital = rset.getString("Capital");
 
-
-
                 this.countries.add(country);
             }
-
-
         }
         catch (Exception e)
         {
@@ -75,7 +71,7 @@ try
             return;
         }
 
-        System.out.println("All the Cities In the World: ");
+        System.out.println("All the Countries In the World: ");
         System.out.printf("%-35s %-40s %-30s %-40s %-40s %-40s\n", "CODE", "NAME","CONTINENT", "REGION", "POPULATION", "CAPITAL");
         for(Country country: countries) {
             this.displayCountry(country);

@@ -24,6 +24,7 @@ public final class IntegrationTest {
     public static CitiesInRegion citiesInRegionReport;
     public static CitiesInWorld citiesInWorldReport;
     public static CitiesInDistrict citiesInDistrictReport;
+    public static CountriesInWorld countriesInWorldReport;
     public static TopPopulationCountriesRegion topPopulationCountriesRegion;
     public static TotalInContinent totalInContinentReport;
     public static TotalInRegion totalInRegionReport;
@@ -60,6 +61,7 @@ public final class IntegrationTest {
         worldPopulation = new WorldPopulation();
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
+        countriesInWorldReport = new CountriesInWorld();
 
 
     }
@@ -187,6 +189,13 @@ public final class IntegrationTest {
     void testRunCitiesInCountryWithError() {
         citiesInCountryReport.runWithCountryAndLimits(0,"unit'ed states");
         assertEquals(citiesInCountryReport.cities.size(),0);
+    }
+
+
+    @Test
+    void testCountriesInWorldReturnsAllCountries() {
+        countriesInWorldReport.run();
+        assertEquals(countriesInWorldReport.countries.size(), 232);
     }
 
     /** All Cities In District  Integration tests */
@@ -475,7 +484,6 @@ public final class IntegrationTest {
         populatedCapitalCitiesInWorldReport.runWithInputs(5);
         assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
     }
-
 }
 
 
