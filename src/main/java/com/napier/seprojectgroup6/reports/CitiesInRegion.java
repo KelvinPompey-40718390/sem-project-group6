@@ -3,9 +3,7 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
-import com.napier.seprojectgroup6.db.Country;
 
-import javax.swing.plaf.synth.Region;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 
 public class CitiesInRegion implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     private String region;
     public String city;
@@ -33,7 +31,7 @@ public class CitiesInRegion implements Report {
         this.displayCities();
     }
 
-    public void runWithRegionandLimits(Integer limit, String region) {
+    public void runWithRegionAndLimits(Integer limit, String region) {
         this.limit = limit;
         this.region = region;
         this.executeQuery();
@@ -55,8 +53,15 @@ public class CitiesInRegion implements Report {
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
-            String strSelect = "";
+            // If a 0 is entered return all the results of the Query
+
+            String strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
+                    "FROM city\n" +
+                    "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                    "WHERE country.Region = '" + this.region + "'" +
+                    "ORDER BY city.Population DESC ";
 
             // Limit results based on user Input
             if(this.limit > 0) {
@@ -69,14 +74,7 @@ public class CitiesInRegion implements Report {
                         "LIMIT " + this.limit;
             }
 
-            // If a 0 is entered return all the results of the Query
-            else {
-                strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population, country.Region\n" +
-                        "FROM city\n" +
-                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "WHERE country.Region = '" + this.region + "'" +
-                        "ORDER BY city.Population DESC ";
-            }
+
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -88,11 +86,8 @@ public class CitiesInRegion implements Report {
                 city.district = rset.getString("District");
                 city.population = rset.getInt("Population");
 
-
-
                 this.cities.add(city);
             }
-
 
         }
         catch (Exception e)

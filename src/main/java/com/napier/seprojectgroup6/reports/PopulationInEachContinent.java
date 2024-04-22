@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PopulationInEachContinent implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Population> populations;
 
     // Establish Connection to Database
@@ -37,9 +37,8 @@ public class PopulationInEachContinent implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-            strSelect = "SELECT country.Continent AS Name, SUM(country.Population) AS Population, " +
+            String strSelect = "SELECT country.Continent AS Name, SUM(country.Population) AS Population, " +
                                 "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct," +
                                 "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
                         "FROM country " +

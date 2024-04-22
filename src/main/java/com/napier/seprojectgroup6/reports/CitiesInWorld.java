@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class CitiesInWorld implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     public ArrayList<Country> countries;
 
@@ -51,7 +51,11 @@ public class CitiesInWorld implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
+            // If a 0 is entered return all the results of the Query
+            String strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
+                    "FROM city\n" +
+                    "INNER JOIN country ON city.CountryCode = country.Code\n" +
+                    "ORDER BY city.Population Desc ";
 
             // Limit results based on user Input
             if(this.limit > 0) {
@@ -60,13 +64,6 @@ public class CitiesInWorld implements Report {
                         "INNER JOIN country ON city.CountryCode = country.Code\n" +
                         "ORDER BY city.Population Desc " +
                         "LIMIT " + this.limit;
-            }
-            // If a 0 is entered return all the results of the Query
-            else {
-            strSelect = "SELECT city.Name,country.Name AS CountryName,  city.District, city.Population\n" +
-                        "FROM city\n" +
-                        "INNER JOIN country ON city.CountryCode = country.Code\n" +
-                        "ORDER BY city.Population Desc ";
             }
 
 

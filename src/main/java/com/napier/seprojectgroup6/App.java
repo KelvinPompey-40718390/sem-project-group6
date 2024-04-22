@@ -7,8 +7,8 @@ import com.napier.seprojectgroup6.reports.*;
 
 public class App {
     /**
-     * Main App Class
-     * @param args
+     *
+     * @param args Commandline arguments
      */
     public static void main(String[] args) {
 
@@ -25,7 +25,7 @@ public class App {
 
         boolean isRunningOnDocker = args.length > 1;
         if(!isRunningOnDocker) {
-            Navigator navigator = new Navigator();
+            new Navigator();
         }
 
         // Run all Reports automatically on Docker
@@ -39,7 +39,7 @@ public class App {
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
             topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
 
-            /**
+            /*
              *  CITY REPORTS
              */
 
@@ -50,15 +50,15 @@ public class App {
 
             // Cities by Continent with and Without Limit - UC8 & UC13
             CitiesInContinent citiesInContinent = new CitiesInContinent();
-            citiesInContinent.runWithContinentandLimits(3,"Africa");
+            citiesInContinent.runWithContinentAndLimits(3,"Africa");
 
             // Cities by Region with and Without Limit - UC9 & UC14
             CitiesInRegion citiesInRegion = new CitiesInRegion();
-            citiesInRegion.runWithRegionandLimits(3,"Caribbean");
+            citiesInRegion.runWithRegionAndLimits(3,"Caribbean");
 
             // Cities by Country with and Without Limit - UC10 & UC15
             CitiesInCountry citiesInCountry = new CitiesInCountry();
-            citiesInCountry.runWithCountryandLimits(3,"North America");
+            citiesInCountry.runWithCountryAndLimits(3,"North America");
 
             // Cities by District with and Without Limit - UC11 & UC16
             CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
@@ -78,7 +78,7 @@ public class App {
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
 
-            /**
+            /*
              * POPULATION REPORTS
              */
 

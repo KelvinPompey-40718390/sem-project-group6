@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class CitiesInContinent implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     private String continent;
     public String city;
@@ -32,7 +32,7 @@ public class CitiesInContinent implements Report {
         this.displayCities();
     }
     // for integration test
-    public void runWithContinentandLimits(Integer limit, String continent) {
+    public void runWithContinentAndLimits(Integer limit, String continent) {
         this.limit = limit;
         this.continent = continent;
         this.executeQuery();
@@ -59,7 +59,7 @@ public class CitiesInContinent implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
+            String strSelect;
 
             // Limit results based on user Input
             if(this.limit > 0) {

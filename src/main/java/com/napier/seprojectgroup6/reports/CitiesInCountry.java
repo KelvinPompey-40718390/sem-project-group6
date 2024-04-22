@@ -3,7 +3,6 @@ package com.napier.seprojectgroup6.reports;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
-import com.napier.seprojectgroup6.db.Country;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public class CitiesInCountry implements Report {
 
-    private Connection con = null;
+    private Connection con;
     public ArrayList<City> cities;
     private String country;
     private String city;
@@ -34,7 +33,7 @@ public class CitiesInCountry implements Report {
         this.displayCities();
     }
 
-    public void runWithCountryandLimits(Integer limit, String country) {
+    public void runWithCountryAndLimits(Integer limit, String country) {
         this.limit = limit;
         this.country = country;
         this.executeQuery();

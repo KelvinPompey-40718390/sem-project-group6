@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TopPopulatedCitiesReport implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     private Integer limit;
 
@@ -57,9 +57,6 @@ public class TopPopulatedCitiesReport implements Report {
             if(this.limit > 0) {
                 strSelect = String.format("select ID, city.Name, country.Name, CountryCode, District, city.Population from city left join country on city.CountryCode = country.Code order by city.Population desc limit %d", this.limit);
             }
-            else {
-                strSelect = "";
-            }
 
 
             // Execute SQL statement
@@ -69,7 +66,7 @@ public class TopPopulatedCitiesReport implements Report {
             {
                 City city = new City();
                 city.name = rset.getString("Name");
-                city.ID = rset.getInt("ID");
+                city.id = rset.getInt("ID");
                 city.population = rset.getInt("Population");
                 city.countryCode = rset.getString("CountryCode");
                 city.countryName  = rset.getString("country.Name");

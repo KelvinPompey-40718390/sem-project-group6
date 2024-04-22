@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionManager {
-    private static ConnectionManager instance = null;
-    private Connection con = null;
-    public boolean connected = false;
+public final class ConnectionManager {
+    private static ConnectionManager instance;
+    private Connection con;
+    public boolean connected;
     private ConnectionManager() {
 
     }
@@ -49,7 +49,7 @@ public class ConnectionManager {
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");

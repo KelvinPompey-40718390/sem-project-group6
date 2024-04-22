@@ -4,51 +4,46 @@ package com.napier.seprojectgroup6;
 // Import DB, Reports and Navigation Folders for Testing
 import com.napier.seprojectgroup6.db.*;
 import com.napier.seprojectgroup6.reports.*;
-import com.napier.seprojectgroup6.navigation.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class IntegrationTest {
+public final class IntegrationTest {
 
+    public static PopulatedCapitalCitiesByContinent report;
+    public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+    public static CitiesByDistrictReport cityByDistrictReport;
+    public static TopPopulatedCitiesReport topPopCitiesReport;
+    public static TopPopulatedCountries topPopulatedCountriesReport;
+    public static PopulationInEachRegion popInEachRegionReport;
+    public static PopulationInEachCountry popInEachCountryReport;
+    public static PopulationInEachContinent popInEachContinentReport;
     // Country Reports
-    static TopPopulationCountriesRegion topPopulationCountriesRegion;
-    static CountriesInWorld countriesInWorld;
+    public static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    public static CountriesInWorld countriesInWorld;
 
+    public static CitiesInContinent citiesInContinentReport;
+    public static CitiesInCountry citiesInCountryReport;
+    public static CitiesInRegion citiesInRegionReport;
+    public static CitiesInWorld citiesInWorldReport;
+    public static CitiesInDistrict citiesInDistrictReport;
+    public static PopulationOfACity populationOfACity;
+    public static CountriesInWorld countriesInWorldReport;
+    public static TotalInContinent totalInContinentReport;
+    public static TotalInRegion totalInRegionReport;
+    public static TotalInCountry totalInCountryReport;
+    public static TotalInDistrict totalInDistrictReport;
+    public static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
+    public static WorldPopulation worldPopulation;
 
-    // City Reports
-    static CitiesByDistrictReport cityByDistrictReport;
-    static TopPopulatedCitiesReport topPopCitiesReport;
-    static CitiesInContinent citiesinContinentReport;
-    static CitiesInCountry citiesInCountryReport;
-    static CitiesInRegion citiesInRegionreport;
-    static CitiesInWorld CitiesInWorldReport;
-    static CitiesInDistrict citiesInDistrictReport;
+    public static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
+    public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
-    // Capital City Reports
-    static PopulatedCapitalCitiesByContinent report;
-    static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
-    static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
-    static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
-    static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
+    public static NumberOfPeopleSpeakingACertainLanguage languageReport;
 
-    // Population Reports
-    static PopulationInEachRegion PopInEachRegionReport;
-    static PopulationInEachCountry popInEachCountryReport;
-    static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinent;
-
-    // Total Population Reports
-    static TotalInContinent totalInContinentReport;
-    static TotalInRegion totalInRegionReport;
-    static TotalInCountry totalInCountryReport;
-    static TotalInDistrict totalInDistrictReport;
-    static WorldPopulation worldPopulation;
-
-
-    // Language Report
-
+    private IntegrationTest() {}
     @BeforeAll
     static void init()
     {
@@ -57,12 +52,15 @@ public class IntegrationTest {
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
         cityByDistrictReport = new CitiesByDistrictReport();
         topPopCitiesReport = new TopPopulatedCitiesReport();
-        PopInEachRegionReport = new PopulationInEachRegion();
+        topPopulatedCountriesReport = new TopPopulatedCountries();
+        popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
-        citiesinContinentReport = new CitiesInContinent();
+        popInEachContinentReport = new PopulationInEachContinent();
+        populationOfACity = new PopulationOfACity();
+        citiesInContinentReport = new CitiesInContinent();
         citiesInCountryReport =  new CitiesInCountry();
-        citiesInRegionreport = new CitiesInRegion();
-        CitiesInWorldReport = new CitiesInWorld();
+        citiesInRegionReport = new CitiesInRegion();
+        citiesInWorldReport = new CitiesInWorld();
         citiesInDistrictReport = new CitiesInDistrict();
         topPopulationCountriesRegion = new TopPopulationCountriesRegion();
         totalInContinentReport = new TotalInContinent();
@@ -73,10 +71,11 @@ public class IntegrationTest {
         worldPopulation = new WorldPopulation();
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
+        countriesInWorldReport = new CountriesInWorld();
+        languageReport = new NumberOfPeopleSpeakingACertainLanguage();
         countriesInWorld = new CountriesInWorld();
-
-
     }
+
 
     /**
      * COUNTRY REPORTS INTEGRATION TESTS
@@ -89,7 +88,6 @@ public class IntegrationTest {
         assertEquals(countriesInWorld.countries.size(), 232);
     }
 
-
     /**
      * POPULATION REPORTS INTEGRATION TESTS
      */
@@ -97,7 +95,6 @@ public class IntegrationTest {
     // Population in Each Country returns expected Results
     @Test
     void testPopInEachCountry(){
-        Population population = new Population();
 
         popInEachCountryReport.run();
         assertEquals(popInEachCountryReport.populations.size(), 239);
@@ -106,31 +103,100 @@ public class IntegrationTest {
      // Population in each Region returns expected results
     @Test
     void testPopInEachRegion(){
-        Population population = new Population();
 
-        PopInEachRegionReport.run();
-        assertEquals(PopInEachRegionReport.populations.size(), 25);
+        popInEachRegionReport.run();
+        assertEquals(popInEachRegionReport.populations.size(), 25);
+    }
+
+
+    @Test
+    void testPopInEachContinentReturnsCorrectNumberOfContinents(){
+        popInEachContinentReport.run();
+        assertEquals(popInEachContinentReport.populations.size(), 7);
+    }
+
+    @Test
+    void testPopInEachContinentReturnsCorrectValues(){
+        popInEachContinentReport.run();
+        Population northAmericanPopulation = popInEachContinentReport.populations.get(0);
+        Population asiaPopulation = popInEachContinentReport.populations.get(1);
+        Population africaPopulation = popInEachContinentReport.populations.get(2);
+        Population europePopulation = popInEachContinentReport.populations.get(3);
+        Population southAmericaPopulation = popInEachContinentReport.populations.get(4);
+        Population oceaniaPopulation = popInEachContinentReport.populations.get(5);
+        Population antarcticaPopulation = popInEachContinentReport.populations.get(6);
+
+        assert (northAmericanPopulation.name.equals("North America") && northAmericanPopulation.pctLivingInCities.equals("3.96%") && northAmericanPopulation.pctNotLivingInCities.equals("96.04%")  );
+        assert (asiaPopulation.name.equals("Asia") && asiaPopulation.pctLivingInCities.equals("2.73%") && asiaPopulation.pctNotLivingInCities.equals("97.27%"));
+        assert (africaPopulation.name.equals("Africa") && africaPopulation.pctLivingInCities.equals("6.08%") && africaPopulation.pctNotLivingInCities.equals("93.92%")) ;
+        assert (europePopulation.name.equals("Europe") && europePopulation.pctLivingInCities.equals("7.11%") && europePopulation.pctNotLivingInCities.equals("92.89%")) ;
+        assert (southAmericaPopulation.name.equals("South America") && southAmericaPopulation.pctLivingInCities.equals("8.36%") && southAmericaPopulation.pctNotLivingInCities.equals("91.64%")) ;
+        assert (oceaniaPopulation.name.equals("Oceania") && oceaniaPopulation.pctLivingInCities.equals("3.76%") && oceaniaPopulation.pctNotLivingInCities.equals("96.24%")) ;
+        assert (antarcticaPopulation.name.equals("Antarctica") && antarcticaPopulation.pctLivingInCities.equals("0.00%") && antarcticaPopulation.pctNotLivingInCities.equals("0.00%")) ;
+    }
+
+
+    @Test
+    void testPopulatedRegionsReturnsAllCountries() {
+        topPopulatedCountriesReport.runWithLimit(0, "Caribbean");
+        assertEquals(topPopulatedCountriesReport.countries.size(), 24);
+    }
+
+    @Test
+    void testPopulatedRegionsReturnsLimitedCountries() {
+        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
+        assertEquals(topPopulatedCountriesReport.countries.size(), 5);
+    }
+
+    @Test
+    void testPopulatedRegionsReturnsCountriesInDescendingOrder() {
+        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
+
+        Country firstCountry = topPopulatedCountriesReport.countries.get(0);
+        boolean result = true;
+
+        for(Country country : topPopulatedCountriesReport.countries) {
+            if(country.population > firstCountry.population) {
+                result = false;
+            }
+        }
+        assertTrue(result);
     }
 
     /**
+     * TOP POPULATED CITIES BY DISTRICT
+     */
+    @Test
+    void testRunPopCitiesReportWithZeroLimit() {
+
+        topPopCitiesReport.runWithLimit(0);
+        assertEquals(topPopCitiesReport.cities.size(), 0);
+    }
+
+    @Test
+    void testRunPopCitiesWithDistrict() {
+
+        topPopCitiesReport.runWithLimit(5);
+        assertEquals(topPopCitiesReport.cities.size(), 5);
+    }
+
+    /*
      * CITY REPORTS INTEGRATION TESTS
      */
 
     /** All CITIES in the World */
     //cities in the world with limits//
     @Test
-    void testCitiesInWorld() {
-        City city = new City();
-        CitiesInWorldReport.runWithInputs(0);
-        assertEquals(CitiesInWorldReport.cities.size(),4079);
+    void testAllCitiesInWorld() {
+        citiesInWorldReport.runWithInputs(0);
+        assertEquals(citiesInWorldReport.cities.size(),4079);
     }
     //With limit and city
     @Test
-    void testRunWithLimitAndCity()
+    void testCitiesInWorldWithLimitAndCity()
     {
-        City City = new City();
-        CitiesInWorldReport.runWithInputs(5);
-        assertEquals(CitiesInWorldReport.cities.size(),5);
+        citiesInWorldReport.runWithInputs(5);
+        assertEquals(citiesInWorldReport.cities.size(),5);
 
     }
 
@@ -140,26 +206,23 @@ public class IntegrationTest {
     @Test
     void testRunCitiesInContinentNoLimits()
     {
-        City city = new City();
-        citiesinContinentReport.runWithContinentandLimits(0,"Africa");
-        assertEquals(citiesinContinentReport.cities.size(), 366);
+        citiesInContinentReport.runWithContinentAndLimits(0,"Africa");
+        assertEquals(citiesInContinentReport.cities.size(), 366);
     }
     // with limits and continent//
     @Test
     void testRunCitiesInContinentWithLimits()
     {
-        City city = new City();
-        citiesinContinentReport.runWithContinentandLimits(10,"Africa");
-        assertEquals(citiesinContinentReport.cities.size(), 10);
+        citiesInContinentReport.runWithContinentAndLimits(10,"Africa");
+        assertEquals(citiesInContinentReport.cities.size(), 10);
     }
 
     //run with invalid continent//
     @Test
     void testRunCitiesWithInvalidContinent()
     {
-        City city = new City();
-        citiesinContinentReport.runWithContinentandLimits(0,"Afr'ica");
-        assertEquals(citiesinContinentReport.cities.size(), 0);
+        citiesInContinentReport.runWithContinentAndLimits(0,"Afr'ica");
+        assertEquals(citiesInContinentReport.cities.size(), 0);
     }
 
     /** All CITIES In Region integration tests */
@@ -167,25 +230,22 @@ public class IntegrationTest {
     @Test
     void testRunCitiesInRegion()
     {
-        City city = new City();
-        citiesInRegionreport.runWithRegionandLimits(5,"Caribbean");
-        assertEquals(citiesInRegionreport.cities.size(), 5);
+        citiesInRegionReport.runWithRegionAndLimits(5,"Caribbean");
+        assertEquals(citiesInRegionReport.cities.size(), 5);
     }
     //region with no limits//
     @Test
-    void testRunCitiesInRegionWithNoLimits()
+    void testRunAllCitiesInRegionWithNoLimits()
     {
-        City city = new City();
-        citiesInRegionreport.runWithRegionandLimits(0,"Caribbean");
-        assertEquals(citiesInRegionreport.cities.size(), 58);
+        citiesInRegionReport.runWithRegionAndLimits(0,"Caribbean");
+        assertEquals(citiesInRegionReport.cities.size(), 58);
     }
     // with invalid region//
     @Test
     void testRunCitiesInvalidRegion()
     {
-        City city = new City();
-        citiesInRegionreport.runWithRegionandLimits(0,"Caribb'ean");
-        assertEquals(citiesInRegionreport.cities.size(), 0);
+        citiesInRegionReport.runWithRegionAndLimits(0,"Caribb'ean");
+        assertEquals(citiesInRegionReport.cities.size(), 0);
     }
 
     /** All CITIES In Country with Limit */
@@ -193,24 +253,28 @@ public class IntegrationTest {
 
     @Test
     void testRunCitiesInCountry() {
-        City city = new City();
-        citiesInCountryReport.runWithCountryandLimits(0,"united states");
+        citiesInCountryReport.runWithCountryAndLimits(0,"united states");
         assertEquals(citiesInCountryReport.cities.size(),274);
     }
     //Country with limits//
     @Test
     void testRunCitiesInCountryWithLimits() {
-        City city = new City();
-        citiesInCountryReport.runWithCountryandLimits(5,"united states");
+        citiesInCountryReport.runWithCountryAndLimits(5,"united states");
         assertEquals(citiesInCountryReport.cities.size(),5);
     }
 
     //invalid country//
     @Test
     void testRunCitiesInCountryWithError() {
-        City city = new City();
-        citiesInCountryReport.runWithCountryandLimits(0,"unit'ed states");
+        citiesInCountryReport.runWithCountryAndLimits(0,"unit'ed states");
         assertEquals(citiesInCountryReport.cities.size(),0);
+    }
+
+
+    @Test
+    void testCountriesInWorldReturnsAllCountries() {
+        countriesInWorldReport.run();
+        assertEquals(countriesInWorldReport.countries.size(), 232);
     }
 
     /** All Cities In District  Integration tests */
@@ -218,7 +282,6 @@ public class IntegrationTest {
     @Test
     void testRunWithDistrictNoLimits()
     {
-        City city = new City();
         citiesInDistrictReport.runWithDistrictandLimits(0, "Zuid-Holland");
         assertEquals(citiesInDistrictReport.cities.size(), 6);
     }
@@ -227,7 +290,6 @@ public class IntegrationTest {
     @Test
     void testRunWithDistrictAndLimits()
     {
-        City city = new City();
         citiesInDistrictReport.runWithDistrictandLimits(3, "Zuid-Holland");
         assertEquals(citiesInDistrictReport.cities.size(), 3);
     }
@@ -236,7 +298,6 @@ public class IntegrationTest {
     @Test
     void testRunWithDistrictNoLimitsEmptyDistrict()
     {
-        City city = new City();
         citiesInDistrictReport.runWithDistrictandLimits(0, " ");
         assertEquals(citiesInDistrictReport.cities.size(), 0);
     }
@@ -245,15 +306,13 @@ public class IntegrationTest {
     @Test
     void testRunWithInvalidDistrict()
     {
-        City city = new City();
         citiesInDistrictReport.runWithDistrictandLimits(0, "Noor'd-Holland");
         assertEquals(citiesInDistrictReport.cities.size(), 0);
     }
 
     // City by District if empty, returns no results
     @Test
-    void testRunWithEmptyDistrict() {
-        City city = new City();
+    void testRunCitiesByDistrictReportWithEmptyDistrict() {
 
         cityByDistrictReport.runWithDistrict("");
         assertEquals(cityByDistrictReport.cities.size(), 0);
@@ -262,24 +321,21 @@ public class IntegrationTest {
     // City by District returns expected results
     @Test
     void testRunWithDistrict() {
-        City city = new City();
 
         cityByDistrictReport.runWithDistrict("Aichi");
         assertEquals(cityByDistrictReport.cities.size(), 15);
     }
 
-
-    /**
+    @Test
+    void testPopulationOfACity() {
+        populationOfACity.runWithCity("Paris");
+        assertEquals(populationOfACity.city.population, 2125246L);
+    }
+    /*
      * END OF CITY REPORTS INTEGRATION TESTS
      */
 
-
-
-
-
-
-
-    /**
+    /*
      * CAPITAL CITY REPORTS INTEGRATION TESTS
      */
 
@@ -287,9 +343,8 @@ public class IntegrationTest {
      * Populated Capital Cities by District
      */
     @Test
-    void testRunWithLimitandDistrict()
+    void testPopulatedCityDistrictReportWithLimitAndDistrict()
     {
-        PopulatedCapitalCitiesByDistrict populatedCapitalCitiesByDistrict = new PopulatedCapitalCitiesByDistrict();
         popCapCityDistrictReport.runWithInputs(3,"Acre");
         assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
 
@@ -314,8 +369,6 @@ public class IntegrationTest {
     @Test
     void testRunWithEmptyLimitAndContinent()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         report.runWithInputs(null,"");
         assertEquals(report.capitalCities.size(),0);
     }
@@ -323,8 +376,6 @@ public class IntegrationTest {
     @Test
     void testRunWithEmptyLimitWithContinent()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         report.runWithInputs(null,"Africa");
         assertEquals(report.capitalCities.size(),0);
     }
@@ -332,7 +383,6 @@ public class IntegrationTest {
     @Test
     void testRunWithContinent()
     {
-        CapitalCity capitalCity = new CapitalCity();
 
         report.runWithInputs(0,"Africa");
         assertEquals(report.capitalCities.size(),366);
@@ -341,8 +391,6 @@ public class IntegrationTest {
     @Test
     void testRunWithIncorrectContinent()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         report.runWithInputs(0,"Test");
         assertEquals(report.capitalCities.size(),0);
     }
@@ -350,7 +398,6 @@ public class IntegrationTest {
     @Test
     void testRunWithLimitAndContinent()
     {
-        CapitalCity capitalCity = new CapitalCity();
 
         report.runWithInputs(5,"Africa");
         assertEquals(report.capitalCities.size(),5);
@@ -363,8 +410,6 @@ public class IntegrationTest {
     @Test
     void testRunWithEmptyRegion()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         popCapCityRegionReport.runWithInputs(5,"");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
@@ -372,7 +417,6 @@ public class IntegrationTest {
     @Test
     void testRunWithEmptyLimitAndRegion()
     {
-        CapitalCity capitalCity = new CapitalCity();
 
         popCapCityRegionReport.runWithInputs(null,"");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
@@ -381,8 +425,6 @@ public class IntegrationTest {
     @Test
     void testRunWithEmptyLimitWithRegion()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         popCapCityRegionReport.runWithInputs(null,"Caribbean");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
@@ -390,8 +432,6 @@ public class IntegrationTest {
     @Test
     void testRunWithRegion()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         popCapCityRegionReport.runWithInputs(5,"Caribbean");
         assertEquals(popCapCityRegionReport.capitalCities.size(),5);
     }
@@ -399,11 +439,52 @@ public class IntegrationTest {
     @Test
     void testRunWithIncorrectRegion()
     {
-        CapitalCity capitalCity = new CapitalCity();
-
         popCapCityRegionReport.runWithInputs(5,"Test");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
+
+    /** All Cities In Continent with Limit  */
+    @Test
+    void testRunCitiesInContinent()
+    {
+        citiesInContinentReport.runWithContinentAndLimits(0,"Africa");
+        assertEquals(citiesInContinentReport.cities.size(), 366);
+    }
+    /** All CITIES In Region with Limit */
+    @Test
+    void testRunAllCitiesInRegion()
+    {
+        citiesInRegionReport.runWithRegionAndLimits(0,"Caribbean");
+        assertEquals(citiesInRegionReport.cities.size(), 58);
+    }
+
+    /**
+     * All CITIES In Country
+     */
+    @Test
+    void testRunWithCountry() {
+
+        citiesInCountryReport.runWithCountryAndLimits (0, "united states");
+        assertEquals(citiesInCountryReport.cities.size(), 274);
+    }
+
+
+
+    /** All CITIES in the World */
+    @Test
+    void testTop5CitiesInWorld() {
+
+        citiesInWorldReport.runWithInputs(5);
+        assertEquals(citiesInWorldReport.cities.size(),5);
+    }
+
+    @Test
+    void testRunWithLimitAndCity()
+    {
+        citiesInWorldReport.runWithInputs(5);
+        assertEquals(citiesInWorldReport.cities.size(),5);
+    }
+
 
 
 
@@ -413,7 +494,6 @@ public class IntegrationTest {
     @Test
     void testRunWithtopPopulationCountriesRegion()
     {
-        Population population = new Population();
         topPopulationCountriesRegion.runWithLimit(10,"Caribbean");
         assertEquals(topPopulationCountriesRegion.countries.size(), 10);
     }
@@ -426,7 +506,7 @@ public class IntegrationTest {
     {
         WorldPopulation worldPopulation = new WorldPopulation();
         worldPopulation.run();
-        assertEquals(worldPopulation.WorldPopulation,6078749450L);
+        assertEquals(worldPopulation.total,6078749450L);
     }
 
     /**
@@ -435,9 +515,8 @@ public class IntegrationTest {
     @Test
     void testRunTotalInContinent()
     {
-        TotalInContinent totalInContinent = new TotalInContinent();
         totalInContinentReport.runWithInputs("Europe");
-        assertEquals(totalInContinentReport.TotalInContinent, 730074600L);
+        assertEquals(totalInContinentReport.total, 730074600L);
     }
 
     /**
@@ -446,9 +525,8 @@ public class IntegrationTest {
     @Test
     void testRunTotalInRegion()
     {
-        TotalInRegion totalInRegion = new TotalInRegion();
         totalInRegionReport.runWithInputs("Caribbean");
-        assertEquals(totalInRegionReport.TotalInRegion, 38140000);
+        assertEquals(totalInRegionReport.total, 38140000);
     }
 
 
@@ -458,9 +536,8 @@ public class IntegrationTest {
     @Test
     void testRunTotalInCountry()
     {
-        TotalInCountry totalInCountry = new TotalInCountry();
         totalInCountryReport.runWithInputs("Brazil");
-        assertEquals(totalInCountryReport.TotalInCountry, 170115000);
+        assertEquals(totalInCountryReport.total, 170115000);
     }
 
     /**
@@ -469,9 +546,51 @@ public class IntegrationTest {
     @Test
     void testRunTotalInDistrict()
     {
-        TotalInDistrict totalInDistrict = new TotalInDistrict();
         totalInDistrictReport.runWithInputs("Balkh");
-        assertEquals(totalInDistrictReport.TotalInDistrict, 127800);
+        assertEquals(totalInDistrictReport.total, 127800);
     }
 
+    /**
+     * Populated Capital Cities by District
+     */
+    @Test
+    void testRunWithLimitandDistrict()
+    {
+        popCapCityDistrictReport.runWithInputs(3,"Acre");
+        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+
+    }
+
+    //UC20
+    @Test
+    void testPopulatedCitiesInWorldWithLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(5);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
+    }
+
+    @Test
+    void testLanguageReportsReturnsCorrectNumberOfLanguages() {
+     languageReport.run();
+     assertEquals(languageReport.populations.size(), 5);
+    }
+
+    @Test
+    void testLanguageReportReturnsCorrectValues() {
+        languageReport.run();
+
+        Population arabicPopulation = languageReport.populations.get(0);
+        Population englishPopulation = languageReport.populations.get(1);
+        Population spanishPopulation = languageReport.populations.get(2);
+        Population hindiPopulation = languageReport.populations.get(3);
+        Population chinesePopulation = languageReport.populations.get(4);
+
+        assert(arabicPopulation.name.equals("Arabic") && arabicPopulation.totalPopulation == 233839238L );
+        assert(englishPopulation.name.equals("English") && englishPopulation.totalPopulation == 347077867L);
+        assert(spanishPopulation.name.equals("Spanish") && spanishPopulation.totalPopulation == 355029462L);
+        assert(hindiPopulation.name.equals("Hindi") && hindiPopulation.totalPopulation == 405633070L);
+        assert(chinesePopulation.name.equals("Chinese") && chinesePopulation.totalPopulation == 1191843539L);
+    }
 }
+
+
+
