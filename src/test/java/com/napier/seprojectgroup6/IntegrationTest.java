@@ -18,6 +18,7 @@ public final class IntegrationTest {
     public static TopPopulatedCitiesReport topPopCitiesReport;
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
+    public static PopulationInEachContinent popInEachContinentReport;
     // Country Reports
     public static TopPopulationCountriesRegion topPopulationCountriesRegion;
     public static CountriesInWorld countriesInWorld;
@@ -51,6 +52,7 @@ public final class IntegrationTest {
         topPopCitiesReport = new TopPopulatedCitiesReport();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
+        popInEachContinentReport = new PopulationInEachContinent();
         citiesInContinentReport = new CitiesInContinent();
         citiesInCountryReport =  new CitiesInCountry();
         citiesInRegionReport = new CitiesInRegion();
@@ -68,8 +70,6 @@ public final class IntegrationTest {
         countriesInWorldReport = new CountriesInWorld();
         languageReport = new NumberOfPeopleSpeakingACertainLanguage();
         countriesInWorld = new CountriesInWorld();
-
-
     }
 
 
@@ -103,6 +103,34 @@ public final class IntegrationTest {
         popInEachRegionReport.run();
         assertEquals(popInEachRegionReport.populations.size(), 25);
     }
+
+
+    @Test
+    void testPopInEachContinentReturnsCorrectNumberOfContinents(){
+        popInEachContinentReport.run();
+        assertEquals(popInEachContinentReport.populations.size(), 7);
+    }
+
+    @Test
+    void testPopInEachContinentReturnsCorrectValues(){
+        popInEachContinentReport.run();
+        Population northAmericanPopulation = popInEachContinentReport.populations.get(0);
+        Population asiaPopulation = popInEachContinentReport.populations.get(1);
+        Population africaPopulation = popInEachContinentReport.populations.get(2);
+        Population europePopulation = popInEachContinentReport.populations.get(3);
+        Population southAmericaPopulation = popInEachContinentReport.populations.get(4);
+        Population oceaniaPopulation = popInEachContinentReport.populations.get(5);
+        Population antarcticaPopulation = popInEachContinentReport.populations.get(6);
+
+        assert (northAmericanPopulation.name.equals("North America") && northAmericanPopulation.pctLivingInCities.equals("3.96%") && northAmericanPopulation.pctNotLivingInCities.equals("96.04%")  );
+        assert (asiaPopulation.name.equals("Asia") && asiaPopulation.pctLivingInCities.equals("2.73%") && asiaPopulation.pctNotLivingInCities.equals("97.27%"));
+        assert (africaPopulation.name.equals("Africa") && africaPopulation.pctLivingInCities.equals("6.08%") && africaPopulation.pctNotLivingInCities.equals("93.92%")) ;
+        assert (europePopulation.name.equals("Europe") && europePopulation.pctLivingInCities.equals("7.11%") && europePopulation.pctNotLivingInCities.equals("92.89%")) ;
+        assert (southAmericaPopulation.name.equals("South America") && southAmericaPopulation.pctLivingInCities.equals("8.36%") && southAmericaPopulation.pctNotLivingInCities.equals("91.64%")) ;
+        assert (oceaniaPopulation.name.equals("Oceania") && oceaniaPopulation.pctLivingInCities.equals("3.76%") && oceaniaPopulation.pctNotLivingInCities.equals("96.24%")) ;
+        assert (antarcticaPopulation.name.equals("Antarctica") && antarcticaPopulation.pctLivingInCities.equals("0.00%") && antarcticaPopulation.pctNotLivingInCities.equals("0.00%")) ;
+    }
+
     /**
      * TOP POPULATED CITIES BY DISTRICT
      */
