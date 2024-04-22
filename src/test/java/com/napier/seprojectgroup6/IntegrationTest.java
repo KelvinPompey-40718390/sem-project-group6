@@ -29,6 +29,7 @@ public final class IntegrationTest {
     public static CitiesInRegion citiesInRegionReport;
     public static CitiesInWorld citiesInWorldReport;
     public static CitiesInDistrict citiesInDistrictReport;
+    public static PopulationOfACity populationOfACity;
     public static CountriesInWorld countriesInWorldReport;
     public static TotalInContinent totalInContinentReport;
     public static TotalInRegion totalInRegionReport;
@@ -55,6 +56,7 @@ public final class IntegrationTest {
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
         popInEachContinentReport = new PopulationInEachContinent();
+        populationOfACity = new PopulationOfACity();
         citiesInContinentReport = new CitiesInContinent();
         citiesInCountryReport =  new CitiesInCountry();
         citiesInRegionReport = new CitiesInRegion();
@@ -324,7 +326,11 @@ public final class IntegrationTest {
         assertEquals(cityByDistrictReport.cities.size(), 15);
     }
 
-
+    @Test
+    void testPopulationOfACity() {
+        populationOfACity.runWithCity("Paris");
+        assertEquals(populationOfACity.city.population, 2125246L);
+    }
     /*
      * END OF CITY REPORTS INTEGRATION TESTS
      */

@@ -31,7 +31,8 @@ public class PopulationOfACity implements Report {
         this.displayCities();
     }
 
-    public void runWithLimit(Integer limit) {
+    public void runWithCity(String name) {
+        this.cityName = name;
         this.executeQuery();
         this.displayCities();
     }
