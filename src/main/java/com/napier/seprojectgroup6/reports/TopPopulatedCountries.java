@@ -109,7 +109,7 @@ public class TopPopulatedCountries implements Report {
         }
 
         System.out.println("Top " + this.limit + " Populated Countries\n");
-        System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  "CODE", "NAME", "CONTINENT", "REGION" , "POPULATION", "CAPITAL");
+        System.out.printf("%-10s %-40s %-40s %-40s %-40s %-40s\n",  "CODE", "NAME", "CONTINENT", "REGION" , "POPULATION", "CAPITAL");
         for(Country country: countries) {
             this.displayCountries(country);
         }
@@ -117,7 +117,7 @@ public class TopPopulatedCountries implements Report {
 
     private void displayCountries(Country Country) {
         if(countries != null) {
-            System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  Country.code, Country.name, Country.continent, Country.region, Country.population, Country.capital);
+            System.out.printf("%-10s %-40s %-40s %-40s %-40s %-40s\n",  Country.code, Country.name, Country.continent, Country.region, Country.population, Country.capital);
         }
     }
 

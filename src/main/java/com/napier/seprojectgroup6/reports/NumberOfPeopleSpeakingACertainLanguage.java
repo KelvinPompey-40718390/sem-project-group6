@@ -43,7 +43,7 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
                     "JOIN country c ON cl.countrycode = c.code " +
                     "WHERE cl.language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') " +
                     "GROUP BY cl.language " +
-                    "ORDER BY number_of_people ASC";
+                    "ORDER BY number_of_people DESC ";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);

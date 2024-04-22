@@ -24,6 +24,7 @@ public class IntegrationTest {
     static CitiesInRegion citiesInRegionreport;
     static CitiesInWorld CitiesInWorldReport;
     static CitiesInDistrict citiesInDistrictReport;
+    static PopulationOfACity populationOfACity;
 
     // Capital City Reports
     static PopulatedCapitalCitiesByContinent report;
@@ -42,8 +43,11 @@ public class IntegrationTest {
     static TotalInCountry totalInCountryReport;
     static TotalInDistrict totalInDistrictReport;
     static WorldPopulation worldPopulation;
+    static TopPopulatedCountries topPopulatedCountries;
 
     // Language Report
+
+    static NumberOfPeopleSpeakingACertainLanguage numberOfPeopleSpeakingACertainLanguage;
 
     @BeforeAll
     static void init()
@@ -69,6 +73,9 @@ public class IntegrationTest {
         worldPopulation = new WorldPopulation();
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
+        topPopulatedCountries = new TopPopulatedCountries();
+        populationOfACity = new PopulationOfACity();
+        numberOfPeopleSpeakingACertainLanguage = new NumberOfPeopleSpeakingACertainLanguage();
 
 
     }
@@ -101,6 +108,27 @@ public class IntegrationTest {
     }
 
 
+    @Test
+    void testTopPopulatedCountries(){
+        Population population = new Population();
+
+        topPopulatedCountries.run();
+        assertEquals(topPopulatedCountries.countries.size(), 25);
+    }
+
+
+    //Population Of A City
+
+    @Test
+    void testPopulationOfACity(){
+        Population population = new Population();
+
+        populationOfACity.run();
+        assertEquals(populationOfACity.city, 25);
+
+    }
+
+
     /**
      * CITY REPORTS INTEGRATION TESTS
      */
@@ -122,6 +150,7 @@ public class IntegrationTest {
         assertEquals(CitiesInWorldReport.cities.size(),5);
 
     }
+
 
 
     /** All Cities In Continent with Limit  */
@@ -462,5 +491,17 @@ public class IntegrationTest {
         totalInDistrictReport.runWithInputs("Balkh");
         assertEquals(totalInDistrictReport.TotalInDistrict, 127800);
     }
+    /**
+     * Number Of People Speaking A Certain Language
+     */
+    @Test
+    void testRunNumberOfPeopleSpeakingACertainLanguage()
+    {
+        Population population = new Population();
+
+        numberOfPeopleSpeakingACertainLanguage.run();
+        assertEquals(numberOfPeopleSpeakingACertainLanguage.populations.size(),5);
+    }
+
 
 }
