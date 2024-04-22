@@ -15,6 +15,8 @@ public class IntegrationTest {
 
     // Country Reports
     static TopPopulationCountriesRegion topPopulationCountriesRegion;
+    static CountriesInWorld countriesInWorld;
+
 
     // City Reports
     static CitiesByDistrictReport cityByDistrictReport;
@@ -35,6 +37,7 @@ public class IntegrationTest {
     // Population Reports
     static PopulationInEachRegion PopInEachRegionReport;
     static PopulationInEachCountry popInEachCountryReport;
+    static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinent;
 
     // Total Population Reports
     static TotalInContinent totalInContinentReport;
@@ -42,6 +45,7 @@ public class IntegrationTest {
     static TotalInCountry totalInCountryReport;
     static TotalInDistrict totalInDistrictReport;
     static WorldPopulation worldPopulation;
+
 
     // Language Report
 
@@ -69,13 +73,20 @@ public class IntegrationTest {
         worldPopulation = new WorldPopulation();
         allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
-
+        countriesInWorld = new CountriesInWorld();
 
     }
 
     /**
      * COUNTRY REPORTS INTEGRATION TESTS
     **/
+    @Test
+    void setCountriesInWorld(){
+        Population population = new Population();
+
+        countriesInWorld.run();
+        assertEquals(countriesInWorld.countries.size(), 232);
+    }
 
 
     /**
@@ -99,7 +110,6 @@ public class IntegrationTest {
         PopInEachRegionReport.run();
         assertEquals(PopInEachRegionReport.populations.size(), 25);
     }
-
 
     /**
      * CITY REPORTS INTEGRATION TESTS
