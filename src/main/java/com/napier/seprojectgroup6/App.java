@@ -8,7 +8,7 @@ import com.napier.seprojectgroup6.reports.*;
 public class App {
     /**
      *
-     * @param args
+     * @param args Commandline arguments
      */
     public static void main(String[] args) {
 
@@ -25,15 +25,17 @@ public class App {
 
         boolean isRunningOnDocker = args.length > 1;
         if(!isRunningOnDocker) {
-            Navigator navigator = new Navigator();
+            new Navigator();
         }
         else {
 
-            /**
+            /*
              *  CAPITAL CITY REPORTS
              */
+
             // Populated Capital Cities by Continent with and without Limit
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
+
             populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
             populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
@@ -42,7 +44,7 @@ public class App {
             populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
-            /**
+            /*
              *  CITY REPORTS
              */
 
@@ -56,18 +58,18 @@ public class App {
 
             //Cities in the World
             CitiesInWorld citiesInWorld = new CitiesInWorld();
-            citiesInWorld.run();
+            citiesInWorld.runWithInputs(5);
 
             // Cities in the World with Limit
             //citiesInWorld.runWithInputs(5,"Bridgetown");
 
             // Populated Cities by Continent with Limit
             CitiesInContinent citiesInContinent = new CitiesInContinent();
-            citiesInContinent.runWithContinentandLimits(3,"Africa");
+            citiesInContinent.runWithContinentAndLimits(3,"Africa");
 
             // Populated Cities by Region with Limit
             CitiesInRegion citiesInRegion = new CitiesInRegion();
-            citiesInRegion.runWithRegionandLimits(3,"Caribbean");
+            citiesInRegion.runWithRegionAndLimits(3,"Caribbean");
 
             //Top Populated Countries By Region
             TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
@@ -81,7 +83,7 @@ public class App {
             TopPopulatedCitiesByCountryReport topPopulatedCitiesByCountryReport = new TopPopulatedCitiesByCountryReport();
             topPopulatedCitiesByCountryReport.runWithLimitAndCountry(5, "Cuba");
 
-            /**
+            /*
              * POPULATION REPORTS
              */
 

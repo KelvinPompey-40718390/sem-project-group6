@@ -3,11 +3,21 @@ package com.napier.seprojectgroup6;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Utils {
+/**
+ *
+ * Utility methods for reading input
+ * @author Kelvin Pompey
+ */
+public final class Utils {
+
+    private Utils () {
+
+    }
+
     /**
      * Helper method for reading user input
-     * @param prompt
-     * @return
+     * @param prompt The message displayed to the user
+     * @return The message returned to the user
      */
     public static String readInput(String prompt) {
         try {

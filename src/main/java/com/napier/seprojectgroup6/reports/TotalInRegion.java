@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class TotalInRegion implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<TotalInRegion> totalInRegion;
-    public long TotalInRegion;
+    public long total;
     private String region;
     private String inCityPercentage;
     private String outCityPercentage;
@@ -54,9 +54,8 @@ public class TotalInRegion implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-            strSelect = "SELECT SUM(country.Population) AS Population, " +
+            String strSelect = "SELECT SUM(country.Population) AS Population, " +
                     "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
                     "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
                     "FROM world.country " +
@@ -69,7 +68,7 @@ public class TotalInRegion implements Report {
 
             while (rset.next())
             {
-                TotalInRegion = rset.getLong("Population");
+                total = rset.getLong("Population");
                 inCityPercentage = rset.getString("InCityPct");
                 outCityPercentage = rset.getString("OutCityPct");
             }
@@ -90,7 +89,7 @@ public class TotalInRegion implements Report {
         System.out.println("POPULATION OF " + this.region.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
-        System.out.printf("%-20d | %-20s | %-20s%n", TotalInRegion, inCityPercentage, outCityPercentage);
+        System.out.printf("%-20d | %-20s | %-20s%n", total, inCityPercentage, outCityPercentage);
         System.out.println("--------------------------------------");
     }
 

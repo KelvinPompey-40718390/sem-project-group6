@@ -1,6 +1,5 @@
 package com.napier.seprojectgroup6.reports;
 
-import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.db.Country;
 
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 public class CountriesInWorld implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Country> countries;
    public CountriesInWorld() {
         this.con = ConnectionManager.getInstance().getConnection();

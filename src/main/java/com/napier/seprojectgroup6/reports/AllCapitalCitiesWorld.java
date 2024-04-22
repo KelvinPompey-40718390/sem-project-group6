@@ -13,10 +13,8 @@ import java.util.ArrayList;
 
 public class AllCapitalCitiesWorld implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<CapitalCity> capitalCities;
-
-
 
     public AllCapitalCitiesWorld() {
         this.con = ConnectionManager.getInstance().getConnection();
@@ -42,9 +40,9 @@ public class AllCapitalCitiesWorld implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-                strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
+
+                String strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
                             "FROM city " +
                             "INNER JOIN country ON country.Code = city.CountryCode " +
                             "ORDER BY city.Population Desc ";

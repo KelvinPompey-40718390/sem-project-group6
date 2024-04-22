@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class TotalInContinent implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<TotalInContinent> totalInContinent;
-    public long TotalInContinent;
+    public long total;
     private String continent;
     private String inCityPercentage;
     private String outCityPercentage;
@@ -54,9 +54,8 @@ public class TotalInContinent implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-            strSelect = "SELECT SUM(country.Population) AS Population, " +
+            String strSelect = "SELECT SUM(country.Population) AS Population, " +
                     "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
                     "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
                     "FROM world.country " +
@@ -68,11 +67,9 @@ public class TotalInContinent implements Report {
 
             while (rset.next())
             {
-                TotalInContinent = rset.getLong("Population");
+                total = rset.getLong("Population");
                 inCityPercentage = rset.getString("InCityPct");
                 outCityPercentage = rset.getString("OutCityPct");
-                //System.out.println("Population in cities %: " + inCityPercentage);
-                //System.out.println("Population outside cities %: " + outCityPercentage);
 
             }
         }
@@ -92,7 +89,7 @@ public class TotalInContinent implements Report {
         System.out.println("POPULATION OF THE CONTINENT:" + this.continent.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
-        System.out.printf("%-20d | %-20s | %-20s%n", TotalInContinent, inCityPercentage, outCityPercentage);
+        System.out.printf("%-20d | %-20s | %-20s%n", total, inCityPercentage, outCityPercentage);
         System.out.println("--------------------------------------");
     }
 

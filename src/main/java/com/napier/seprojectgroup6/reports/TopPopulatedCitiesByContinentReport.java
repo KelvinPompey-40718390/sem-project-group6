@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TopPopulatedCitiesByContinentReport implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     private Integer limit;
     public String continent;
@@ -49,8 +49,7 @@ public class TopPopulatedCitiesByContinentReport implements Report {
     }
 
     private String getContinent() {
-        String input = Utils.readInput("Enter the continent");
-        return input;
+        return Utils.readInput("Enter the continent");
     }
 
     private void executeQuery()
@@ -68,15 +67,8 @@ public class TopPopulatedCitiesByContinentReport implements Report {
             String strSelect = "";
 
             if(this.limit > 0) {
-                //strSelect = "select * from city, country where city.CountryCode = country.Code and country.Continent = '" + this.continent+ "' " +
-                //        "order by city.Population desc limit " + this.limit + ";";
-
                 strSelect = String.format("select * from city, country where city.CountryCode = country.Code and country.Continent = '%s' order by city.Population desc limit %d;", this.continent, this.limit);
             }
-            else {
-                strSelect = "";
-            }
-
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -85,7 +77,7 @@ public class TopPopulatedCitiesByContinentReport implements Report {
             {
                 City city = new City();
                 city.name = rset.getString("Name");
-                city.ID = rset.getInt("ID");
+                city.id = rset.getInt("ID");
                 city.population = rset.getInt("Population");
                 city.countryCode = rset.getString("CountryCode");
                 city.district = rset.getString("District");

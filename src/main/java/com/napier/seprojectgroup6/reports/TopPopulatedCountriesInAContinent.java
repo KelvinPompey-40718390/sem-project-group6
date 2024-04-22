@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TopPopulatedCountriesInAContinent implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Population> populations;
     private Integer limit;
     public String continent;
@@ -58,11 +58,16 @@ public class TopPopulatedCountriesInAContinent implements Report {
         }
         try
         {
-                // Create an SQL statement
+            // Create an SQL statement
 
-                Statement stmt = con.createStatement();
-                // Create string for SQL statement
-                String strSelect = "";
+            Statement stmt = con.createStatement();// Create string for SQL statement
+            // If a 0 is entered return all the results of the Query
+            String strSelect = "select country.name as CountryName, continent, country.population as Population " +
+                    "from country\n" +
+                    "inner join city on city.ID = country.Capital\n" +
+                    "where continent = '" + continent + "' " +
+                    "order by country.population desc ";
+
             if(this.limit > 0){
                 strSelect = "select country.name as CountryName, continent, country.population as Population " +
                 "from country\n" +
@@ -72,16 +77,6 @@ public class TopPopulatedCountriesInAContinent implements Report {
                 "Limit " + this.limit;
 
             }
-            // If a 0 is entered return all the results of the Query
-            else {
-                strSelect = "select country.name as CountryName, continent, country.population as Population " +
-                        "from country\n" +
-                        "inner join city on city.ID = country.Capital\n" +
-                        "where continent = '" + continent + "' " +
-                        "order by country.population desc ";
-
-            }
-
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);

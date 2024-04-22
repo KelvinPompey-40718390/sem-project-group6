@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class PopulatedCapitalCitiesByDistrict implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<CapitalCity> capitalCities;
     private Integer limit;
     private String district;
@@ -65,8 +65,15 @@ public class PopulatedCapitalCitiesByDistrict implements Report {
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
-            String strSelect = "";
+            // If a 0 is entered return all the results of the Query
+
+            String strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
+                    "FROM city " +
+                    "INNER JOIN country ON country.Code = city.CountryCode " +
+                    "WHERE city.District = '" + this.district +"' " +
+                    "ORDER BY city.Population Desc ";
 
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
@@ -75,16 +82,6 @@ public class PopulatedCapitalCitiesByDistrict implements Report {
                         "WHERE city.District = '" + this.district +"' " +
                         "ORDER BY city.Population Desc " +
                         "LIMIT " + this.limit;
-            }
-            // If a 0 is entered return all the results of the Query
-            else {
-                strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                        "FROM city " +
-                        "INNER JOIN country ON country.Code = city.CountryCode " +
-                        "WHERE city.District = '" + this.district +"' " +
-                        "ORDER BY city.Population Desc ";
-                ;
-
             }
 
             // Execute SQL statement

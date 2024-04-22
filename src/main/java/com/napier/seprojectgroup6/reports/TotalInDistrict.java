@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class TotalInDistrict implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<TotalInDistrict> totalInDistrict;
-    public long TotalInDistrict;
+    public long total;
     private String district;
     private String inCityPercentage;
     private String outCityPercentage;
@@ -54,9 +54,8 @@ public class TotalInDistrict implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-            strSelect ="SELECT SUM(city.Population) AS Population, " +
+            String strSelect ="SELECT SUM(city.Population) AS Population, " +
                     "IFNULL(CONCAT(ROUND((SUM(city.Population)/SUM(country.Population)) * 100,2), '%'),'0.00%') AS InCityPct, " +
                     "IFNULL(CONCAT(ROUND(((SUM(country.Population) - SUM(city.Population))/SUM(country.Population)) * 100,2),'%'),'0.00%') AS OutCityPct " +
                     "FROM world.city " +
@@ -69,11 +68,9 @@ public class TotalInDistrict implements Report {
 
             while (rset.next())
             {
-                TotalInDistrict = rset.getLong("Population");
+                total = rset.getLong("Population");
                 inCityPercentage = rset.getString("InCityPct");
                 outCityPercentage = rset.getString("OutCityPct");
-                //System.out.println("Population in cities %: " + inCityPercentage);
-                //System.out.println("Population outside cities %: " + outCityPercentage);
             }
         }
 
@@ -92,7 +89,7 @@ public class TotalInDistrict implements Report {
         System.out.println("POPULATION OF " +this.district.toUpperCase());
         System.out.println("--------------------------------------");
         System.out.printf("%-20s | %-20s | %-20s%n", "Total Population", "Population in Cities", "Population Outside Cities");
-        System.out.printf("%-20d | %-20s | %-20s%n", this.TotalInDistrict, inCityPercentage, outCityPercentage);
+        System.out.printf("%-20d | %-20s | %-20s%n", this.total, inCityPercentage, outCityPercentage);
         System.out.println("--------------------------------------");
     }
 

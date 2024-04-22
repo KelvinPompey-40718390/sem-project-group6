@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class CountriesInARegionByPopulationSize implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<Country> countries;
    public CountriesInARegionByPopulationSize() {
         this.con = ConnectionManager.getInstance().getConnection();

@@ -7,13 +7,15 @@ import com.napier.seprojectgroup6.db.ConnectionManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
+/*
+    @author Sekonya Phoka
+ */
 public class PopulationOfACity implements Report {
 
-    private Connection con = null;
-    public String cityName = null;
-    public City city = null;
+    private final Connection con;
+    public String cityName;
+    public City city;
 
     public PopulationOfACity() {
         this.con = ConnectionManager.getInstance().getConnection();

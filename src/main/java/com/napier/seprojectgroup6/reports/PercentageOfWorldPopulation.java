@@ -36,9 +36,8 @@ public class PercentageOfWorldPopulation implements Report {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "";
 
-            strSelect = "SELECT\n" +
+            String strSelect = "SELECT\n" +
                     "    cl.language,\n" +
                     "    SUM(cl.percentage * 0.01 * c.population) AS number_of_people,\n" +
                     "    ROUND((SUM(cl.percentage * 0.01 * c.population) / (SELECT SUM(population) FROM country)), 2) AS percentage_of_world_population\n" +

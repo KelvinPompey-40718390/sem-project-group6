@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class PopulatedCapitalCitiesByContinent implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<CapitalCity> capitalCities;
     private Integer limit;
     private String continent;

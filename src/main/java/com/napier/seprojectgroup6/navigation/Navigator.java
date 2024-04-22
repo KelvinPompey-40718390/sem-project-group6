@@ -65,8 +65,7 @@ public class Navigator {
 
         // Test for both lowercase and uppercase Q
 
-        if(input.toUpperCase().equals("Q")) {
-
+        if(input.equalsIgnoreCase("Q")) {
             return;
         }
 
@@ -96,7 +95,7 @@ public class Navigator {
     /**
      * Display the report selected by
      * the user
-     * @param index
+     * @param index Selected report to display
      */
     private void runRport(int index) {
         try {

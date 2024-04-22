@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TopPopulatedCitiesByRegionReport implements Report {
 
-    private Connection con = null;
+    private final Connection con;
     public ArrayList<City> cities;
     private Integer limit;
     public String region;
@@ -49,8 +49,7 @@ public class TopPopulatedCitiesByRegionReport implements Report {
     }
 
     private String getRegion() {
-        String input = Utils.readInput("Enter the region");
-        return input;
+        return Utils.readInput("Enter the region");
     }
 
     private void executeQuery()
@@ -70,9 +69,6 @@ public class TopPopulatedCitiesByRegionReport implements Report {
             if(this.limit > 0) {
                 strSelect = String.format("select * from city left join country on country.Code = city.CountryCode where Region = '%s' order by city.Population DESC limit %d;", this.region, this.limit);
             }
-            else {
-                strSelect = "";
-            }
 
 
             // Execute SQL statement
@@ -82,7 +78,7 @@ public class TopPopulatedCitiesByRegionReport implements Report {
             {
                 City city = new City();
                 city.name = rset.getString("city.Name");
-                city.ID = rset.getInt("ID");
+                city.id = rset.getInt("ID");
                 city.population = rset.getInt("city.Population");
                 city.countryCode = rset.getString("CountryCode");
                 city.district = rset.getString("District");
