@@ -17,7 +17,6 @@ public class PopulatedCountriesInARegion implements Report {
 
     private String region;
 
-
     public PopulatedCountriesInARegion() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
@@ -33,7 +32,7 @@ public class PopulatedCountriesInARegion implements Report {
         this.displayCountries();
     }
 
-
+    // Run with Data Passed for Integration testing
     public void runWithLimit(Integer limit,String region) {
         this.limit = limit;
         this.region =region;
@@ -41,10 +40,12 @@ public class PopulatedCountriesInARegion implements Report {
         this.displayCountries();
     }
 
+    // Get Input from User to determine how much results to show
     private String getInput() {
         return Utils.readInput("Enter N for the number of countries to display, or 0 to Show All");
     }
 
+    // Get Name of Region from User
     private String getRegion()
     {
         return Utils.readInput("Enter Name of Region");
@@ -63,6 +64,7 @@ public class PopulatedCountriesInARegion implements Report {
             // Create string for SQL statement
             String strSelect = "";
 
+            // Run the Query with a limit
             if(this.limit > 0) {
                 strSelect = "SELECT country.code, country.Name AS Name, country.Continent,country.Region, country.Population, city.Name AS Capital " +
                             "FROM country " +
@@ -70,9 +72,9 @@ public class PopulatedCountriesInARegion implements Report {
                             "WHERE country.Region = '" + this.region +"' " +
                             "ORDER BY Population DESC " +
                             "LIMIT " + this.limit;
-
-
             }
+
+            // Show all Results of Query
             else {
                 strSelect = "SELECT country.code, country.Name AS Name, country.Continent,country.Region, country.Population, city.Name AS Capital " +
                         "FROM country " +
@@ -81,7 +83,6 @@ public class PopulatedCountriesInARegion implements Report {
                         "ORDER BY Population DESC ";
 
             }
-
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -99,7 +100,6 @@ public class PopulatedCountriesInARegion implements Report {
                 this.countries.add(country);
             }
 
-
         }
         catch (Exception e)
         {
@@ -108,6 +108,7 @@ public class PopulatedCountriesInARegion implements Report {
         }
     }
 
+    // Setup headers to Show the Results
     public void displayCountries() {
         if(this.countries == null) {
             return;
@@ -120,12 +121,11 @@ public class PopulatedCountriesInARegion implements Report {
         }
     }
 
+    // Show the results of the Query
     private void displayCountries(Country country) {
         if(countries != null) {
             System.out.printf("%-10s %-40s %-20s %-20s %-20s %-10s\n",  country.code, country.name, country.continent, country.region, country.population, country.capital);
         }
     }
-
-
 
 }
