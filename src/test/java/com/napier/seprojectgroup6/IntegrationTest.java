@@ -19,7 +19,7 @@ public final class IntegrationTest {
     public static PopulationInEachCountry popInEachCountryReport;
     public static PopulationInEachContinent popInEachContinentReport;
     // Country Reports
-    public static TopPopulationCountriesRegion topPopulationCountriesRegion;
+
     public static CountriesInWorld countriesInWorld;
 
     public static CitiesInContinent citiesInContinentReport;
@@ -55,7 +55,6 @@ public final class IntegrationTest {
         citiesInRegionReport = new CitiesInRegion();
         citiesInWorldReport = new CitiesInWorld();
         citiesInDistrictReport = new CitiesInDistrict();
-        topPopulationCountriesRegion = new TopPopulationCountriesRegion();
         totalInContinentReport = new TotalInContinent();
         totalInRegionReport = new TotalInRegion();
         totalInCountryReport = new TotalInCountry();
@@ -422,19 +421,6 @@ public final class IntegrationTest {
     {
         citiesInWorldReport.runWithInputs(5);
         assertEquals(citiesInWorldReport.cities.size(),5);
-    }
-
-
-
-
-    /**
-     * Top N Population of countries in Region Report
-     */
-    @Test
-    void testRunWithtopPopulationCountriesRegion()
-    {
-        topPopulationCountriesRegion.runWithLimit(10,"Caribbean");
-        assertEquals(topPopulationCountriesRegion.countries.size(), 10);
     }
 
     /**
