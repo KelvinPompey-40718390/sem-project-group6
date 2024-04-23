@@ -492,14 +492,6 @@ public final class IntegrationTest {
         assertEquals(citiesInWorldReport.cities.size(),5);
     }
 
-<<<<<<< HEAD
-    /**
-     * Population of the World
-     */
-=======
-
-
-
     /**
      * Top N Population of countries in Region Report
      */
@@ -511,7 +503,6 @@ public final class IntegrationTest {
     }
 
     //Population of the World
->>>>>>> master
     @Test
     void testWorldPopulation()
     {
@@ -553,8 +544,6 @@ public final class IntegrationTest {
         assertEquals(totalInDistrictReport.total, 127800);
     }
 
-<<<<<<< HEAD
-=======
     //Populated Capital Cities by District
          @Test
     void testRunWithLimitandDistrict()
@@ -579,7 +568,6 @@ public final class IntegrationTest {
         populatedCapitalCitiesInWorldReport.runWithInputs(5);
         assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
     }
->>>>>>> master
 
     @Test
     void testLanguageReportsReturnsCorrectNumberOfLanguages() {
