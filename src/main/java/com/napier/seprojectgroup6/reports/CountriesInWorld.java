@@ -72,7 +72,7 @@ try
         }
 
         System.out.println("All the Countries In the World: ");
-        System.out.printf("%-35s %-40s %-30s %-40s %-40s %-40s\n", "CODE", "NAME","CONTINENT", "REGION", "POPULATION", "CAPITAL");
+        System.out.printf("%-5s %-40s %-20s %-30s %-20s %-30s\n", "CODE", "NAME","CONTINENT", "REGION", "POPULATION", "CAPITAL");
         for(Country country: countries) {
             this.displayCountry(country);
         }
@@ -80,7 +80,7 @@ try
 
     private void displayCountry(Country country) {
         if(country != null) {
-            System.out.printf("%-35s %-40s %-30s %-40s %-40s %-40s \n",  country.code, country.name,country.continent, country.region, country.population, country.capital);
+            System.out.printf("%-5s %-40s %-20s %-30s %-20s %-30s\n",  country.code, country.name,country.continent, country.region, country.population, country.capital);
         }
     }
 
