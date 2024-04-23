@@ -549,17 +549,17 @@ public final class IntegrationTest {
     void testLanguageReportReturnsCorrectValues() {
         languageReport.run();
 
-        Population arabicPopulation = languageReport.populations.get(0);
-        Population englishPopulation = languageReport.populations.get(1);
+        Population arabicPopulation = languageReport.populations.get(4);
+        Population englishPopulation = languageReport.populations.get(3);
         Population spanishPopulation = languageReport.populations.get(2);
-        Population hindiPopulation = languageReport.populations.get(3);
-        Population chinesePopulation = languageReport.populations.get(4);
+        Population hindiPopulation = languageReport.populations.get(1);
+        Population chinesePopulation = languageReport.populations.get(0);
 
-        assert(arabicPopulation.name.equals("Arabic") && arabicPopulation.totalPopulation == 233839238L );
-        assert(englishPopulation.name.equals("English") && englishPopulation.totalPopulation == 347077867L);
-        assert(spanishPopulation.name.equals("Spanish") && spanishPopulation.totalPopulation == 355029462L);
-        assert(hindiPopulation.name.equals("Hindi") && hindiPopulation.totalPopulation == 405633070L);
-        assert(chinesePopulation.name.equals("Chinese") && chinesePopulation.totalPopulation == 1191843539L);
+        assert(arabicPopulation.name.equals("Arabic") && arabicPopulation.totalPopulation == 552045100L );
+        assert(englishPopulation.name.equals("English") && englishPopulation.totalPopulation == 627418300L);
+        assert(spanishPopulation.name.equals("Spanish") && spanishPopulation.totalPopulation == 750296800L);
+        assert(hindiPopulation.name.equals("Hindi") && hindiPopulation.totalPopulation == 1046303000L);
+        assert(chinesePopulation.name.equals("Chinese") && chinesePopulation.totalPopulation == 1968265500L);
     }
 }
 
