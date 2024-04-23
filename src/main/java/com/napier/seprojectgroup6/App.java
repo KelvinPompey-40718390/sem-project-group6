@@ -63,41 +63,72 @@ public class App {
             /**
              *  CAPITAL CITY REPORTS
              */
-            // Populated Capital Cities by Continent with and without Limit - UC 18 & UC21
+            // Initial Various Classes for the Capital City Reports
             PopulatedCapitalCitiesByContinent populatedCapitalCitiesByContinent = new PopulatedCapitalCitiesByContinent();
-            populatedCapitalCitiesByContinent.runWithInputs(5,"Africa");
+            PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
+            PopulatedCapitalCitiesinWorld populatedCapitalCitiesinWorld = new PopulatedCapitalCitiesinWorld();
+
+            // UC 17 All the Capital Cities in the World
+            populatedCapitalCitiesinWorld.runWithInputs(0);
+
+            // UC 18 All the Capital Cities in a Continent Report
             populatedCapitalCitiesByContinent.runWithInputs(0,"Africa");
 
-            // Populated Capital Cities by Region with and without Limit  - UC19 & UC22
-            PopulatedCapitalCitiesByRegion populatedCapitalCitiesByRegion = new PopulatedCapitalCitiesByRegion();
-            populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
+            // UC 19 All the Capital Cities in a Region Report
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
+
+            // UC 20 Top 3 Populated Capital Cities in the World
+            populatedCapitalCitiesinWorld.runWithInputs(3);
+
+            // UC 21 Top 3 Capital Cities in a Continent Report
+            populatedCapitalCitiesByContinent.runWithInputs(3,"Africa");
+
+            // UC 22 Top 3 the Capital Cities in a Region Report
+            populatedCapitalCitiesByRegion.runWithInputs(3,"Caribbean");
+
+
 
             /**
              * POPULATION REPORTS
+             */
+
+            // UC 23 Population of people living in and out of cities in each continent Report
+            PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
+            populationInEachContinent.run();
+
+            // UC 24 Population of people living in and out of cities in each region Report
+            PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
+            populationInEachRegion.run();
+
+            // UC 25 Population of people living in and out of Cities in each country Report
+            PopulationInEachCountry populationInEachCountry = new PopulationInEachCountry();
+            populationInEachCountry.run();
+
+            /**
+             * POPULATION TOTAL REPORTS
              **/
 
             // UC 26 The Population of the World Report
             WorldPopulation worldPopulation = new WorldPopulation();
             worldPopulation.run();
 
-            // UC 27 Population of people living in and out of cities in each continent Report
-            PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
-            populationInEachContinent.run();
-
-            // UC 28 Population of people living in and out of cities in each region Report
-            PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
-            populationInEachRegion.run();
-
-            // UC 29 Population of people living in and out of Cities in each country Report
-            TotalInCountry totalInCountry = new TotalInCountry();
-            totalInCountry.run();
-
-            // UC 30 Population of people living in and out of cities in each district report
+            // UC 27 Total Population of a Continent
             TotalInContinent totalInContinent = new TotalInContinent();
             totalInContinent.run();
 
-            // UC 31 Population of people living in and out of cities in each City Report
+            // UC 28 Total Population of a Region
+            TotalInRegion totalInRegion = new TotalInRegion();
+            totalInRegion.run();
+
+            // UC 29 Total Population of a Country
+            TotalInCountry totalInCountry = new TotalInCountry();
+            totalInCountry.run();
+
+            // UC 30 Total Population of a District
+            TotalInDistrict totalInDistrict = new TotalInDistrict();
+            totalInDistrict.run();
+
+            // UC 31 Total Population of a City
             PopulationOfACity populationOfACity = new PopulationOfACity();
             populationOfACity.run();
 
