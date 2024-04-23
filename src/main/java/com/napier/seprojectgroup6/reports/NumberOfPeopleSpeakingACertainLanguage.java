@@ -35,14 +35,14 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
             Statement stmt = con.createStatement();
             // Create string for SQL statement
 
-            String strSelect = "SELECT cl.language, " +
-                    "SUM(cl.percentage * 0.01 * c.population) AS number_of_people, " +
-                    "CONCAT(ROUND((SUM(cl.percentage * 0.01 * c.population) / (SELECT SUM(population) FROM country))*100, 2),'%') AS percentage_of_world_population " +
-                    "FROM countrylanguage cl " +
-                    "JOIN country c ON cl.countrycode = c.code " +
-                    "WHERE cl.language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') " +
-                    "GROUP BY cl.language " +
-                    "ORDER BY number_of_people";
+            String strSelect =
+                    "SELECT CL.Language, SUM(C.Population) AS Language_Speakers, " +
+                    "CONCAT(ROUND((SUM(C.Population)/ (SELECT SUM(country.Population) FROM country)*100),2),'%') as PCT_World_Population " +
+                    "FROM country AS C " +
+                    "LEFT JOIN countrylanguage as CL ON C.Code = CL.CountryCode " +
+                    "WHERE CL.Language IN('Chinese', 'English', 'Hindi', 'Spanish','Arabic') " +
+                    "GROUP BY CL.Language " +
+                    "ORDER BY SUM(C.Population) DESC;";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -51,8 +51,8 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
             {
                 Population population = new Population();
                 population.name = rset.getString("language");
-                population.totalPopulation = rset.getLong("number_of_people");
-                population.percentageOfWorldPopulation = rset.getString("percentage_of_world_population");
+                population.totalPopulation = rset.getLong("Language_Speakers");
+                population.percentageOfWorldPopulation = rset.getString("PCT_World_Population");
 
                 this.populations.add(population);
             }
@@ -70,8 +70,8 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
             return;
         }
 
-        System.out.println("\nTop Languages By Population\n");
-        System.out.printf("%-40s %-20s %-10s\n",  "LANGUAGE", "NUMBER OF PEOPLE", "PERCENTAGE OF WORLD POPULATION");
+        System.out.println("\nNumber Of Persons Speaking Different Languages\nIncluding % of World Population\n");
+        System.out.printf("%-10s %-20s %-10s\n",  "LANGUAGE", "NUMBER OF PEOPLE", "PERCENTAGE OF WORLD POPULATION");
         for(Population population: populations) {
             this.displayPopulation(population);
         }
@@ -79,7 +79,7 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
 
     private void displayPopulation(Population population) {
         if(population != null) {
-            System.out.printf("%-40s %-20s %-10s\n", population.name, population.totalPopulation, population.percentageOfWorldPopulation);
+            System.out.printf("%-10s %-20s %-10s\n", population.name, population.totalPopulation, population.percentageOfWorldPopulation);
         }
     }
 }

@@ -116,7 +116,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
         }
 
         System.out.println("Populated Capital Cities by Continent");
-        System.out.printf("%-20s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
+        System.out.printf("%-40s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
         for(CapitalCity capitalCity: capitalCities) {
             this.displayCapitalCity(capitalCity);
         }
@@ -125,7 +125,7 @@ public class PopulatedCapitalCitiesByContinent implements Report {
     // Display Query Results
     private void displayCapitalCity(CapitalCity capitalCity) {
         if(capitalCity != null) {
-            System.out.printf("%-20s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
+            System.out.printf("%-40s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
         }
     }
 

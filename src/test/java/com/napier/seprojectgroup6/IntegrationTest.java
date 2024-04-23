@@ -16,7 +16,7 @@ public final class IntegrationTest {
     public static CountriesInWorld countriesInWorld;
     public static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinentReport;
     public static PopulatedCapitalCitiesByContinent report;
-    public static TopPopulatedCountries topPopulatedCountriesReport;
+    public static PopulatedCountriesInARegion populatedCountriesInARegionReport;
 
     public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
 
@@ -47,7 +47,7 @@ public final class IntegrationTest {
         ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
-        topPopulatedCountriesReport = new TopPopulatedCountries();
+        populatedCountriesInARegionReport = new PopulatedCountriesInARegion();
         topPopulatedCountriesInAContinentReport = new TopPopulatedCountriesInAContinent();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
@@ -69,11 +69,9 @@ public final class IntegrationTest {
         countriesInWorld = new CountriesInWorld();
     }
 
-
     /**
      * COUNTRY REPORTS INTEGRATION TESTS
     **/
-
 
     // UC01 All Countries in World returns all Results
     @Test
@@ -82,6 +80,14 @@ public final class IntegrationTest {
 
         countriesInWorld.runWithLimit(0);
         assertEquals(countriesInWorld.countries.size(), 232);
+    }
+
+    @Test
+    void testAllCountriesInWorldWithNull(){
+        Population population = new Population();
+
+        countriesInWorld.runWithLimit(null);
+        assertEquals(countriesInWorld.countries.size(), 0);
     }
 
     // UC01 Test All Countries in the World Returns Limited Countries
@@ -171,30 +177,30 @@ public final class IntegrationTest {
 
     @Test
     void testPopulatedRegionsReturnsAllCountries() {
-        topPopulatedCountriesReport.runWithLimit(0, "Caribbean");
-        assertEquals(topPopulatedCountriesReport.countries.size(), 24);
+        populatedCountriesInARegionReport.runWithLimit(0, "Caribbean");
+        assertEquals(populatedCountriesInARegionReport.countries.size(), 24);
     }
 
     @Test
     void testPopulatedRegionsBadRegion() {
-        topPopulatedCountriesReport.runWithLimit(0, "Cari'bbean");
-        assertEquals(topPopulatedCountriesReport.countries.size(), 0);
+        populatedCountriesInARegionReport.runWithLimit(0, "Cari'bbean");
+        assertEquals(populatedCountriesInARegionReport.countries.size(), 0);
     }
 
     @Test
     void testPopulatedRegionsReturnsLimitedCountries() {
-        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
-        assertEquals(topPopulatedCountriesReport.countries.size(), 5);
+        populatedCountriesInARegionReport.runWithLimit(5, "Caribbean");
+        assertEquals(populatedCountriesInARegionReport.countries.size(), 5);
     }
 
     @Test
     void testPopulatedRegionsReturnsCountriesInDescendingOrder() {
-        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
+        populatedCountriesInARegionReport.runWithLimit(5, "Caribbean");
 
-        Country firstCountry = topPopulatedCountriesReport.countries.get(0);
+        Country firstCountry = populatedCountriesInARegionReport.countries.get(0);
         boolean result = true;
 
-        for(Country country : topPopulatedCountriesReport.countries) {
+        for(Country country : populatedCountriesInARegionReport.countries) {
             if(country.population > firstCountry.population) {
                 result = false;
             }
@@ -549,17 +555,17 @@ public final class IntegrationTest {
     void testLanguageReportReturnsCorrectValues() {
         languageReport.run();
 
-        Population arabicPopulation = languageReport.populations.get(0);
-        Population englishPopulation = languageReport.populations.get(1);
+        Population arabicPopulation = languageReport.populations.get(4);
+        Population englishPopulation = languageReport.populations.get(3);
         Population spanishPopulation = languageReport.populations.get(2);
-        Population hindiPopulation = languageReport.populations.get(3);
-        Population chinesePopulation = languageReport.populations.get(4);
+        Population hindiPopulation = languageReport.populations.get(1);
+        Population chinesePopulation = languageReport.populations.get(0);
 
-        assert(arabicPopulation.name.equals("Arabic") && arabicPopulation.totalPopulation == 233839238L );
-        assert(englishPopulation.name.equals("English") && englishPopulation.totalPopulation == 347077867L);
-        assert(spanishPopulation.name.equals("Spanish") && spanishPopulation.totalPopulation == 355029462L);
-        assert(hindiPopulation.name.equals("Hindi") && hindiPopulation.totalPopulation == 405633070L);
-        assert(chinesePopulation.name.equals("Chinese") && chinesePopulation.totalPopulation == 1191843539L);
+        assert(arabicPopulation.name.equals("Arabic") && arabicPopulation.totalPopulation == 552045100L );
+        assert(englishPopulation.name.equals("English") && englishPopulation.totalPopulation == 627418300L);
+        assert(spanishPopulation.name.equals("Spanish") && spanishPopulation.totalPopulation == 750296800L);
+        assert(hindiPopulation.name.equals("Hindi") && hindiPopulation.totalPopulation == 1046303000L);
+        assert(chinesePopulation.name.equals("Chinese") && chinesePopulation.totalPopulation == 1968265500L);
     }
 }
 
