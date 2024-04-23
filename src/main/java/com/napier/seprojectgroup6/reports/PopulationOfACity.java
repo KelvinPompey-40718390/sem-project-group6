@@ -69,11 +69,10 @@ public class PopulationOfACity implements Report {
         if(this.city == null) {
             return;
         }
-
+        System.out.println(" ");
         System.out.println("Population of " + this.cityName);
         System.out.printf("%-20s %-10s\n",  "City", "Population");
         this.displayCity(city);
-
     }
 
     private void displayCity(City city) {
