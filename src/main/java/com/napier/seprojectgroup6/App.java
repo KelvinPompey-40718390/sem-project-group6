@@ -77,13 +77,29 @@ public class App {
              * POPULATION REPORTS
              **/
 
-            // Population of people living in and out of cities in each continent - UC 23
+            // UC 26 The Population of the World Report
+            WorldPopulation worldPopulation = new WorldPopulation();
+            worldPopulation.run();
+
+            // UC 27 Population of people living in and out of cities in each continent Report
             PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
             populationInEachContinent.run();
 
-            // Population of people living in and out of cities in each region - UC 24
+            // UC 28 Population of people living in and out of cities in each region Report
             PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
             populationInEachRegion.run();
+
+            // UC 29 Population of people living in and out of Cities in each country Report
+            TotalInCountry totalInCountry = new TotalInCountry();
+            totalInCountry.run();
+
+            // UC 30 Population of people living in and out of cities in each district report
+            TotalInContinent totalInContinent = new TotalInContinent();
+            totalInContinent.run();
+
+            // UC 31 Population of people living in and out of cities in each City Report
+            PopulationOfACity populationOfACity = new PopulationOfACity();
+            populationOfACity.run();
 
             /**
              * LANGUAGE REPORT
