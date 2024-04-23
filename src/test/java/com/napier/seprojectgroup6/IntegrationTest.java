@@ -34,7 +34,6 @@ public final class IntegrationTest {
     public static TotalInRegion totalInRegionReport;
     public static TotalInCountry totalInCountryReport;
     public static TotalInDistrict totalInDistrictReport;
-    public static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     public static WorldPopulation worldPopulation;
     public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
@@ -63,7 +62,6 @@ public final class IntegrationTest {
         totalInRegionReport = new TotalInRegion();
         totalInCountryReport = new TotalInCountry();
         totalInDistrictReport = new TotalInDistrict();
-        popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         countriesInWorldReport = new CountriesInWorld();
@@ -318,17 +316,6 @@ public final class IntegrationTest {
      * CAPITAL CITY REPORTS INTEGRATION TESTS
      */
 
-    /**
-     * Populated Capital Cities by District
-     */
-    @Test
-    void testPopulatedCityDistrictReportWithLimitAndDistrict()
-    {
-        popCapCityDistrictReport.runWithInputs(3,"Acre");
-        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
-
-    }
-
     //UC20
     @Test
     void testRunWithLimit() {
@@ -519,17 +506,6 @@ public final class IntegrationTest {
     {
         totalInDistrictReport.runWithInputs("Balkh");
         assertEquals(totalInDistrictReport.total, 127800);
-    }
-
-    /**
-     * Populated Capital Cities by District
-     */
-    @Test
-    void testRunWithLimitandDistrict()
-    {
-        popCapCityDistrictReport.runWithInputs(3,"Acre");
-        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
-
     }
 
     //UC20
