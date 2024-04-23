@@ -26,10 +26,11 @@ public class PopulatedCapitalCitiesinWorld implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCapitalCities();
+        return true;
     }
 
     // For use when testing the Application

@@ -24,11 +24,12 @@ public class CitiesInRegion implements Report {
     /**
      * Request input from the user and execute the query
      */
-    public void run() {
+    public boolean run() {
         region = this.getRegion();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
+        return true;
     }
 
     public void runWithRegionAndLimits(Integer limit, String region) {

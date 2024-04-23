@@ -20,9 +20,10 @@ public class CountriesInWorld implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         this.executeQuery();
         this.displayCountries();
+        return true;
     }
 
     public void runWithCities() {

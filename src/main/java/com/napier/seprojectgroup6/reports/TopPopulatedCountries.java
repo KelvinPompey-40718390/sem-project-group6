@@ -1,5 +1,6 @@
 package com.napier.seprojectgroup6.reports;
 
+import com.napier.seprojectgroup6.InputReader;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 import com.napier.seprojectgroup6.db.Country;
@@ -11,43 +12,50 @@ import java.util.ArrayList;
 
 public class TopPopulatedCountries implements Report {
 
-    private final Connection con;
+    private final Connection con = ConnectionManager.getInstance().getConnection();;
     public ArrayList<Country> countries;
     private Integer limit;
 
     private String region;
 
+    private InputReader inputReader = new InputReader();
 
-    public TopPopulatedCountries() {
-        this.con = ConnectionManager.getInstance().getConnection();
+    public InputReader getInputReader() {
+        return this.inputReader;
+    }
+
+    public void setInputReader(InputReader inputReader) {
+        this.inputReader = inputReader;
     }
 
     /**
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         limit = Integer.parseInt(this.getInput());
         region = this.getRegion();
         this.executeQuery();
         this.displayCountries();
+        return true;
     }
 
 
-    public void runWithLimit(Integer limit,String region) {
+    public boolean runWithLimit(Integer limit,String region) {
         this.limit = limit;
         this.region =region;
         this.executeQuery();
         this.displayCountries();
+        return true;
     }
 
     private String getInput() {
-        return Utils.readInput("Enter N for the number of countries to display, or 0 to Show All");
+        return inputReader.readInput("Enter N for the number of countries to display, or 0 to Show All");
     }
 
     private String getRegion()
     {
-        return Utils.readInput("Enter Name of Region");
+        return inputReader.readInput("Enter Name of Region");
     }
     private void executeQuery()
     {
@@ -103,9 +111,9 @@ public class TopPopulatedCountries implements Report {
         }
     }
 
-    public void displayCountries() {
+    public boolean displayCountries() {
         if(this.countries == null) {
-            return;
+            return false;
         }
 
         System.out.println("Top " + this.limit + " Populated Countries\n");
@@ -113,12 +121,16 @@ public class TopPopulatedCountries implements Report {
         for(Country country: countries) {
             this.displayCountries(country);
         }
+
+        return true;
     }
 
-    private void displayCountries(Country country) {
+    private boolean displayCountries(Country country) {
         if(countries != null) {
             System.out.printf("%-10s %-25s %-20s %-20s %-20s %-10s\n",  country.code, country.name, country.continent, country.region, country.population, country.capital);
+            return true;
         }
+        return false;
     }
 
 

@@ -25,11 +25,12 @@ public class CitiesInContinent implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         continent = this.getContinent();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
+        return true;
     }
     // for integration test
     public void runWithContinentAndLimits(Integer limit, String continent) {

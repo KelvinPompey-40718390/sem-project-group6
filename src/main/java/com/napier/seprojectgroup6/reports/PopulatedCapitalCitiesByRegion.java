@@ -29,11 +29,12 @@ public class PopulatedCapitalCitiesByRegion implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         region = this.getRegion();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCapitalCities();
+        return true;
     }
 
     // For use when testing the Application

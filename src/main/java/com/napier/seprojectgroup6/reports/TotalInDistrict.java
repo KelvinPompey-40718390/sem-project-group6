@@ -26,10 +26,11 @@ public class TotalInDistrict implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         district = this.getDistrict();
         this.executeQuery();
         this.displayTotalInDistrict();
+        return true;
     }
 
     //For Testing Application

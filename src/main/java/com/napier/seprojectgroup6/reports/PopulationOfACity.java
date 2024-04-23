@@ -1,6 +1,6 @@
 package com.napier.seprojectgroup6.reports;
 
-import com.napier.seprojectgroup6.Utils;
+import com.napier.seprojectgroup6.InputReader;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
 
@@ -13,31 +13,37 @@ import java.sql.Statement;
  */
 public class PopulationOfACity implements Report {
 
-    private final Connection con;
+    private final Connection con = ConnectionManager.getInstance().getConnection();
     public String cityName;
     public City city;
+    private InputReader inputReader = new InputReader();
 
-    public PopulationOfACity() {
-        this.con = ConnectionManager.getInstance().getConnection();
+    public InputReader getInputReader() {
+        return this.inputReader;
+    }
+
+    public void setInputReader(InputReader inputReader) {
+        this.inputReader = inputReader;
     }
 
     /**
      * Request input from the user and
      * execute the query
      */
-    public void run() {
-        this.cityName = Utils.readInput("Enter city name");
-        this.executeQuery();
-        this.displayCities();
+    public boolean run() {
+        this.cityName = inputReader.readInput("Enter city name");
+        this.city = this.executeQuery();
+        return this.displayCity(this.city);
+
     }
 
-    public void runWithCity(String name) {
+    public boolean runWithCity(String name) {
         this.cityName = name;
-        this.executeQuery();
-        this.displayCities();
+        this.city = this.executeQuery();
+        return this.displayCity(this.city);
     }
 
-    private void executeQuery()
+    public City executeQuery()
     {
         try
         {
@@ -50,12 +56,15 @@ public class PopulationOfACity implements Report {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            City city = new City();
             while (rset.next())
             {
-                this.city = new City();
-                this.city.name = rset.getString("Name");
-                this.city.population = rset.getInt("Population");
+                city = new City();
+                city.name = rset.getString("Name");
+                city.population = rset.getInt("Population");
             }
+
+            return city;
 
 
         }
@@ -63,24 +72,18 @@ public class PopulationOfACity implements Report {
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return null;
         }
     }
 
-    public void displayCities() {
-        if(this.city == null) {
-            return;
-        }
-
-        System.out.println("Population Of A City\n");
-        System.out.printf("%-20s %-10s\n",  "City", "Population");
-        this.displayCity(city);
-
-    }
-
-    private void displayCity(City city) {
+    public boolean displayCity(City city) {
         if(city != null) {
+            System.out.println("Population Of A City\n");
+            System.out.printf("%-20s %-10s\n",  "City", "Population");
             System.out.printf("%-20s %d\n",  city.name, city.population);
+            return true;
         }
+        return false;
     }
 
 

@@ -1,5 +1,6 @@
 package com.napier.seprojectgroup6.reports;
 
+import com.napier.seprojectgroup6.InputReader;
 import com.napier.seprojectgroup6.Utils;
 import com.napier.seprojectgroup6.db.City;
 import com.napier.seprojectgroup6.db.ConnectionManager;
@@ -11,33 +12,39 @@ import java.util.ArrayList;
 
 public class TopPopulatedCitiesReport implements Report {
 
-    private final Connection con;
+    private final Connection con = ConnectionManager.getInstance().getConnection();
     public ArrayList<City> cities;
     private Integer limit;
+    private InputReader inputReader = new InputReader();
 
+    public InputReader getInputReader() {
+        return this.inputReader;
+    }
 
-    public TopPopulatedCitiesReport() {
-        this.con = ConnectionManager.getInstance().getConnection();
+    public void setInputReader(InputReader inputReader) {
+        this.inputReader = inputReader;
     }
 
     /**
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
+        return true;
     }
 
-    public void runWithLimit(Integer limit) {
+    public boolean runWithLimit(Integer limit) {
         this.limit = limit;
         this.executeQuery();
         this.displayCities();
+        return true;
     }
 
     private String getInput() {
-        return Utils.readInput("Enter N for the number of cities to display");
+        return inputReader.readInput("Enter N for the number of cities to display");
     }
 
     private void executeQuery()

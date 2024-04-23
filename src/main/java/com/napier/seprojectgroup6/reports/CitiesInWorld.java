@@ -26,10 +26,11 @@ public class CitiesInWorld implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
+        return true;
     }
     // for integration test
     public void runWithInputs(Integer limit) {

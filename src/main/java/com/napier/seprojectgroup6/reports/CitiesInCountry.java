@@ -26,11 +26,12 @@ public class CitiesInCountry implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         country = this.getCountry();
         limit = Integer.parseInt(this.getInput());
         this.executeQuery();
         this.displayCities();
+        return true;
     }
 
     public void runWithCountryAndLimits(Integer limit, String country) {

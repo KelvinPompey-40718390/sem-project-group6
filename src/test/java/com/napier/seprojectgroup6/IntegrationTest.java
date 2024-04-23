@@ -7,9 +7,15 @@ import com.napier.seprojectgroup6.reports.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public final class IntegrationTest {
 
     public static PopulatedCapitalCitiesByContinent report;
@@ -42,6 +48,8 @@ public final class IntegrationTest {
     public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
     public static NumberOfPeopleSpeakingACertainLanguage languageReport;
+
+    @Mock public static InputReader inputReader;
 
     private IntegrationTest() {}
     @BeforeAll
@@ -149,6 +157,16 @@ public final class IntegrationTest {
     }
 
     @Test
+    void testPopulatedRegionsReportRun() {
+        when(inputReader.readInput("Enter N for the number of countries to display, or 0 to Show All")).thenReturn("5");
+        when(inputReader.readInput("Enter Name of Region")).thenReturn("Caribbean");
+
+        topPopulatedCountriesReport.setInputReader(inputReader);
+        boolean success = topPopulatedCountriesReport.run();
+        assertTrue(success);
+    }
+
+    @Test
     void testPopulatedRegionsReturnsCountriesInDescendingOrder() {
         topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
 
@@ -178,6 +196,22 @@ public final class IntegrationTest {
 
         topPopCitiesReport.runWithLimit(5);
         assertEquals(topPopCitiesReport.cities.size(), 5);
+    }
+
+    @Test
+    void testTopPopCitiesReportRun() {
+        topPopCitiesReport.setInputReader(inputReader);
+        when(inputReader.readInput(any(String.class))).thenReturn("5");
+        boolean success = topPopCitiesReport.run();
+        assertTrue(success);
+    }
+
+    @Test
+    void testTopPopCitiesReportRunWithLimit() {
+
+
+        boolean success = topPopCitiesReport.runWithLimit(5);
+        assertTrue(success);
     }
 
     /*
@@ -330,6 +364,15 @@ public final class IntegrationTest {
     void testPopulationOfACity() {
         populationOfACity.runWithCity("Paris");
         assertEquals(populationOfACity.city.population, 2125246L);
+    }
+
+    @Test
+    void testPopulationOfACityInput() {
+        when(inputReader.readInput(any(String.class))).thenReturn("Paris");
+        populationOfACity.setInputReader(inputReader);
+        boolean success = populationOfACity.run();
+        assertTrue(success);
+
     }
     /*
      * END OF CITY REPORTS INTEGRATION TESTS

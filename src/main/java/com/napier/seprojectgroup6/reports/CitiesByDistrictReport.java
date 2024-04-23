@@ -24,10 +24,11 @@ public class CitiesByDistrictReport implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         district = this.getInput();
         this.executeQuery();
         this.displayCities();
+        return true;
     }
 
     public void runWithDistrict(String district) {

@@ -19,9 +19,10 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         this.executeQuery();
         this.displayPopulations();
+        return true;
     }
 
     // Execute query with inputs provided

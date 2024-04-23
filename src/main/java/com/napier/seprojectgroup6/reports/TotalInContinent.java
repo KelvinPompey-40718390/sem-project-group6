@@ -26,10 +26,11 @@ public class TotalInContinent implements Report {
      * Request input from the user and
      * execute the query
      */
-    public void run() {
+    public boolean run() {
         continent = this.getContinent();
         this.executeQuery();
         this.displayTotalInContinent();
+        return true;
     }
 
     //For Testing Application
