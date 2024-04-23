@@ -71,7 +71,7 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
         }
 
         System.out.println("\nTop Languages By Population\n");
-        System.out.printf("%-40s %-20s %-10s\n",  "LANGUAGE", "NUMBER OF PEOPLE", "PERCENTAGE OF WORLD POPULATION");
+        System.out.printf("%-10s %-20s %-10s\n",  "LANGUAGE", "NUMBER OF PEOPLE", "PERCENTAGE OF WORLD POPULATION");
         for(Population population: populations) {
             this.displayPopulation(population);
         }
@@ -79,7 +79,7 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
 
     private void displayPopulation(Population population) {
         if(population != null) {
-            System.out.printf("%-40s %-20s %-10s\n", population.name, population.totalPopulation, population.percentageOfWorldPopulation);
+            System.out.printf("%-10s %-20s %-10s\n", population.name, population.totalPopulation, population.percentageOfWorldPopulation);
         }
     }
 }
