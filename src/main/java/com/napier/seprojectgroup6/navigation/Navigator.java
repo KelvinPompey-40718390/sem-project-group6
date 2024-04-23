@@ -48,9 +48,7 @@ public class Navigator {
         this.showMenu();
     }
 
-    /**
-     * Display the reports available
-     */
+    // Show Report menu Header and Menu Items
     private void showMenu() {
         System.out.println();
         System.out.println("-----------");
@@ -62,22 +60,16 @@ public class Navigator {
         this.processInput();
     }
 
-    /**
-     * Handle user input
-     */
+    // Ask user to enter a Report Number or enter a 'q' to Quite the application
     private void processInput() {
         String input = Utils.readInput("\nSelect your report number or q to quit!");
 
-
         // Test for both lowercase and uppercase Q
-
         if(input.equalsIgnoreCase("Q")) {
             return;
         }
 
-        // Is the string is not numeric reject the input
-        // and try again
-
+        // Is the string is not numeric reject the input and try again
         String regex = "-?\\d+";
         boolean isNumber = input.matches(regex);
 
@@ -99,8 +91,7 @@ public class Navigator {
     }
 
     /**
-     * Display the report selected by
-     * the user
+     * Display the report selected by the user
      * @param index Selected report to display
      */
     private void runRport(int index) {
