@@ -35,6 +35,29 @@ public class App {
              * COUNTRY REPORTS
              */
 
+            // Initialize various classes for Country Reports
+            CountriesInWorld countriesInWorld = new CountriesInWorld();
+            TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinent = new TopPopulatedCountriesInAContinent();
+            PopulatedCountriesInARegion populatedCountriesInARegion = new PopulatedCountriesInARegion();
+
+            // UC01 All Countries in the World
+            countriesInWorld.runWithLimit(0);
+
+            // UC02 All Countries in a Continent
+            topPopulatedCountriesInAContinent.runWithInputs(0,"Africa");
+
+            // UC03 All Countries in a Region
+            populatedCountriesInARegion.runWithLimit(0,"Caribbean");
+
+            // UC04 Top 3 Countries in the World
+            countriesInWorld.runWithLimit(3);
+
+            // UC05 Top 3 Countries in a Continent
+            topPopulatedCountriesInAContinent.runWithInputs(3,"Africa");
+
+            // UC06 Top 3 Countries in a Region
+            populatedCountriesInARegion.runWithLimit(3,"Caribbean");
+
             /**
              *  CITY REPORTS
              */
