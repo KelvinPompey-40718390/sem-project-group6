@@ -12,17 +12,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public final class IntegrationTest {
 
+    // COUNTRY REPORTS
+    public static CountriesInWorld countriesInWorld;
+    public static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinentReport;
     public static PopulatedCapitalCitiesByContinent report;
-    public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
-    public static CitiesByDistrictReport cityByDistrictReport;
-    public static TopPopulatedCitiesReport topPopCitiesReport;
     public static TopPopulatedCountries topPopulatedCountriesReport;
+
+    public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
     public static PopulationInEachContinent popInEachContinentReport;
-    // Country Reports
-    public static TopPopulationCountriesRegion topPopulationCountriesRegion;
-    public static CountriesInWorld countriesInWorld;
 
     public static CitiesInContinent citiesInContinentReport;
     public static CitiesInCountry citiesInCountryReport;
@@ -35,10 +35,7 @@ public final class IntegrationTest {
     public static TotalInRegion totalInRegionReport;
     public static TotalInCountry totalInCountryReport;
     public static TotalInDistrict totalInDistrictReport;
-    public static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     public static WorldPopulation worldPopulation;
-
-    public static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
     public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
     public static NumberOfPeopleSpeakingACertainLanguage languageReport;
@@ -50,9 +47,8 @@ public final class IntegrationTest {
         ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
-        cityByDistrictReport = new CitiesByDistrictReport();
-        topPopCitiesReport = new TopPopulatedCitiesReport();
         topPopulatedCountriesReport = new TopPopulatedCountries();
+        topPopulatedCountriesInAContinentReport = new TopPopulatedCountriesInAContinent();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
         popInEachContinentReport = new PopulationInEachContinent();
@@ -62,14 +58,11 @@ public final class IntegrationTest {
         citiesInRegionReport = new CitiesInRegion();
         citiesInWorldReport = new CitiesInWorld();
         citiesInDistrictReport = new CitiesInDistrict();
-        topPopulationCountriesRegion = new TopPopulationCountriesRegion();
         totalInContinentReport = new TotalInContinent();
         totalInRegionReport = new TotalInRegion();
         totalInCountryReport = new TotalInCountry();
         totalInDistrictReport = new TotalInDistrict();
-        popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
-        allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         countriesInWorldReport = new CountriesInWorld();
         languageReport = new NumberOfPeopleSpeakingACertainLanguage();
@@ -80,13 +73,53 @@ public final class IntegrationTest {
     /**
      * COUNTRY REPORTS INTEGRATION TESTS
     **/
+
+
+    // UC01 All Countries in World returns all Results
     @Test
-    void setCountriesInWorld(){
+    void testAllCountriesInWorld(){
         Population population = new Population();
 
-        countriesInWorld.run();
+        countriesInWorld.runWithLimit(0);
         assertEquals(countriesInWorld.countries.size(), 232);
     }
+
+    // UC01 Test All Countries in the World Returns Limited Countries
+    @Test
+    void testCountriesInWorldWithLimit(){
+        Population population = new Population();
+
+        countriesInWorld.runWithLimit(3);
+        assertEquals(countriesInWorld.countries.size(), 3);
+    }
+
+    // UC02 Test that All Countries in North America are Returned
+    @Test
+    void testTopPopulatedCountriesInAContinent(){
+        Population population = new Population();
+
+        topPopulatedCountriesInAContinentReport.runWithInputs(0,"North America");
+        assertEquals(topPopulatedCountriesInAContinentReport.populations.size(),37);
+    }
+
+    // UC05 Test that Limited Countries in North America are Returned
+    @Test
+    void testTopPopulatedCountriesInAContinentWithLimit(){
+        Population population = new Population();
+
+        topPopulatedCountriesInAContinentReport.runWithInputs(3,"North America");
+        assertEquals(topPopulatedCountriesInAContinentReport.populations.size(),3);
+    }
+
+    // UC05 Test Catch Works For Query
+    @Test
+    void testTopPopulatedCountriesInAContinentCatchError(){
+        Population population = new Population();
+
+        topPopulatedCountriesInAContinentReport.runWithInputs(3,"Nor'th America");
+        assertEquals(topPopulatedCountriesInAContinentReport.populations.size(),0);
+    }
+
 
     /**
      * POPULATION REPORTS INTEGRATION TESTS
@@ -143,6 +176,12 @@ public final class IntegrationTest {
     }
 
     @Test
+    void testPopulatedRegionsBadRegion() {
+        topPopulatedCountriesReport.runWithLimit(0, "Cari'bbean");
+        assertEquals(topPopulatedCountriesReport.countries.size(), 0);
+    }
+
+    @Test
     void testPopulatedRegionsReturnsLimitedCountries() {
         topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
         assertEquals(topPopulatedCountriesReport.countries.size(), 5);
@@ -161,23 +200,6 @@ public final class IntegrationTest {
             }
         }
         assertTrue(result);
-    }
-
-    /**
-     * TOP POPULATED CITIES BY DISTRICT
-     */
-    @Test
-    void testRunPopCitiesReportWithZeroLimit() {
-
-        topPopCitiesReport.runWithLimit(0);
-        assertEquals(topPopCitiesReport.cities.size(), 0);
-    }
-
-    @Test
-    void testRunPopCitiesWithDistrict() {
-
-        topPopCitiesReport.runWithLimit(5);
-        assertEquals(topPopCitiesReport.cities.size(), 5);
     }
 
     /*
@@ -213,8 +235,8 @@ public final class IntegrationTest {
     @Test
     void testRunCitiesInContinentWithLimits()
     {
-        citiesInContinentReport.runWithContinentAndLimits(10,"Africa");
-        assertEquals(citiesInContinentReport.cities.size(), 10);
+        citiesInContinentReport.runWithContinentAndLimits(3,"Africa");
+        assertEquals(citiesInContinentReport.cities.size(), 3);
     }
 
     //run with invalid continent//
@@ -271,11 +293,7 @@ public final class IntegrationTest {
     }
 
 
-    @Test
-    void testCountriesInWorldReturnsAllCountries() {
-        countriesInWorldReport.run();
-        assertEquals(countriesInWorldReport.countries.size(), 232);
-    }
+
 
     /** All Cities In District  Integration tests */
     //district and no limits
@@ -310,57 +328,40 @@ public final class IntegrationTest {
         assertEquals(citiesInDistrictReport.cities.size(), 0);
     }
 
-    // City by District if empty, returns no results
-    @Test
-    void testRunCitiesByDistrictReportWithEmptyDistrict() {
-
-        cityByDistrictReport.runWithDistrict("");
-        assertEquals(cityByDistrictReport.cities.size(), 0);
-    }
-
-    // City by District returns expected results
-    @Test
-    void testRunWithDistrict() {
-
-        cityByDistrictReport.runWithDistrict("Aichi");
-        assertEquals(cityByDistrictReport.cities.size(), 15);
-    }
-
     @Test
     void testPopulationOfACity() {
         populationOfACity.runWithCity("Paris");
         assertEquals(populationOfACity.city.population, 2125246L);
     }
-    /*
-     * END OF CITY REPORTS INTEGRATION TESTS
-     */
+
 
     /*
      * CAPITAL CITY REPORTS INTEGRATION TESTS
      */
 
-    /**
-     * Populated Capital Cities by District
-     */
+    //UC20
     @Test
-    void testPopulatedCityDistrictReportWithLimitAndDistrict()
-    {
-        popCapCityDistrictReport.runWithInputs(3,"Acre");
-        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
+    void testRunWithLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(5);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
+    }
 
+    @Test
+    void testRunWithNoLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(0);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 4079);
     }
 
 
-    //UC17
     @Test
-    void testAllCapitalCitiesWorld(){
-        allCapitalCitiesWorldReport.run();
-        assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
+    void testRunWithLimitNull() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(null);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 0);
     }
 
     //UC20
     @Test
-    void testRunWithLimit() {
+    void testPopulatedCitiesInWorldWithLimit() {
         populatedCapitalCitiesInWorldReport.runWithInputs(5);
         assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
     }
@@ -391,7 +392,7 @@ public final class IntegrationTest {
     @Test
     void testRunWithIncorrectContinent()
     {
-        report.runWithInputs(0,"Test");
+        report.runWithInputs(0,"Te'st");
         assertEquals(report.capitalCities.size(),0);
     }
 
@@ -439,7 +440,7 @@ public final class IntegrationTest {
     @Test
     void testRunWithIncorrectRegion()
     {
-        popCapCityRegionReport.runWithInputs(5,"Test");
+        popCapCityRegionReport.runWithInputs(5,"Te'st");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
@@ -483,19 +484,6 @@ public final class IntegrationTest {
     {
         citiesInWorldReport.runWithInputs(5);
         assertEquals(citiesInWorldReport.cities.size(),5);
-    }
-
-
-
-
-    /**
-     * Top N Population of countries in Region Report
-     */
-    @Test
-    void testRunWithtopPopulationCountriesRegion()
-    {
-        topPopulationCountriesRegion.runWithLimit(10,"Caribbean");
-        assertEquals(topPopulationCountriesRegion.countries.size(), 10);
     }
 
     /**
@@ -550,23 +538,6 @@ public final class IntegrationTest {
         assertEquals(totalInDistrictReport.total, 127800);
     }
 
-    /**
-     * Populated Capital Cities by District
-     */
-    @Test
-    void testRunWithLimitandDistrict()
-    {
-        popCapCityDistrictReport.runWithInputs(3,"Acre");
-        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
-
-    }
-
-    //UC20
-    @Test
-    void testPopulatedCitiesInWorldWithLimit() {
-        populatedCapitalCitiesInWorldReport.runWithInputs(5);
-        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
-    }
 
     @Test
     void testLanguageReportsReturnsCorrectNumberOfLanguages() {

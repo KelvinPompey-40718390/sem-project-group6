@@ -62,12 +62,9 @@ public class TopPopulatedCountriesInAContinent implements Report {
             // Create an SQL statement
 
             Statement stmt = con.createStatement();// Create string for SQL statement
+
+            String strSelect = "";
             // If a 0 is entered return all the results of the Query
-            String strSelect = "select country.name as CountryName, continent, country.population as Population " +
-                    "from country\n" +
-                    "inner join city on city.ID = country.Capital\n" +
-                    "where continent = '" + continent + "' " +
-                    "order by country.population desc ";
 
             if(this.limit > 0){
                 strSelect = "select country.code as Code, country.name as CountryName, continent, region, country.population, city.name as Capital\n" +

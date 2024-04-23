@@ -35,10 +35,6 @@ public class App {
              * COUNTRY REPORTS
              */
 
-            //Top Populated Countries By Region - UC6
-            TopPopulationCountriesRegion topPopulationCountriesRegion = new TopPopulationCountriesRegion();
-            topPopulationCountriesRegion.runWithLimit(10, "Caribbean");
-
             /*
              *  CITY REPORTS
              */

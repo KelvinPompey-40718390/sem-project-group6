@@ -87,5 +87,4 @@ public class TotalInContinent implements Report {
         System.out.println("--------------------------------------");
     }
 
-
 }
