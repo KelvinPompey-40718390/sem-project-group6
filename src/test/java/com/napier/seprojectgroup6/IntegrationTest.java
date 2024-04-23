@@ -14,6 +14,7 @@ public final class IntegrationTest {
 
     // COUNTRY REPORTS
     public static CountriesInWorld countriesInWorld;
+    public static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinentReport;
     public static PopulatedCapitalCitiesByContinent report;
     public static TopPopulatedCountries topPopulatedCountriesReport;
 
@@ -22,9 +23,6 @@ public final class IntegrationTest {
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
     public static PopulationInEachContinent popInEachContinentReport;
-
-
-
 
     public static CitiesInContinent citiesInContinentReport;
     public static CitiesInCountry citiesInCountryReport;
@@ -50,6 +48,7 @@ public final class IntegrationTest {
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
         topPopulatedCountriesReport = new TopPopulatedCountries();
+        topPopulatedCountriesInAContinentReport = new TopPopulatedCountriesInAContinent();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
         popInEachContinentReport = new PopulationInEachContinent();
@@ -93,6 +92,34 @@ public final class IntegrationTest {
         countriesInWorld.runWithLimit(3);
         assertEquals(countriesInWorld.countries.size(), 3);
     }
+
+    // UC02 Test that All Countries in North America are Returned
+    @Test
+    void testTopPopulatedCountriesInAContinent(){
+        Population population = new Population();
+
+        topPopulatedCountriesInAContinentReport.runWithInputs(0,"North America");
+        assertEquals(topPopulatedCountriesInAContinentReport.populations.size(),37);
+    }
+
+    // UC05 Test that Limited Countries in North America are Returned
+    @Test
+    void testTopPopulatedCountriesInAContinentWithLimit(){
+        Population population = new Population();
+
+        topPopulatedCountriesInAContinentReport.runWithInputs(3,"North America");
+        assertEquals(topPopulatedCountriesInAContinentReport.populations.size(),3);
+    }
+
+    // UC05 Test Catch Works For Query
+    @Test
+    void testTopPopulatedCountriesInAContinentCatchError(){
+        Population population = new Population();
+
+        topPopulatedCountriesInAContinentReport.runWithInputs(3,"Nor'th America");
+        assertEquals(topPopulatedCountriesInAContinentReport.populations.size(),0);
+    }
+
 
     /**
      * POPULATION REPORTS INTEGRATION TESTS
