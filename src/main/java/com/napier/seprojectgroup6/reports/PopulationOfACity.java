@@ -45,7 +45,6 @@ public class PopulationOfACity implements Report {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect = String.format("select Name, Population from city where Name = '%s'", cityName);
-            System.out.println(strSelect);
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -71,7 +70,7 @@ public class PopulationOfACity implements Report {
             return;
         }
 
-        System.out.println("Population Of A City\n");
+        System.out.println("Population of " + this.cityName);
         System.out.printf("%-20s %-10s\n",  "City", "Population");
         this.displayCity(city);
 
@@ -82,6 +81,5 @@ public class PopulationOfACity implements Report {
             System.out.printf("%-20s %d\n",  city.name, city.population);
         }
     }
-
 
 }
