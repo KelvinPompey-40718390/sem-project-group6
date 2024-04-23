@@ -14,7 +14,6 @@ public final class IntegrationTest {
 
     public static PopulatedCapitalCitiesByContinent report;
     public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
-    public static CitiesByDistrictReport cityByDistrictReport;
     public static TopPopulatedCitiesReport topPopCitiesReport;
     public static TopPopulatedCountries topPopulatedCountriesReport;
     public static PopulationInEachRegion popInEachRegionReport;
@@ -48,7 +47,6 @@ public final class IntegrationTest {
         ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
-        cityByDistrictReport = new CitiesByDistrictReport();
         topPopCitiesReport = new TopPopulatedCitiesReport();
         topPopulatedCountriesReport = new TopPopulatedCountries();
         popInEachRegionReport = new PopulationInEachRegion();
@@ -305,22 +303,6 @@ public final class IntegrationTest {
     {
         citiesInDistrictReport.runWithDistrictandLimits(0, "Noor'd-Holland");
         assertEquals(citiesInDistrictReport.cities.size(), 0);
-    }
-
-    // City by District if empty, returns no results
-    @Test
-    void testRunCitiesByDistrictReportWithEmptyDistrict() {
-
-        cityByDistrictReport.runWithDistrict("");
-        assertEquals(cityByDistrictReport.cities.size(), 0);
-    }
-
-    // City by District returns expected results
-    @Test
-    void testRunWithDistrict() {
-
-        cityByDistrictReport.runWithDistrict("Aichi");
-        assertEquals(cityByDistrictReport.cities.size(), 15);
     }
 
     @Test
