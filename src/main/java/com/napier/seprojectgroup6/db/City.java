@@ -8,7 +8,6 @@ package com.napier.seprojectgroup6.db;
 public class City {
 
     public int id;
-    public String countryCode;
     public String district;
     public String name;
     public String countryName;
