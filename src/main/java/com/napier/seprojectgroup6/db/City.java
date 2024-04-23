@@ -3,6 +3,8 @@ package com.napier.seprojectgroup6.db;
 /**
  * @author Kelvin Pompey
  */
+
+// City Report Variables
 public class City {
 
     public int id;
