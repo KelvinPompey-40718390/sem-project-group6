@@ -30,6 +30,7 @@ public class CountriesInWorld implements Report {
     }
 
     public void runWithLimit(Integer limit) {
+        this.limit = limit;
         this.executeQuery();
         this.displayCountries();
     }

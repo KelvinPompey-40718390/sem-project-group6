@@ -70,12 +70,24 @@ public final class IntegrationTest {
     /**
      * COUNTRY REPORTS INTEGRATION TESTS
     **/
+
+
+    // UC01 All Countries in World returns all Results
     @Test
-    void setCountriesInWorld(){
+    void testAllCountriesInWorld(){
         Population population = new Population();
 
-        countriesInWorld.run();
+        countriesInWorld.runWithLimit(0);
         assertEquals(countriesInWorld.countries.size(), 232);
+    }
+
+    // UC01 Test All Countries in the World Returns Limited Countries
+    @Test
+    void testCountriesInWorldWithLimit(){
+        Population population = new Population();
+
+        countriesInWorld.runWithLimit(3);
+        assertEquals(countriesInWorld.countries.size(), 3);
     }
 
     /**
@@ -244,11 +256,7 @@ public final class IntegrationTest {
     }
 
 
-    @Test
-    void testCountriesInWorldReturnsAllCountries() {
-        countriesInWorldReport.run();
-        assertEquals(countriesInWorldReport.countries.size(), 232);
-    }
+
 
     /** All Cities In District  Integration tests */
     //district and no limits
