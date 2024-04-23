@@ -69,11 +69,9 @@ public final class IntegrationTest {
         countriesInWorld = new CountriesInWorld();
     }
 
-
     /**
      * COUNTRY REPORTS INTEGRATION TESTS
     **/
-
 
     // UC01 All Countries in World returns all Results
     @Test
@@ -82,6 +80,14 @@ public final class IntegrationTest {
 
         countriesInWorld.runWithLimit(0);
         assertEquals(countriesInWorld.countries.size(), 232);
+    }
+
+    @Test
+    void testAllCountriesInWorldWithNull(){
+        Population population = new Population();
+
+        countriesInWorld.runWithLimit(null);
+        assertEquals(countriesInWorld.countries.size(), 0);
     }
 
     // UC01 Test All Countries in the World Returns Limited Countries
