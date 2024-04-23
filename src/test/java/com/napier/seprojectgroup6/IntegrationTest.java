@@ -16,7 +16,7 @@ public final class IntegrationTest {
     public static CountriesInWorld countriesInWorld;
     public static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinentReport;
     public static PopulatedCapitalCitiesByContinent report;
-    public static TopPopulatedCountries topPopulatedCountriesReport;
+    public static PopulatedCountriesInARegion populatedCountriesInARegionReport;
 
     public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
 
@@ -47,7 +47,7 @@ public final class IntegrationTest {
         ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
-        topPopulatedCountriesReport = new TopPopulatedCountries();
+        populatedCountriesInARegionReport = new PopulatedCountriesInARegion();
         topPopulatedCountriesInAContinentReport = new TopPopulatedCountriesInAContinent();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
@@ -171,30 +171,30 @@ public final class IntegrationTest {
 
     @Test
     void testPopulatedRegionsReturnsAllCountries() {
-        topPopulatedCountriesReport.runWithLimit(0, "Caribbean");
-        assertEquals(topPopulatedCountriesReport.countries.size(), 24);
+        populatedCountriesInARegionReport.runWithLimit(0, "Caribbean");
+        assertEquals(populatedCountriesInARegionReport.countries.size(), 24);
     }
 
     @Test
     void testPopulatedRegionsBadRegion() {
-        topPopulatedCountriesReport.runWithLimit(0, "Cari'bbean");
-        assertEquals(topPopulatedCountriesReport.countries.size(), 0);
+        populatedCountriesInARegionReport.runWithLimit(0, "Cari'bbean");
+        assertEquals(populatedCountriesInARegionReport.countries.size(), 0);
     }
 
     @Test
     void testPopulatedRegionsReturnsLimitedCountries() {
-        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
-        assertEquals(topPopulatedCountriesReport.countries.size(), 5);
+        populatedCountriesInARegionReport.runWithLimit(5, "Caribbean");
+        assertEquals(populatedCountriesInARegionReport.countries.size(), 5);
     }
 
     @Test
     void testPopulatedRegionsReturnsCountriesInDescendingOrder() {
-        topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
+        populatedCountriesInARegionReport.runWithLimit(5, "Caribbean");
 
-        Country firstCountry = topPopulatedCountriesReport.countries.get(0);
+        Country firstCountry = populatedCountriesInARegionReport.countries.get(0);
         boolean result = true;
 
-        for(Country country : topPopulatedCountriesReport.countries) {
+        for(Country country : populatedCountriesInARegionReport.countries) {
             if(country.population > firstCountry.population) {
                 result = false;
             }

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class TopPopulatedCountries implements Report {
+public class PopulatedCountriesInARegion implements Report {
 
     private final Connection con;
     public ArrayList<Country> countries;
@@ -18,7 +18,7 @@ public class TopPopulatedCountries implements Report {
     private String region;
 
 
-    public TopPopulatedCountries() {
+    public PopulatedCountriesInARegion() {
         this.con = ConnectionManager.getInstance().getConnection();
     }
 
@@ -64,17 +64,22 @@ public class TopPopulatedCountries implements Report {
             String strSelect = "";
 
             if(this.limit > 0) {
-                strSelect = "select country.code, country.Name, country.Continent,country.Region, country.Population, country.Capital from country\n" +
-                        "WHERE country.Region = '" + this.region +"' " +
-                        "order by Population desc " +
-                        "LIMIT " + this.limit;
+                strSelect = "SELECT country.code, country.Name AS Name, country.Continent,country.Region, country.Population, city.Name AS Capital " +
+                            "FROM country " +
+                            "LEFT JOIN city ON country.Capital = city.ID " +
+                            "WHERE country.Region = '" + this.region +"' " +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + this.limit;
 
 
             }
             else {
-                strSelect = "select country.code, country.Name, country.Continent,country.Region, country.Population, country.Capital from country\n" +
+                strSelect = "SELECT country.code, country.Name AS Name, country.Continent,country.Region, country.Population, city.Name AS Capital " +
+                        "FROM country " +
+                        "LEFT JOIN city ON country.Capital = city.ID " +
                         "WHERE country.Region = '" + this.region +"' " +
-                        "order by Population desc ";
+                        "ORDER BY Population DESC ";
+
             }
 
 
