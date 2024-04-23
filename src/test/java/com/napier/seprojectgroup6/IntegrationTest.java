@@ -12,15 +12,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public final class IntegrationTest {
 
+    // COUNTRY REPORTS
+    public static CountriesInWorld countriesInWorld;
     public static PopulatedCapitalCitiesByContinent report;
-    public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
     public static TopPopulatedCountries topPopulatedCountriesReport;
+
+    public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
+
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
     public static PopulationInEachContinent popInEachContinentReport;
-    // Country Reports
 
-    public static CountriesInWorld countriesInWorld;
+
+
 
     public static CitiesInContinent citiesInContinentReport;
     public static CitiesInCountry citiesInCountryReport;
