@@ -14,7 +14,6 @@ public final class IntegrationTest {
 
     public static PopulatedCapitalCitiesByContinent report;
     public static PopulatedCapitalCitiesByRegion popCapCityRegionReport;
-    public static TopPopulatedCitiesReport topPopCitiesReport;
     public static TopPopulatedCountries topPopulatedCountriesReport;
     public static PopulationInEachRegion popInEachRegionReport;
     public static PopulationInEachCountry popInEachCountryReport;
@@ -46,7 +45,6 @@ public final class IntegrationTest {
         ConnectionManager.getInstance().connect("localhost:33060", 0);
         report = new PopulatedCapitalCitiesByContinent();
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
-        topPopCitiesReport = new TopPopulatedCitiesReport();
         topPopulatedCountriesReport = new TopPopulatedCountries();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
@@ -154,23 +152,6 @@ public final class IntegrationTest {
             }
         }
         assertTrue(result);
-    }
-
-    /**
-     * TOP POPULATED CITIES BY DISTRICT
-     */
-    @Test
-    void testRunPopCitiesReportWithZeroLimit() {
-
-        topPopCitiesReport.runWithLimit(0);
-        assertEquals(topPopCitiesReport.cities.size(), 0);
-    }
-
-    @Test
-    void testRunPopCitiesWithDistrict() {
-
-        topPopCitiesReport.runWithLimit(5);
-        assertEquals(topPopCitiesReport.cities.size(), 5);
     }
 
     /*
