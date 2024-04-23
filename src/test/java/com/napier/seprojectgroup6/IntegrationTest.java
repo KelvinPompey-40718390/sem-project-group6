@@ -176,6 +176,12 @@ public final class IntegrationTest {
     }
 
     @Test
+    void testPopulatedRegionsBadRegion() {
+        topPopulatedCountriesReport.runWithLimit(0, "Cari'bbean");
+        assertEquals(topPopulatedCountriesReport.countries.size(), 0);
+    }
+
+    @Test
     void testPopulatedRegionsReturnsLimitedCountries() {
         topPopulatedCountriesReport.runWithLimit(5, "Caribbean");
         assertEquals(topPopulatedCountriesReport.countries.size(), 5);
@@ -229,8 +235,8 @@ public final class IntegrationTest {
     @Test
     void testRunCitiesInContinentWithLimits()
     {
-        citiesInContinentReport.runWithContinentAndLimits(10,"Africa");
-        assertEquals(citiesInContinentReport.cities.size(), 10);
+        citiesInContinentReport.runWithContinentAndLimits(3,"Africa");
+        assertEquals(citiesInContinentReport.cities.size(), 3);
     }
 
     //run with invalid continent//
@@ -327,9 +333,7 @@ public final class IntegrationTest {
         populationOfACity.runWithCity("Paris");
         assertEquals(populationOfACity.city.population, 2125246L);
     }
-    /*
-     * END OF CITY REPORTS INTEGRATION TESTS
-     */
+
 
     /*
      * CAPITAL CITY REPORTS INTEGRATION TESTS
@@ -338,6 +342,26 @@ public final class IntegrationTest {
     //UC20
     @Test
     void testRunWithLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(5);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
+    }
+
+    @Test
+    void testRunWithNoLimit() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(0);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 4079);
+    }
+
+
+    @Test
+    void testRunWithLimitNull() {
+        populatedCapitalCitiesInWorldReport.runWithInputs(null);
+        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 0);
+    }
+
+    //UC20
+    @Test
+    void testPopulatedCitiesInWorldWithLimit() {
         populatedCapitalCitiesInWorldReport.runWithInputs(5);
         assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
     }
@@ -368,7 +392,7 @@ public final class IntegrationTest {
     @Test
     void testRunWithIncorrectContinent()
     {
-        report.runWithInputs(0,"Test");
+        report.runWithInputs(0,"Te'st");
         assertEquals(report.capitalCities.size(),0);
     }
 
@@ -416,7 +440,7 @@ public final class IntegrationTest {
     @Test
     void testRunWithIncorrectRegion()
     {
-        popCapCityRegionReport.runWithInputs(5,"Test");
+        popCapCityRegionReport.runWithInputs(5,"Te'st");
         assertEquals(popCapCityRegionReport.capitalCities.size(),0);
     }
 
@@ -514,12 +538,6 @@ public final class IntegrationTest {
         assertEquals(totalInDistrictReport.total, 127800);
     }
 
-    //UC20
-    @Test
-    void testPopulatedCitiesInWorldWithLimit() {
-        populatedCapitalCitiesInWorldReport.runWithInputs(5);
-        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
-    }
 
     @Test
     void testLanguageReportsReturnsCorrectNumberOfLanguages() {

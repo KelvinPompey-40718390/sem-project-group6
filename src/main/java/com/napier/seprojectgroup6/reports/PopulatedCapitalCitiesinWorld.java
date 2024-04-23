@@ -56,18 +56,23 @@ public class PopulatedCapitalCitiesinWorld implements Report {
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                    "FROM city " +
-                    "INNER JOIN country ON country.Code = city.CountryCode " +
-                    "ORDER BY city.Population Desc ";
 
+            String strSelect = "";
+            // Create string for SQL statement
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
                         "FROM city " +
                         "INNER JOIN country ON country.Code = city.CountryCode " +
                         "ORDER BY city.Population Desc " +
-                        "LIMIT " + this.limit;
+                        "LIMIT " + this.limit;;
+            }
+
+            else {
+                strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
+                        "FROM city " +
+                        "INNER JOIN country ON country.Code = city.CountryCode " +
+                        "ORDER BY city.Population Desc ";
+
             }
 
             // Execute SQL statement
