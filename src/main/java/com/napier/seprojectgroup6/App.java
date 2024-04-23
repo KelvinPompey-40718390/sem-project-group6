@@ -126,7 +126,6 @@ public class App {
             populatedCapitalCitiesByRegion.runWithInputs(3,"Caribbean");
 
 
-
             /**
              * POPULATION REPORTS
              */
@@ -178,7 +177,6 @@ public class App {
             // UC 32 Population and % of Population that speak a Certain Language
             NumberOfPeopleSpeakingACertainLanguage numberOfPeopleSpeakingACertainLanguage = new NumberOfPeopleSpeakingACertainLanguage();
             numberOfPeopleSpeakingACertainLanguage.run();
-
 
 
             // Close Connection to Database
