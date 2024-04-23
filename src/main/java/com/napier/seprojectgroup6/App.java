@@ -39,25 +39,41 @@ public class App {
              *  CITY REPORTS
              */
 
-            //Cities in the World with and Without Limit - UC7 & UC12
+            // Initialize Various classes for City Reports
             CitiesInWorld citiesInWorld = new CitiesInWorld();
-            citiesInWorld.runWithInputs(5);
+            CitiesInContinent citiesInContinent = new CitiesInContinent();
+            CitiesInRegion citiesInRegion = new CitiesInRegion();
+            CitiesInCountry citiesInCountry = new CitiesInCountry();
+            CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
+
+            // UC 07 All Cities in the World
             citiesInWorld.runWithInputs(0);
 
-            // Cities by Continent with and Without Limit - UC8 & UC13
-            CitiesInContinent citiesInContinent = new CitiesInContinent();
+            // UC 08 All Cities in a Continent
+            citiesInContinent.runWithContinentAndLimits(0,"Africa");
+
+            // UC 09 All Cities in a Region
+            citiesInRegion.runWithRegionAndLimits(0,"Caribbean");
+
+            // UC 10 All Cities in a Country
+            citiesInCountry.runWithCountryAndLimits(0,"North America");
+
+            // UC 11 All Cities in a District
+            citiesInDistrict.runWithDistrictandLimits(0, "Zuid-Holland");
+
+            // UC 12 Top 3 populated Cities in the World
+            citiesInWorld.runWithInputs(3);
+
+            // UC 13 Top 3 Cities in a Continent
             citiesInContinent.runWithContinentAndLimits(3,"Africa");
 
-            // Cities by Region with and Without Limit - UC9 & UC14
-            CitiesInRegion citiesInRegion = new CitiesInRegion();
+            // UC 14 Top 3 Cities in a Region
             citiesInRegion.runWithRegionAndLimits(3,"Caribbean");
 
-            // Cities by Country with and Without Limit - UC10 & UC15
-            CitiesInCountry citiesInCountry = new CitiesInCountry();
+            // UC 15 Top 3 Cities in a Country
             citiesInCountry.runWithCountryAndLimits(3,"North America");
 
-            // Cities by District with and Without Limit - UC11 & UC16
-            CitiesInDistrict citiesInDistrict = new CitiesInDistrict();
+            // UC 16 Top 3 Cities in a District
             citiesInDistrict.runWithDistrictandLimits(3, "Zuid-Holland");
 
             /**
@@ -136,7 +152,7 @@ public class App {
              * LANGUAGE REPORT
              */
 
-            // UC32 Population and % of Population that speak a Certain Language
+            // UC 32 Population and % of Population that speak a Certain Language
             NumberOfPeopleSpeakingACertainLanguage numberOfPeopleSpeakingACertainLanguage = new NumberOfPeopleSpeakingACertainLanguage();
             numberOfPeopleSpeakingACertainLanguage.run();
 
