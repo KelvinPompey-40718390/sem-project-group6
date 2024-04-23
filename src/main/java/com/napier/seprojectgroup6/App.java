@@ -35,7 +35,7 @@ public class App {
              * COUNTRY REPORTS
              */
 
-            /*
+            /**
              *  CITY REPORTS
              */
 
@@ -73,10 +73,9 @@ public class App {
             populatedCapitalCitiesByRegion.runWithInputs(5,"Caribbean");
             populatedCapitalCitiesByRegion.runWithInputs(0,"Caribbean");
 
-
-            /*
+            /**
              * POPULATION REPORTS
-             */
+             **/
 
             // Population of people living in and out of cities in each continent - UC 23
             PopulationInEachContinent populationInEachContinent = new PopulationInEachContinent();
@@ -85,6 +84,15 @@ public class App {
             // Population of people living in and out of cities in each region - UC 24
             PopulationInEachRegion populationInEachRegion = new PopulationInEachRegion();
             populationInEachRegion.run();
+
+            /**
+             * LANGUAGE REPORT
+             */
+
+            // UC32 Population and % of Population that speak a Certain Language
+            NumberOfPeopleSpeakingACertainLanguage numberOfPeopleSpeakingACertainLanguage = new NumberOfPeopleSpeakingACertainLanguage();
+            numberOfPeopleSpeakingACertainLanguage.run();
+
 
 
             // Close Connection to Database
