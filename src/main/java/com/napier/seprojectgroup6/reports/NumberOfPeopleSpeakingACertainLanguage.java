@@ -70,7 +70,7 @@ public class NumberOfPeopleSpeakingACertainLanguage implements Report{
             return;
         }
 
-        System.out.println("\nTop Languages By Population\n");
+        System.out.println("\nNumber Of Persons Speaking Different Languages\nIncluding % of World Population\n");
         System.out.printf("%-10s %-20s %-10s\n",  "LANGUAGE", "NUMBER OF PEOPLE", "PERCENTAGE OF WORLD POPULATION");
         for(Population population: populations) {
             this.displayPopulation(population);
