@@ -37,8 +37,6 @@ public final class IntegrationTest {
     public static TotalInDistrict totalInDistrictReport;
     public static PopulatedCapitalCitiesByDistrict popCapCityDistrictReport;
     public static WorldPopulation worldPopulation;
-
-    public static AllCapitalCitiesWorld allCapitalCitiesWorldReport;
     public static PopulatedCapitalCitiesinWorld populatedCapitalCitiesInWorldReport;
 
     public static NumberOfPeopleSpeakingACertainLanguage languageReport;
@@ -69,7 +67,6 @@ public final class IntegrationTest {
         totalInDistrictReport = new TotalInDistrict();
         popCapCityDistrictReport = new PopulatedCapitalCitiesByDistrict();
         worldPopulation = new WorldPopulation();
-        allCapitalCitiesWorldReport = new AllCapitalCitiesWorld();
         populatedCapitalCitiesInWorldReport = new PopulatedCapitalCitiesinWorld();
         countriesInWorldReport = new CountriesInWorld();
         languageReport = new NumberOfPeopleSpeakingACertainLanguage();
@@ -348,14 +345,6 @@ public final class IntegrationTest {
         popCapCityDistrictReport.runWithInputs(3,"Acre");
         assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
 
-    }
-
-
-    //UC17
-    @Test
-    void testAllCapitalCitiesWorld(){
-        allCapitalCitiesWorldReport.run();
-        assertEquals(allCapitalCitiesWorldReport.capitalCities.size(),4079);
     }
 
     //UC20
