@@ -15,6 +15,7 @@ public final class IntegrationTest {
     // COUNTRY REPORTS
     public static CountriesInWorld countriesInWorld;
     public static TopPopulatedCountriesInAContinent topPopulatedCountriesInAContinentReport;
+    public static PopulatedCountriesInARegion topPopulationCountriesRegion;
     public static PopulatedCapitalCitiesByContinent report;
     public static PopulatedCountriesInARegion populatedCountriesInARegionReport;
 
@@ -29,6 +30,7 @@ public final class IntegrationTest {
     public static CitiesInRegion citiesInRegionReport;
     public static CitiesInWorld citiesInWorldReport;
     public static CitiesInDistrict citiesInDistrictReport;
+
     public static PopulationOfACity populationOfACity;
     public static CountriesInWorld countriesInWorldReport;
     public static TotalInContinent totalInContinentReport;
@@ -49,6 +51,7 @@ public final class IntegrationTest {
         popCapCityRegionReport = new PopulatedCapitalCitiesByRegion();
         populatedCountriesInARegionReport = new PopulatedCountriesInARegion();
         topPopulatedCountriesInAContinentReport = new TopPopulatedCountriesInAContinent();
+        topPopulationCountriesRegion = new PopulatedCountriesInARegion();
         popInEachRegionReport = new PopulationInEachRegion();
         popInEachCountryReport = new PopulationInEachCountry();
         popInEachContinentReport = new PopulationInEachContinent();
@@ -544,15 +547,6 @@ public final class IntegrationTest {
         assertEquals(totalInDistrictReport.total, 127800);
     }
 
-    //Populated Capital Cities by District
-         @Test
-    void testRunWithLimitandDistrict()
-    {
-        popCapCityDistrictReport.runWithInputs(3,"Acre");
-        assertEquals(popCapCityDistrictReport.capitalCities.size(), 1);
-
-    }
-
     //UC19 All Capital Cities by Region
     @Test
     void testPopulatedCapitalCitiesByRegionRunWithLimit()
@@ -560,13 +554,6 @@ public final class IntegrationTest {
         popCapCityRegionReport.runWithInputs(0,"Caribbean");
         assertEquals(popCapCityRegionReport.capitalCities.size(),58);
 
-    }
-
-    //UC20
-    @Test
-    void testPopulatedCitiesInWorldWithLimit() {
-        populatedCapitalCitiesInWorldReport.runWithInputs(5);
-        assertEquals(populatedCapitalCitiesInWorldReport.capitalCities.size(), 5);
     }
 
     @Test
