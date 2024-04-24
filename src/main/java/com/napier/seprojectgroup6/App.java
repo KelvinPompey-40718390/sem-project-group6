@@ -152,23 +152,23 @@ public class App {
 
             // UC 27 Total Population of a Continent
             TotalInContinent totalInContinent = new TotalInContinent();
-            totalInContinent.run();
+            totalInContinent.runWithInputs("Europe");
 
             // UC 28 Total Population of a Region
             TotalInRegion totalInRegion = new TotalInRegion();
-            totalInRegion.run();
+            totalInRegion.runWithInputs("Caribbean");
 
             // UC 29 Total Population of a Country
             TotalInCountry totalInCountry = new TotalInCountry();
-            totalInCountry.run();
+            totalInCountry.runWithInputs("France");
 
             // UC 30 Total Population of a District
             TotalInDistrict totalInDistrict = new TotalInDistrict();
-            totalInDistrict.run();
+            totalInDistrict.runWithInputs("Aichi");
 
             // UC 31 Total Population of a City
             PopulationOfACity populationOfACity = new PopulationOfACity();
-            populationOfACity.run();
+            populationOfACity.runWithCity("Paris");
 
             /**
              * LANGUAGE REPORT
