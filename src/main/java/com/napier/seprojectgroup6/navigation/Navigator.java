@@ -9,26 +9,26 @@ public class Navigator {
     private final ReportMenu[] reports = {
 
             // Country Reports UC01 - UC 06
-            new ReportMenu("01 Countries In World", CountriesInWorld.class.getName()),
-            new ReportMenu("Top N and All Populated Countries by Region", TopPopulatedCountries.class.getName()),
-            new ReportMenu("Top N and All Populated Countries by Continent", TopPopulatedCountriesInAContinent.class.getName()),
+            new ReportMenu("Top N and All populated Countries in the World", CountriesInWorld.class.getName()),
+            new ReportMenu("Top N and All populated Countries in a Continent", TopPopulatedCountriesInAContinent.class.getName()),
+            new ReportMenu("Top N and All populated Countries in a Region", PopulatedCountriesInARegion.class.getName()),
 
             // City Reports UC07 - UC16
-            new ReportMenu( "Top N and All Populated Cities in The World", CitiesInWorld.class.getName()),
-            new ReportMenu( "Top N and All Populated Cities by Continent", CitiesInContinent.class.getName()),
-            new ReportMenu( "Top N and All Populated Cities by Region", CitiesInRegion.class.getName()),
-            new ReportMenu( "Top N and All Populated Cities by Country", CitiesInCountry.class.getName()),
-            new ReportMenu( "Top N and All Populated Cities By District", CitiesInDistrict.class.getName()),
+            new ReportMenu( "Top N and All Populated Cities in the World", CitiesInWorld.class.getName()),
+            new ReportMenu( "Top N and All Populated Cities in a Continent", CitiesInContinent.class.getName()),
+            new ReportMenu( "Top N and All Populated Cities in a Region", CitiesInRegion.class.getName()),
+            new ReportMenu( "Top N and All Populated Cities in a Country", CitiesInCountry.class.getName()),
+            new ReportMenu( "Top N and All Populated Cities in a District", CitiesInDistrict.class.getName()),
 
             // Capital City Reports UC17 - UC22
             new ReportMenu( "Top N and All Populated Capital Cities in the World", PopulatedCapitalCitiesinWorld.class.getName()),
-            new ReportMenu( "Top N and All Populated Capital Cities by Continent", PopulatedCapitalCitiesByContinent.class.getName()),
-            new ReportMenu( "Top N and All Populated Capital Cities by Region", PopulatedCapitalCitiesByRegion.class.getName()),
+            new ReportMenu( "Top N and All Populated Capital Cities in a Continent", PopulatedCapitalCitiesByContinent.class.getName()),
+            new ReportMenu( "Top N and All Populated Capital Cities in a Region", PopulatedCapitalCitiesByRegion.class.getName()),
 
             // Population Reports UC23 - UC25
-            new ReportMenu( "Percentage of Population Living in/out of city by Continent", PopulationInEachContinent.class.getName()),
-            new ReportMenu( "Percentage of Population Living in/out of city by Region", PopulationInEachRegion.class.getName()),
-            new ReportMenu( "Percentage of Population Living in/out of city by Country", PopulationInEachCountry.class.getName()),
+            new ReportMenu( "Percentage of Population Living in/out of city in each Continent", PopulationInEachContinent.class.getName()),
+            new ReportMenu( "Percentage of Population Living in/out of city in each Region", PopulationInEachRegion.class.getName()),
+            new ReportMenu( "Percentage of Population Living in/out of city in each Country", PopulationInEachCountry.class.getName()),
 
             // Total Population Reports UC26 - UC31
             new ReportMenu( "Total Population of the World", WorldPopulation.class.getName()),
@@ -48,9 +48,7 @@ public class Navigator {
         this.showMenu();
     }
 
-    /**
-     * Display the reports available
-     */
+    // Show Report menu Header and Menu Items
     private void showMenu() {
         System.out.println();
         System.out.println("-----------");
@@ -62,22 +60,16 @@ public class Navigator {
         this.processInput();
     }
 
-    /**
-     * Handle user input
-     */
+    // Ask user to enter a Report Number or enter a 'q' to Quite the application
     private void processInput() {
         String input = Utils.readInput("\nSelect your report number or q to quit!");
 
-
         // Test for both lowercase and uppercase Q
-
         if(input.equalsIgnoreCase("Q")) {
             return;
         }
 
-        // Is the string is not numeric reject the input
-        // and try again
-
+        // Is the string is not numeric reject the input and try again
         String regex = "-?\\d+";
         boolean isNumber = input.matches(regex);
 
@@ -99,8 +91,7 @@ public class Navigator {
     }
 
     /**
-     * Display the report selected by
-     * the user
+     * Display the report selected by the user
      * @param index Selected report to display
      */
     private void runRport(int index) {

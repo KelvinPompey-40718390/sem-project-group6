@@ -56,18 +56,23 @@ public class PopulatedCapitalCitiesinWorld implements Report {
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
-                    "FROM city " +
-                    "INNER JOIN country ON country.Code = city.CountryCode " +
-                    "ORDER BY city.Population Desc ";
 
+            String strSelect = "";
+            // Create string for SQL statement
             if(this.limit > 0) {
                 strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
                         "FROM city " +
                         "INNER JOIN country ON country.Code = city.CountryCode " +
                         "ORDER BY city.Population Desc " +
-                        "LIMIT " + this.limit;
+                        "LIMIT " + this.limit;;
+            }
+
+            else {
+                strSelect = "SELECT city.name AS CityName, country.name AS CountryName, city.Population " +
+                        "FROM city " +
+                        "INNER JOIN country ON country.Code = city.CountryCode " +
+                        "ORDER BY city.Population Desc ";
+
             }
 
             // Execute SQL statement
@@ -98,7 +103,7 @@ public class PopulatedCapitalCitiesinWorld implements Report {
 
         System.out.println("POPULATED CAPITAL CITIES IN THE WORLD");
         System.out.println("---------------------------------------------------------------------------------");
-        System.out.printf("%-20s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
+        System.out.printf("%-40s %-40s %-10s\n",  "NAME", "COUNTRY", "POPULATION");
         for(CapitalCity capitalCity: capitalCities) {
             this.displayCapitalCity(capitalCity);
         }
@@ -106,7 +111,7 @@ public class PopulatedCapitalCitiesinWorld implements Report {
 
     private void displayCapitalCity(CapitalCity capitalCity) {
         if(capitalCity != null) {
-            System.out.printf("%-20s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
+            System.out.printf("%-40s %-40s %-10s \n",  capitalCity.name, capitalCity.country, capitalCity.population);
         }
     }
 
